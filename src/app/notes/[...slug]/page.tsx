@@ -22,11 +22,11 @@ async function getContentAsHTML(content: string) {
 }
 
 export default async function Page({ params, searchParams }: Params) {
-  const post = getPostBySlug(params.slug.join("/"), [
-    "title",
-    "slug",
-    "content",
-  ]);
+  const post = getPostBySlug(
+    params.slug.join("/"),
+    ["title", "slug", "content"],
+    "note"
+  );
   const content = await getContentAsHTML(post.content);
   return (
     <>

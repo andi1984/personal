@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import posts_dir from "./posts_dir";
+import notes_dir from "./notes_dir";
 
 function generateSlugs(directory: string, currentPath: string = ""): string[] {
   // Ensure the directory path is absolute
@@ -37,4 +38,8 @@ function generateSlugs(directory: string, currentPath: string = ""): string[] {
 
 export function getPostSlugs() {
   return generateSlugs(posts_dir);
+}
+
+export function getNoteSlugs() {
+  return generateSlugs(notes_dir);
 }

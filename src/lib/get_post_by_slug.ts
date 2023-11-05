@@ -1,12 +1,16 @@
 import { readFileSync } from "fs";
 import matter from "gray-matter";
-import { join } from "path";
 import { findMarkdownFile } from "./find_md_file";
+import { Types } from "./types";
 
 // Reference https://github.com/vercel/next.js/blob/canary/examples/blog-starter/lib/api.ts
-export function getPostBySlug(slug: string, fields: string[] = []) {
+export function getPostBySlug(
+  slug: string,
+  fields: string[] = [],
+  type: Types = "post"
+) {
   const realSlug = slug.replace(/\.md$/, "");
-  const fullPath = findMarkdownFile(slug);
+  const fullPath = findMarkdownFile(slug, type);
   if (!fullPath) {
     throw new Error(`Could not find markdown for ${slug}`);
   }
