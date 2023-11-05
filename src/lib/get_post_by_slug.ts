@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 import matter from "gray-matter";
 import { findMarkdownFile } from "./find_md_file";
-import { Types } from "./types";
+import { Items, Types } from "./types";
 
 // Reference https://github.com/vercel/next.js/blob/canary/examples/blog-starter/lib/api.ts
 export function getPostBySlug(
@@ -17,10 +17,6 @@ export function getPostBySlug(
   const fileContents = readFileSync(fullPath, "utf8");
   const matterData = matter(fileContents);
   const { data, content } = matterData;
-
-  type Items = {
-    [key: string]: string;
-  };
 
   const items: Items = {};
 
