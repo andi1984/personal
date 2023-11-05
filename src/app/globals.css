@@ -13,15 +13,6 @@ body {
     line-height: 1.5;
 }
 
-a {
-    color: #0ea5e9;
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
-}
-
-a:hover {
-    color: #3b82f6;
-}
 
 /* Headlines styles */
 h1 {

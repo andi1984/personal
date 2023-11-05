@@ -11,7 +11,7 @@ const AllPostsList: FC<{
     <>
       <h2>{title}</h2>
       <nav>
-        <ol className="grid grid-cols-4 gap-4">
+        <ol className="flex flex-col gap-1 md:gap-2 md:grid md:grid-cols-2 lg:gap-3 lg:grid-cols-3 xl:gap-4 xl:grid-cols-4">
           {posts.map((post) => (
             <li key={post.slug}>
               <BlogPostCard post={post} type={type} />
