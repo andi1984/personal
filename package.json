@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-spring/web": "^9.7.3",
     "axios": "^1.5.1",
     "gray-matter": "^4.0.3",
     "next": "^14.0.0",

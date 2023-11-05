@@ -10,7 +10,7 @@ const Page = async ({}) => {
   const notes = getAllPosts(["slug", "title", "date", "description"], "note");
   return (
     <main>
-      <MastHead count={data.total} />
+      <MastHead count={data} />
       <AllPostsList title="All posts" posts={posts} type="post" />
       <AllPostsList title="All notes" posts={notes} type="note" />
     </main>
