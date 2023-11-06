@@ -17,7 +17,7 @@ type PostType = {
   content: string;
 };
 
-async function getContentAsHTML(content: string) {
+export async function getContentAsHTML(content: string) {
   return await markdownToHtml(content);
 }
 

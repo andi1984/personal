@@ -1,5 +1,5 @@
+import { getContentAsHTML } from "@/app/posts/[...slug]/page";
 import { getPostBySlug } from "@/lib/get_post_by_slug";
-import markdownToHtml from "@/lib/markdown_to_html";
 
 type Params = {
   params: { slug: string[] };
@@ -16,10 +16,6 @@ type PostType = {
   };
   content: string;
 };
-
-async function getContentAsHTML(content: string) {
-  return await markdownToHtml(content);
-}
 
 export default async function Page({ params, searchParams }: Params) {
   const post = getPostBySlug(
