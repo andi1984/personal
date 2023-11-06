@@ -5,7 +5,7 @@ export async function GET() {
   }
 
   const res = await fetch(process.env.FOLLOWER_API_ENDPOINT, {
-    next: { revalidate: 60 * 60 }, // Revalidate every 60 seconds
+    next: { revalidate: 60 * 60 }, // Revalidate every hour
   });
 
   // The return value is *not* serialized
