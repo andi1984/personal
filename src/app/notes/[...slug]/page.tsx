@@ -1,4 +1,5 @@
 import { getContentAsHTML } from "@/app/posts/[...slug]/page";
+import WebmentionsList from "@/components/webmentions.tsx";
 import { getPostBySlug } from "@/lib/get_post_by_slug";
 
 type Params = {
@@ -28,6 +29,7 @@ export default async function Page({ params, searchParams }: Params) {
     <>
       <h1>My Page, {params.slug}</h1>
       <div dangerouslySetInnerHTML={{ __html: content }} />
+      <WebmentionsList />
     </>
   );
 }

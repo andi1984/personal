@@ -1,3 +1,4 @@
+import WebmentionsList from "@/components/webmentions.tsx";
 import { getPostBySlug } from "@/lib/get_post_by_slug";
 import markdownToHtml from "@/lib/markdown_to_html";
 
@@ -32,6 +33,7 @@ export default async function Page({ params, searchParams }: Params) {
     <>
       <h1>My Page, {params.slug}</h1>
       <div dangerouslySetInnerHTML={{ __html: content }} />
+      <WebmentionsList />
     </>
   );
 }

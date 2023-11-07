@@ -16,6 +16,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="webmention"
+          href="https://webmention.io/www.andi1984.dev/webmention"
+        />
+        <link
+          rel="pingback"
+          href="https://webmention.io/www.andi1984.dev/xmlrpc"
+        />
+      </head>
       <body className={`${inter.className} container`}>{children}</body>
     </html>
   );
