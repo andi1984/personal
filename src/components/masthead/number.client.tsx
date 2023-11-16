@@ -1,7 +1,7 @@
 "use client";
 import { useSpring, animated } from "@react-spring/web";
 
-function Number({ n }: { n: number }) {
+function Number({ className, n }: { className?: string; n: number }) {
   const { number } = useSpring({
     from: { number: 0 },
     to: { number: n },
@@ -9,17 +9,7 @@ function Number({ n }: { n: number }) {
     config: { mass: 1, tension: 20, friction: 10 },
   });
 
-  return (
-    <animated.span
-      style={{
-        width: 80,
-        height: 80,
-        borderRadius: 8,
-      }}
-    >
-      {number.to((num) => num.toFixed(0))}
-    </animated.span>
-  );
+  return <animated.span>{number.to((num) => num.toFixed(0))}</animated.span>;
 }
 
 export default Number;

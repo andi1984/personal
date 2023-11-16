@@ -1,6 +1,14 @@
-import Link from "next/link";
 import { FC } from "react";
-import Number from "./number.client";
+import Summand from "./summand.client";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableHead,
+  TableHeader,
+  TableFooter,
+  TableRow,
+} from "@/components/ui/table";
 const SubPart: FC<{
   count: {
     total: number;
@@ -17,49 +25,42 @@ const SubPart: FC<{
         data-aos="zoom-y-out"
         data-aos-delay="150"
       >
-        Frontend dev reaching <Number n={count.total} /> people on the web.
-      </div>
-      <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
-        <div>
-          Join <Number n={count.devto} /> people on{" "}
-          <Link
-            className="btn text-white bg-gray-900 hover:bg-gray-800 w-full sm:w-auto sm:ml-4"
-            href="https://dev.to/andi1984"
-            target="_blank"
-          >
-            Dev.to
-          </Link>
-        </div>
-        <div>
-          Join <Number n={count.mastodon} /> people on{" "}
-          <Link
-            className="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 sm:w-auto sm:mb-0"
-            href="https://toot.cafe/@andi1984"
-            target="_blank"
-          >
-            Mastodon
-          </Link>
-        </div>
-        <div>
-          Join <Number n={count.youtube} /> people on{" "}
-          <Link
-            className="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 sm:w-auto sm:mb-0"
-            href="https://www.youtube.com/@andi1984dev"
-            target="_blank"
-          >
-            Youtube
-          </Link>
-        </div>
-        <div>
-          Join <Number n={count.github} /> people on{" "}
-          <Link
-            className="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 sm:w-auto sm:mb-0"
-            href="https://github.com/andi1984"
-            target="_blank"
-          >
-            Github
-          </Link>
-        </div>
+        <Table>
+          <TableCaption>
+            Frontend dev reaching hundreds of people on
+          </TableCaption>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Count</TableHead>
+              <TableHead>Platform</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <Summand
+              platform="Dev.to"
+              count={count.devto}
+              url="https://dev.to/andi1984"
+            />
+            <Summand
+              platform="Mastodon"
+              count={count.mastodon}
+              url="https://toot.cafe/@andi1984"
+            />
+            <Summand
+              platform="Youtube"
+              count={count.youtube}
+              url="https://www.youtube.com/@andi1984dev"
+            />
+            <Summand
+              platform="Github"
+              count={count.github}
+              url="https://github.com/andi1984"
+            />
+          </TableBody>
+          <TableFooter>
+            <Summand platform="the web" count={count.total} />
+          </TableFooter>
+        </Table>
       </div>
     </div>
   );
