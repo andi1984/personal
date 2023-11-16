@@ -26,9 +26,7 @@ const SubPart: FC<{
         data-aos-delay="150"
       >
         <Table>
-          <TableCaption>
-            Frontend dev reaching hundreds of people on
-          </TableCaption>
+          <TableCaption>Follower breakdown based on platform</TableCaption>
           <TableHeader>
             <TableRow>
               <TableHead>Count</TableHead>
