@@ -3,7 +3,7 @@ import Link from "next/link";
 const BackButton = () => {
   return (
     <Link href="/" className="back-to-home-btn">
-      🌱 Back to Home
+      🌱 Back to roots
     </Link>
   );
 };
