@@ -5,8 +5,8 @@ import { getContentAsHTML } from "@/app/posts/[...slug]/page";
 export default async function generateRssFeed(allPosts: Items[]) {
   const site_url =
     process.env.NODE_ENV === "production"
-      ? "https://personal-ten-lac.vercel.app"
-      : "http://localhost:3000";
+      ? "https://andi1984.dev"
+      : "https://personal-ten-lac.vercel.app";
 
   const feedOptions = {
     title: "Blog posts | RSS Feed",
