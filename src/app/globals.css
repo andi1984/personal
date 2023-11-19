@@ -74,3 +74,78 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Base styles for headings with margins */
+h1 {
+  @apply text-4xl md:text-5xl lg:text-6xl font-bold my-2 mx-0;
+}
+
+h2 {
+  @apply text-3xl md:text-4xl lg:text-5xl font-semibold my-2 mx-0;
+}
+
+h3 {
+  @apply text-2xl md:text-3xl lg:text-4xl font-semibold my-2 mx-0;
+}
+
+h4 {
+  @apply text-xl md:text-2xl lg:text-3xl font-medium my-1 mx-0;
+}
+
+h5 {
+  @apply text-lg md:text-xl lg:text-2xl font-medium my-1 mx-0;
+}
+
+h6 {
+  @apply text-base md:text-lg lg:text-xl font-normal my-1 mx-0;
+}
+
+/* Ensuring color contrast compliance */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-gray-800;
+  /* Example color, ensure good contrast with background */
+}
+
+/* Base styles for blog posts with increased vertical spacing */
+.blog-post {
+  @apply text-gray-700 bg-white py-6 px-4;
+}
+
+/* Paragraphs with more vertical spacing */
+.blog-post p {
+  @apply text-base md:text-lg leading-relaxed my-6;
+}
+
+/* Blockquotes with more vertical spacing */
+.blog-post blockquote {
+  @apply border-l-4 border-gray-200 italic pl-4 my-6 text-gray-600;
+}
+
+/* Unordered and Ordered Lists with more vertical spacing */
+.blog-post ul,
+.blog-post ol {
+  @apply list-inside list-disc my-6 pl-4 text-base md:text-lg;
+}
+
+.blog-post ol {
+  @apply list-decimal;
+}
+
+/* Code Blocks with more vertical spacing */
+.blog-post pre {
+  @apply bg-gray-100 py-4 px-3 my-6 rounded-lg overflow-x-auto;
+}
+
+.blog-post code {
+  @apply font-mono text-sm md:text-base bg-gray-100 rounded px-1 py-2;
+}
+
+/* Enhancing readability with vertical spacing */
+.blog-post {
+  @apply leading-loose;
+}

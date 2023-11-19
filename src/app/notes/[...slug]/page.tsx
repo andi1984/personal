@@ -26,10 +26,10 @@ export default async function Page({ params, searchParams }: Params) {
   );
   const content = await getContentAsHTML(post.content);
   return (
-    <>
+    <section className="blog-post">
       <h1>My Page, {params.slug}</h1>
       <div dangerouslySetInnerHTML={{ __html: content }} />
       <WebmentionsList />
-    </>
+    </section>
   );
 }
