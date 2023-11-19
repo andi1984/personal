@@ -62,6 +62,7 @@ const Page = async ({}) => {
 
           <p>Looking forward to this exciting journey with you all!</p>
           <p>Happy Coding! 🚀</p>
+          <br />
           <p>I am also active on other social media platforms:</p>
           <SocialMediaInfluence count={data} />
         </section>

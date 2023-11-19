@@ -19,7 +19,7 @@ const SocialMediaInfluence: FC<{
   };
 }> = ({ count }) => {
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className="max-w-3xl mx-auto my-4">
       <div
         className="text-xl text-gray-600 mb-8"
         data-aos="zoom-y-out"

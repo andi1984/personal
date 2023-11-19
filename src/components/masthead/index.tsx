@@ -11,7 +11,7 @@ const MastHead: FC = () => {
           <div className="relative lg:custom-bg bg-cover bg-right-bottom p-4 ">
             <div className="text-center pb-12 md:pb-16">
               <h1
-                className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4"
+                className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tighter tracking-tighter mb-4"
                 data-aos="zoom-y-out"
               >
                 Welcome to the{" "}
