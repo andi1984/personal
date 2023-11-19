@@ -34,7 +34,7 @@ export default async function Page({ params, searchParams }: Params) {
     <article>
       <BackButton />
       <section className="blog-post">
-        <h1>{params.slug}</h1>
+        <h1>{post.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: content }} />
         <WebmentionsList />
       </section>
