@@ -160,3 +160,13 @@ a {
   @apply underline;
 }
 
+
+
+@layer utilities {
+.custom-bg {
+  min-height: 400px;
+  background-image: url('/prosit.png');
+  background-size: 40%;
+  background-repeat: no-repeat;
+}
+}

@@ -9,7 +9,7 @@ import {
   TableFooter,
   TableRow,
 } from "@/components/ui/table";
-const SubPart: FC<{
+const SocialMediaInfluence: FC<{
   count: {
     total: number;
     youtube: number;
@@ -64,4 +64,4 @@ const SubPart: FC<{
   );
 };
 
-export default SubPart;
+export default SocialMediaInfluence;

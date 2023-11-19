@@ -31,13 +31,13 @@ export default async function Page({ params, searchParams }: Params) {
   ]);
   const content = await getContentAsHTML(post.content);
   return (
-    <>
+    <article>
       <BackButton />
       <section className="blog-post">
         <h1>{params.slug}</h1>
         <div dangerouslySetInnerHTML={{ __html: content }} />
         <WebmentionsList />
       </section>
-    </>
+    </article>
   );
 }
