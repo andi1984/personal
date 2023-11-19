@@ -2,6 +2,7 @@ import AllPostsList from "@/components/list/posts";
 import MastHead from "@/components/masthead";
 import { getAllPosts } from "@/lib/get_all_posts";
 import SocialMediaInfluence from "@/components/influence";
+import Link from "next/link";
 
 const Page = async ({}) => {
   const api = await import("./api/follower/route");
@@ -73,6 +74,9 @@ const Page = async ({}) => {
           <AllPostsList title="All notes" posts={notes} type="note" />
         </section>
       </main>
+      <footer>
+        <Link href="/impressum">Imprint & Privacy statement</Link>
+      </footer>
     </>
   );
 };
