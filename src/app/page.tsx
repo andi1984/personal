@@ -22,55 +22,67 @@ const Page = async ({}) => {
       <main>
         <MastHead />
         <section>
-          <h2>Welcome!</h2>
+          <h2>Welcome to My Space: Where Web Development Meets Gardening</h2>
           <p>
-            Hi everyone! I&apos;m excited to be here and learn along with all of
-            you. I&apos;m based in south-west Germany, dabbling in web
-            development with a focus on React and TypeScript.
+            Hello and thanks for visiting! I&apos;m Andi, a dedicated senior
+            frontend developer from the beautiful South-West of Germany.
+            I&apos;m all about creating smooth and engaging web experiences with
+            React, JavaScript, TypeScript, and CSS. But there&apos;s more to me
+            than just code – I&apos;m also an avid gardener, finding parallels
+            between nurturing plants and developing robust websites.
           </p>
+        </section>
 
-          <p>
-            This space is where I&apos;ll share what I&apos;m learning, the
-            challenges I face, and the little victories along the way. I&apos;m
-            not an expert, but I believe in learning by doing and sharing that
-            experience with others.
-          </p>
-
-          <h2>Here&apos;s What I&apos;ll Be Talking About:</h2>
+        <section>
+          <h3>My Journey in Web Development and Gardening</h3>
           <ul>
-            <li>📚 My learning journey with React and TypeScript.</li>
-            <li>🛠️ Tips and tricks that I find useful or interesting.</li>
-            <li>💡 Projects I&apos;m working on, no matter how small.</li>
-            <li>🌈 Discussions on anything web development related.</li>
+            <li>
+              <strong>React &amp; JavaScript Projects:</strong> Check out how I
+              apply precision and creativity, much like in gardening, to my
+              React and JavaScript projects.
+            </li>
+            <li>
+              <strong>TypeScript and CSS:</strong> Discover the structured
+              beauty in my code, reminiscent of a well-kept garden, thanks to
+              TypeScript and modern CSS techniques.
+            </li>
+            <li>
+              <strong>Insights and Growth:</strong> Just like in gardening, I
+              believe in constant learning and growth in web development. Dive
+              into my blog for thoughts, tips, and shared knowledge.
+            </li>
           </ul>
+        </section>
 
-          <h2>If You&apos;re New Here:</h2>
+        <section>
+          <h3>Connecting Online and in the Garden</h3>
           <p>
-            Don&apos;t worry, so am I! We&apos;ll figure this out together.
-            I&apos;ll share resources that I find helpful and hope they&apos;ll
-            help you too.
+            While you&apos;ll find me coding and sharing knowledge across
+            various online platforms, I also take time to step away from the
+            screen and connect with nature in my garden. This balance keeps me
+            creative and inspired:
           </p>
-
-          <h2>It&apos;s Not All About Coding:</h2>
-          <p>
-            Besides coding, I love gardening and mentoring kids in coding. So,
-            expect some fun detours and stories about these adventures.
-          </p>
-
-          <h2>Let&apos;s Learn and Grow Together!</h2>
-          <p>
-            I&apos;m here to connect, share, and learn. Feel free to join the
-            conversation, share your thoughts, or just drop a hello. Let&apos;s
-            support each other on this journey.
-          </p>
-
-          <p>
-            Can&apos;t wait to see where we all go from here. Let&apos;s dive
-            in! 🌊
-          </p>
-          <br />
-          <p>I am also active on other social media platforms:</p>
           <SocialMediaInfluence count={data} />
+        </section>
+
+        <section>
+          <h3>Beyond the Code: Community, Nature, and Creativity</h3>
+          <p>
+            I love blending my coding skills with my passion for gardening.
+            It&apos;s not just about nurturing plants; it&apos;s about nurturing
+            ideas and relationships, whether it&apos;s through mentoring budding
+            developers or collaborating on innovative projects.
+          </p>
+        </section>
+
+        <section>
+          <h3>Let&apos;s Grow Together!</h3>
+          <p>
+            Whether you&apos;re into tech, gardening, or both, I&apos;m eager to
+            connect. Explore my site, follow me on my various channels, and
+            let&apos;s share our journeys in both web development and the
+            natural world.
+          </p>
         </section>
         <section id="posts">
           <AllPostsList title="All posts" posts={posts} type="post" />
