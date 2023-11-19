@@ -24,45 +24,50 @@ const Page = async ({}) => {
         <section>
           <h2>Welcome!</h2>
           <p>
-            Through this platform, I aim to share my insights, experiences, and
-            tips in web development. Whether you&apos;re a seasoned pro or just
-            starting your journey, I believe we all have something valuable to
-            learn from each other.
+            Hi everyone! I&apos;m excited to be here and learn along with all of
+            you. I&apos;m based in south-west Germany, dabbling in web
+            development with a focus on React and TypeScript.
           </p>
 
-          <h2>What to Expect:</h2>
+          <p>
+            This space is where I&apos;ll share what I&apos;m learning, the
+            challenges I face, and the little victories along the way. I&apos;m
+            not an expert, but I believe in learning by doing and sharing that
+            experience with others.
+          </p>
+
+          <h2>Here&apos;s What I&apos;ll Be Talking About:</h2>
           <ul>
-            <li>📚 Regular posts on best practices in React and TypeScript.</li>
-            <li>🛠️ Tips and tricks to enhance your coding skills.</li>
-            <li>💡 Sharing personal projects and learning experiences.</li>
-            <li>
-              🌈 Engaging discussions on the latest web development trends.
-            </li>
+            <li>📚 My learning journey with React and TypeScript.</li>
+            <li>🛠️ Tips and tricks that I find useful or interesting.</li>
+            <li>💡 Projects I&apos;m working on, no matter how small.</li>
+            <li>🌈 Discussions on anything web development related.</li>
           </ul>
 
-          <h2>For the Beginners:</h2>
+          <h2>If You&apos;re New Here:</h2>
           <p>
-            Fear not! I&apos;ll also be providing resources and guidance for
-            those who are new to coding. Remember, every expert was once a
-            beginner!
+            Don&apos;t worry, so am I! We&apos;ll figure this out together.
+            I&apos;ll share resources that I find helpful and hope they&apos;ll
+            help you too.
           </p>
 
-          <h2>Beyond Coding:</h2>
+          <h2>It&apos;s Not All About Coding:</h2>
           <p>
-            As a gardening enthusiast and a mentor to kids at coderdojos, I
-            occasionally share insights from these experiences and how they
-            intertwine with my tech life.
+            Besides coding, I love gardening and mentoring kids in coding. So,
+            expect some fun detours and stories about these adventures.
           </p>
 
-          <h2>Let&apos;s Connect & Grow Together!</h2>
+          <h2>Let&apos;s Learn and Grow Together!</h2>
           <p>
-            Feel free to ask questions, share your work, or just say hi.
-            Let&apos;s build a supportive community where we all can grow and
-            succeed together.
+            I&apos;m here to connect, share, and learn. Feel free to join the
+            conversation, share your thoughts, or just drop a hello. Let&apos;s
+            support each other on this journey.
           </p>
 
-          <p>Looking forward to this exciting journey with you all!</p>
-          <p>Happy Coding! 🚀</p>
+          <p>
+            Can&apos;t wait to see where we all go from here. Let&apos;s dive
+            in! 🌊
+          </p>
           <br />
           <p>I am also active on other social media platforms:</p>
           <SocialMediaInfluence count={data} />
