@@ -1,7 +1,10 @@
 import BackButton from "@/components/back-button";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import WebmentionsList from "@/components/webmentions.tsx";
 import { getPostBySlug } from "@/lib/get_post_by_slug";
 import markdownToHtml from "@/lib/markdown_to_html";
+import Link from "next/link";
 
 type Params = {
   params: { slug: string[] };
@@ -28,16 +31,32 @@ export default async function Page({ params, searchParams }: Params) {
     "title",
     "slug",
     "content",
+    "date",
+    "devto",
   ]);
   const content = await getContentAsHTML(post.content);
   return (
-    <article>
+    <>
       <BackButton />
-      <section className="blog-post">
+      <article className="blog-post">
         <h1>{post.title}</h1>
+        <aside className="sm:flex sm:flex-row gap-3 md:bg-stone-200 px-3 py-3 rounded-md">
+          {post?.devto && (
+            <Badge className="block my-2 text-center">
+              <Link href={post.devto} target="_blank">
+                Read on DevTo
+              </Link>
+            </Badge>
+          )}
+          {post?.date && (
+            <Badge variant="secondary" className="block my-2 text-center">
+              Published on {new Date(post.date).toDateString()}
+            </Badge>
+          )}
+        </aside>
         <div dangerouslySetInnerHTML={{ __html: content }} />
         <WebmentionsList />
-      </section>
-    </article>
+      </article>
+    </>
   );
 }
