@@ -1,29 +1,40 @@
-import React from "react";
+"use client";
+import classNames from "classnames";
+import React, { useState } from "react";
 import { FC } from "react";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 const MastHead: FC = () => {
-  return (
-    <header>
-      {/* Illustration behind hero content */}
+  const mediaQueryList = window.matchMedia("(min-width: 800px)");
+  const [isLarge, setIsLarge] = useState(mediaQueryList.matches);
+  mediaQueryList.addEventListener("change", (event) => {
+    return setIsLarge(event.matches);
+  });
 
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-12 md:pt-20 md:pb-20">
-        <div className="bg-gradient-to-r rounded-2xl lg:from-zinc-50  lg:to-stone-50">
-          <div className="relative lg:custom-bg bg-cover bg-right-bottom p-4 ">
-            <div className="text-center pb-12 md:pb-16">
-              <h1
-                className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tighter tracking-tighter mb-4"
-                data-aos="zoom-y-out"
-              >
-                Welcome to the{" "}
-                <span className="bg-clip-text text-transparent bg-gradient-to-r   from-emerald-500 via-emerald-400 to-indigo-500">
-                  gardening 🌱 WebDev
-                </span>
-              </h1>
-            </div>
-          </div>
-        </div>
-      </section>
-    </header>
+  const conditonalClassNames = classNames({ group: isLarge });
+  return (
+    <div className="header relative bg-cover bg-center text-white">
+      <div
+        className={`${conditonalClassNames} backdrop-blur-lg container mx-auto p-6 text-center hover:backdrop-blur-none transition-all ease-in-out duration-700`}
+      >
+        <Link href="/" className="group-hover:invisible">
+          <h1
+            className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tighter tracking-tighter mb-4 "
+            data-aos="zoom-y-out"
+          >
+            Welcome to the{" "}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r   from-emerald-500 via-emerald-400 to-indigo-500">
+              gardening 🌱 WebDev
+            </span>
+          </h1>
+        </Link>
+
+        <Link target="_blank" href="https://www.linkedin.com/in/andi1984/">
+          <Button className="mt-4">Contact me</Button>
+        </Link>
+      </div>
+    </div>
   );
 };
 
