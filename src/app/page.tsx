@@ -1,12 +1,8 @@
 import AllPostsList from "@/components/list/posts";
 import { getAllPosts } from "@/lib/get_all_posts";
 import SocialMediaInfluence from "@/components/influence";
+import MastHead from "@/components/masthead";
 import Link from "next/link";
-import dynamic from "next/dynamic";
-
-const MastHead = dynamic(() => import("@/components/masthead"), {
-  ssr: false,
-});
 
 const Page = async ({}) => {
   const api = await import("./api/follower/route");
