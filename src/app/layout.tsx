@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Nunito } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 
-const inter = Inter({ subsets: ["latin"] });
+const nunito = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Andi1984",
@@ -27,7 +27,7 @@ export default function RootLayout({
           href="https://webmention.io/www.andi1984.dev/xmlrpc"
         />
       </head>
-      <body className={`${inter.className} container`}>{children}</body>
+      <body className={`${nunito.className} container`}>{children}</body>
     </html>
   );
 }
