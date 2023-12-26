@@ -2,7 +2,6 @@
 date: 2017-09-27T13:20:15+01:00
 update: 2020-11-03T09:08:16
 title: CSS Quantity Queries
-template: blogpost.twig
 devto: https://dev.to/andi1984/css-quantity-queries-1148
 ---
 
