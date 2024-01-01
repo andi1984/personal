@@ -19,8 +19,8 @@ const MastHead: FC = () => {
           </h1>
         </Link>
 
-        <Link target="_blank" href="https://www.linkedin.com/in/andi1984/">
-          <Button className="mt-4">Contact me</Button>
+        <Link target="_blank" href="/about">
+          <Button className="mt-4">About me</Button>
         </Link>
       </div>
     </div>
