@@ -68,6 +68,45 @@ export default async function Impressum() {
           </Card>
         </section>
         <section className="mb-8">
+          <h2 className="text-2xl font-medium mb-4">Side Projects</h2>
+          <Card>
+            <CardHeader>
+              <h3 className="font-bold text-xl">
+                <Link href="https://social.saarland" target="_blank">
+                  social.saarland
+                </Link>
+              </h3>
+            </CardHeader>
+            <CardContent>
+              <p className="mt-2">
+                I believe in the Fediverse and would like to make a contribution
+                in the form of my own Mastodon server. The instance has been
+                around for several years.
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="mt-4">
+            <CardHeader>
+              <h3 className="font-bold text-xl">
+                <Link href="https://coderdojo-saar.de" target="_blank">
+                  CoderDojo Saarland
+                </Link>
+              </h3>
+            </CardHeader>
+            <CardContent>
+              <p>
+                I have used to be an organizing part in the #coderdojo movement
+                since 2016. Lately I changed gears from organizaton to
+                mentoring-only.
+              </p>
+              <p className="mt-1">
+                It is amazing what young people come up with as their projects
+                and it is great to give some experience back to the youth.
+              </p>
+            </CardContent>
+          </Card>
+        </section>
+        <section className="mb-8">
           <h2 className="text-2xl font-medium mb-4">Work Experience</h2>
           <Card className="mb-4">
             <CardHeader>
