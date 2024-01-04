@@ -88,6 +88,27 @@ export default async function Impressum() {
           <Card className="mt-4">
             <CardHeader>
               <h3 className="font-bold text-xl">
+                <Link href="https://dibbelabb.es" target="_blank">
+                  dibbelabb.es
+                </Link>
+              </h3>
+            </CardHeader>
+            <CardContent>
+              <p className="mt-2">
+                Same motivation as Mastodon is having my own blogging{" "}
+                <a
+                  href="https://github.com/writefreely/writefreely"
+                  target="_blank"
+                >
+                  writefreely
+                </a>{" "}
+                platform.
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="mt-4">
+            <CardHeader>
+              <h3 className="font-bold text-xl">
                 <Link href="https://coderdojo-saar.de" target="_blank">
                   CoderDojo Saarland
                 </Link>
