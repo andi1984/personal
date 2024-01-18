@@ -1,2 +1,4 @@
 User-agent: *
 Disallow:
+
+Sitemap: https://andi1984.dev/sitemap.xml
