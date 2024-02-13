@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
+import { Analytics } from "@vercel/analytics/react";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -27,7 +27,10 @@ export default function RootLayout({
           href="https://webmention.io/www.andi1984.dev/xmlrpc"
         />
       </head>
-      <body className={`${nunito.className} container`}>{children}</body>
+      <body className={`${nunito.className} container`}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
