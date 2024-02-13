@@ -2,6 +2,7 @@ import React from "react";
 import { FC } from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { FaSquareRss } from "react-icons/fa6";
 
 const MastHead: FC = () => {
   return (
@@ -19,9 +20,16 @@ const MastHead: FC = () => {
           </h1>
         </Link>
 
-        <Link target="_blank" href="/about">
-          <Button className="mt-4">About me</Button>
-        </Link>
+        <section className="flex flex-col gap-2 md:flex-row items-center mt-4">
+          <Link href="/rss.xml">
+            <Button className="bg-white text-orange-700 hover:bg-orange-700 hover:text-white ">
+              <FaSquareRss className="mr-2 h-4 w-4" /> RSS
+            </Button>
+          </Link>
+          <Link target="_blank" href="/about">
+            <Button className="">About me</Button>
+          </Link>
+        </section>
       </div>
     </div>
   );
