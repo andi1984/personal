@@ -1,7 +1,7 @@
-import { getContentAsHTML } from "@/app/posts/[...slug]/page";
 import BackButton from "@/components/back-button";
 import Metadata from "@/components/metadata";
 import WebmentionsList from "@/components/webmentions.tsx";
+import { getContentAsHTML } from "@/lib/get-content-as-html";
 import { getPostBySlug } from "@/lib/get_post_by_slug";
 
 type Params = {
@@ -24,7 +24,7 @@ export default async function Page({ params, searchParams }: Params) {
   const post = getPostBySlug(
     params.slug.join("/"),
     ["title", "slug", "content", "date", "devto"],
-    "note"
+    "note",
   );
   const content = await getContentAsHTML(post.content);
   return (

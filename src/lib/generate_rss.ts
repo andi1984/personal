@@ -1,6 +1,6 @@
 import RSS from "rss";
 import { Items } from "./types";
-import { getContentAsHTML } from "@/app/posts/[...slug]/page";
+import { getContentAsHTML } from "./get-content-as-html";
 
 export default async function generateRssFeed(allPosts: Items[]) {
   const site_url =
@@ -31,6 +31,6 @@ export default async function generateRssFeed(allPosts: Items[]) {
           date: post.date,
         });
       });
-    })
+    }),
   ).then(() => feed);
 }
