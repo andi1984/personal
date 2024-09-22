@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -171,4 +171,62 @@ a {
     aspect-ratio: calc(1920/1080);
   }
 
+}
+
+.TabsRoot {
+  @apply mt-3 mb-3;
+}
+
+/* Tabs List Styling */
+.TabsList {
+  display: flex;
+  gap: 16px;
+  /* Adds spacing between the tabs */
+  border-bottom: 2px solid #e5e7eb;
+  /* Light border under the tabs */
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+/* Tab Trigger Styling */
+.TabsTrigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
+  border-bottom: 2px solid transparent;
+}
+
+/* Active Tab Indicator */
+.TabsTrigger[data-state="active"] {
+  border-bottom: 2px solid #1a73e8;
+  /* Active border color */
+  color: #1a73e8;
+}
+
+/* Content Styling */
+.TabsContent {
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  /* Light border for the content */
+  background-color: #f9fafb;
+  font-size: 16px;
+  color: #111827;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .TabsList {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .TabsTrigger {
+    width: 100%;
+    text-align: left;
+  }
 }
