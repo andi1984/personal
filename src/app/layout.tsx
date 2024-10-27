@@ -26,6 +26,7 @@ export default function RootLayout({
           rel="pingback"
           href="https://webmention.io/www.andi1984.dev/xmlrpc"
         />
+        <meta name="fediverse:creator" content="@andi1984@toot.cafe" />
       </head>
       <body className={`${nunito.className} container`}>
         {children}
