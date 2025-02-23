@@ -1,3 +1,5 @@
+"use server";
+
 import AllPostsList from "@/components/list/posts";
 import { getAllPosts } from "@/lib/get_all_posts";
 import SocialMediaInfluence from "@/components/influence";
@@ -9,6 +11,7 @@ const Page = async ({}) => {
   const api = await import("./api/follower/route");
   const response = await api.GET();
   const data = await response.json();
+
   const posts = getAllPosts(["slug", "title", "date", "description"]);
   const notes = getAllPosts(["slug", "title", "date", "description"], "note");
   return (
