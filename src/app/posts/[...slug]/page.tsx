@@ -5,8 +5,8 @@ import { getContentAsHTML } from "@/lib/get-content-as-html";
 import { getPostBySlug } from "@/lib/get_post_by_slug";
 
 type Params = {
-  params: { slug: string[] };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ slug: string[] }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 type PostType = {
   slug: string;
@@ -20,7 +20,8 @@ type PostType = {
   content: string;
 };
 
-export default async function Page({ params, searchParams }: Params) {
+export default async function Page(props: Params) {
+  const params = await props.params;
   const post = getPostBySlug(params.slug.join("/"), [
     "title",
     "slug",
