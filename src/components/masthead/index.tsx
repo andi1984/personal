@@ -14,7 +14,7 @@ const MastHead: FC = () => {
             data-aos="zoom-y-out"
           >
             Welcome to the{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r   from-emerald-500 via-emerald-400 to-indigo-500">
+            <span className="bg-clip-text text-transparent bg-linear-to-r   from-emerald-500 via-emerald-400 to-indigo-500">
               gardening 🌱 WebDev
             </span>
           </h1>
