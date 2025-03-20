@@ -73,12 +73,6 @@ I can highly recommend the font inspection in the [Firefox Developer tools](http
 
 They provide the whole list on information including the design axes with a range slider [you can modify on the fly at the page](https://twitter.com/andi1984/status/1078381928192061441).
 
-### Variable fonts @ andi1984.de 🎉
-
-As you might have seen already, I'm actually using my bought font on [my personal blog](https://andi1984.de).
-
-[Take a look with the mentioned Firefox Devtools!](https://twitter.com/andi1984/status/1078381928192061441) 🤣
-
 Cheers,
 
 Andi
