@@ -6,6 +6,7 @@ import SocialMediaInfluence from "@/components/influence";
 import * as Tabs from "@radix-ui/react-tabs";
 import MastHead from "@/components/masthead";
 import Link from "next/link";
+import EasterEgg from "@/components/easter-egg";
 
 const Page = async ({}) => {
   const api = await import("./api/follower/route");
@@ -67,6 +68,7 @@ const Page = async ({}) => {
       <footer>
         <Link href="/impressum">Imprint & Privacy statement</Link>
       </footer>
+      <EasterEgg />
     </>
   );
 };
