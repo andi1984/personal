@@ -9,7 +9,7 @@ export default async function Impressum() {
   return (
     <>
       <BackButton />
-      <header className="bg-[#f6f9fc] p-6 md:p-12">
+      <header className="bg-muted p-6 md:p-12">
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           <div className="flex justify-center md:justify-start">
             <Avatar className="h-64 w-64">
@@ -20,7 +20,7 @@ export default async function Impressum() {
             <h1 className="text-3xl md:text-4xl font-bold mb-2">
               Andreas Sander
             </h1>
-            <p className="text-gray-600 text-lg mb-6">
+              <p className="text-muted-foreground text-lg mb-6">
               Frontend Developer since 2012 with a hobby as gardener.
             </p>
             <div className="space-x-4">
@@ -42,7 +42,7 @@ export default async function Impressum() {
           <Card>
             <CardHeader>
               <h3 className="font-bold text-xl">Saarland University</h3>
-              <p className="text-gray-600">2010 - 2012</p>
+              <p className="text-muted-foreground">2010 - 2012</p>
             </CardHeader>
             <CardContent>
               <p>Master of Science in Computer Science</p>
@@ -51,7 +51,7 @@ export default async function Impressum() {
           <Card className="mt-4">
             <CardHeader>
               <h3 className="font-bold text-xl">Saarland University</h3>
-              <p className="text-gray-600">2004 - 2011</p>
+              <p className="text-muted-foreground">2004 - 2011</p>
             </CardHeader>
             <CardContent>
               <p>
@@ -111,7 +111,7 @@ export default async function Impressum() {
           <Card className="mb-4">
             <CardHeader>
               <h3 className="font-bold text-xl">Digital Science GmbH</h3>
-              <p className="text-gray-600">2016 - present</p>
+              <p className="text-muted-foreground">2016 - present</p>
             </CardHeader>
             <CardContent>
               <p>Frontend Developer</p>
@@ -127,7 +127,7 @@ export default async function Impressum() {
           <Card>
             <CardHeader>
               <h3 className="font-bold text-xl">Moltomedia GmbH & Co.KG</h3>
-              <p className="text-gray-600">2012 - 2015</p>
+              <p className="text-muted-foreground">2012 - 2015</p>
             </CardHeader>
             <CardContent>
               <p>Developer</p>

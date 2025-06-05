@@ -18,7 +18,7 @@ const Page = async ({}) => {
     <>
       <a
         href="#posts"
-        className="absolute left-[-9999px] focus:left-0 focus:top-0 focus:z-50 focus:p-4 focus:m-4 focus:bg-white focus:border focus:border-gray-500"
+        className="absolute left-[-9999px] focus:left-0 focus:top-0 focus:z-50 focus:p-4 focus:m-4 focus:bg-background focus:text-foreground focus:border focus:border-border"
       >
         Skip to Main Content
       </a>

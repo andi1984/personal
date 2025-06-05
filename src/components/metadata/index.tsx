@@ -8,7 +8,7 @@ const Metadata: FC<{ devto?: string; date?: string }> = ({ devto, date }) => {
   }
 
   return (
-    <aside className="sm:flex sm:flex-row gap-3 md:bg-stone-200 px-3 py-3 rounded-md">
+    <aside className="sm:flex sm:flex-row gap-3 md:bg-muted px-3 py-3 rounded-md">
       {devto && (
         <Badge className="block my-2 text-center">
           <Link href={devto} target="_blank">
