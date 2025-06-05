@@ -65,7 +65,7 @@ function WebmentionsList() {
       .then((res) => res.json())
       .then((data: WebmentionsFeed) => {
         if (data.children) {
-          setMentions([...mentions, ...data.children]);
+          setMentions((current) => [...current, ...data.children]);
         }
       });
   }, []);
