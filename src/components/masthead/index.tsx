@@ -7,8 +7,8 @@ import DarkModeToggle from "../dark-mode-toggle";
 
 const MastHead: FC = () => {
   return (
-    <div className="header bg-cover bg-center text-white flex justify-center flex-row items-center content-center">
-      <div className="flex flex-col text-center items-center content-center justify-center transition-all ease-in-out duration-700 md:bg-stone-200 p-4 rounded-3xl max-w-xs lg:max-w-md ">
+    <div className="header bg-cover bg-center text-foreground flex justify-center flex-row items-center content-center">
+      <div className="flex flex-col text-center items-center content-center justify-center transition-all ease-in-out duration-700 md:bg-muted p-4 rounded-3xl max-w-xs lg:max-w-md ">
         <Link href="/" className="group-hover:invisible">
           <h1
             className="text-3xl md:text-3xl lg:text-4xl xl:text-5xl"
@@ -23,7 +23,7 @@ const MastHead: FC = () => {
 
         <section className="flex flex-col gap-2 md:flex-row items-center mt-4">
           <Link href="/rss.xml">
-            <Button className="bg-white text-orange-700 hover:bg-orange-700 hover:text-white ">
+            <Button className="bg-white text-orange-700 hover:bg-orange-700 hover:text-white dark:bg-orange-800">
               <FaSquareRss className="mr-2 h-4 w-4" /> RSS
             </Button>
           </Link>

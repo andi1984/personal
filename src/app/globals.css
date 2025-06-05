@@ -191,13 +191,13 @@ h3,
 h4,
 h5,
 h6 {
-  @apply text-gray-800;
-  /* Example color, ensure good contrast with background */
+  @apply text-foreground;
+  /* Ensure good contrast with background */
 }
 
 /* Base styles for blog posts with increased vertical spacing */
 .blog-post {
-  @apply text-gray-700 bg-white py-6 px-4;
+  @apply text-foreground bg-background py-6 px-4;
 }
 
 /* Paragraphs with more vertical spacing */
@@ -207,7 +207,7 @@ h6 {
 
 /* Blockquotes with more vertical spacing */
 .blog-post blockquote {
-  @apply border-l-4 border-gray-200 italic pl-4 my-6 text-gray-600;
+  @apply border-l-4 border-border italic pl-4 my-6 text-muted-foreground;
 }
 
 /* Unordered and Ordered Lists with more vertical spacing */
@@ -222,11 +222,11 @@ h6 {
 
 /* Code Blocks with more vertical spacing */
 .blog-post pre {
-  @apply bg-gray-100 py-4 px-3 my-6 rounded-lg overflow-x-auto;
+  @apply bg-muted py-4 px-3 my-6 rounded-lg overflow-x-auto;
 }
 
 .blog-post code {
-  @apply font-mono text-sm md:text-base bg-gray-100 rounded px-1 py-2;
+  @apply font-mono text-sm md:text-base bg-muted rounded px-1 py-2;
 }
 
 /* Enhancing readability with vertical spacing */
@@ -236,7 +236,7 @@ h6 {
 
 /* Back to Home Button Styles with WCAG AA Compliant Contrast */
 .back-to-home-btn {
-  @apply bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-4 border border
+  @apply bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-2 px-4 border border-border;
 }
 
 /* General rule for all links */
@@ -266,7 +266,7 @@ a {
   display: flex;
   gap: 16px;
   /* Adds spacing between the tabs */
-  border-bottom: 2px solid #e5e7eb;
+  border-bottom: 2px solid var(--color-border);
   /* Light border under the tabs */
   padding-bottom: 8px;
   margin-bottom: 16px;
@@ -286,20 +286,20 @@ a {
 
 /* Active Tab Indicator */
 .TabsTrigger[data-state="active"] {
-  border-bottom: 2px solid #1a73e8;
+  border-bottom: 2px solid var(--color-primary);
   /* Active border color */
-  color: #1a73e8;
+  color: var(--color-primary);
 }
 
 /* Content Styling */
 .TabsContent {
   padding: 16px;
   border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-border);
   /* Light border for the content */
-  background-color: #f9fafb;
+  background-color: var(--color-card);
   font-size: 16px;
-  color: #111827;
+  color: var(--color-foreground);
 }
 
 /* Mobile responsiveness */
