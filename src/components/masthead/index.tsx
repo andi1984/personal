@@ -3,6 +3,7 @@ import { FC } from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { FaSquareRss } from "react-icons/fa6";
+import DarkModeToggle from "../dark-mode-toggle";
 
 const MastHead: FC = () => {
   return (
@@ -29,6 +30,7 @@ const MastHead: FC = () => {
           <Link target="_blank" href="/about">
             <Button className="">About me</Button>
           </Link>
+          <DarkModeToggle />
         </section>
       </div>
     </div>
