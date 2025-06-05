@@ -24,6 +24,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 - Responsive design with a focus on accessibility
 - Toggleable dark mode via the header switch
+- Respects your system's `prefers-color-scheme` setting out of the box
 
 ## Learn More
 
