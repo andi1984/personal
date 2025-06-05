@@ -117,6 +117,8 @@
     --ring: 222.2 84% 4.9%;
  
     --radius: 0.5rem;
+    --font-sans: Inter, system-ui, sans-serif;
+    --font-serif: Merriweather, Georgia, serif;
   }
  
   @media (prefers-color-scheme: dark) {
@@ -220,32 +222,41 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    font-size: 1rem;
   }
 }
 
 /* Base styles for headings with margins */
 h1 {
   @apply text-4xl md:text-5xl lg:text-6xl font-bold my-8 mx-0;
+  font-family: var(--font-serif);
 }
 
 h2 {
   @apply text-3xl md:text-4xl lg:text-5xl font-semibold my-7 mx-0;
+  font-family: var(--font-serif);
 }
 
 h3 {
   @apply text-2xl md:text-3xl lg:text-4xl font-semibold my-6 mx-0;
+  font-family: var(--font-serif);
 }
 
 h4 {
   @apply text-xl md:text-2xl lg:text-3xl font-medium my-5 mx-0;
+  font-family: var(--font-serif);
 }
 
 h5 {
   @apply text-lg md:text-xl lg:text-2xl font-medium my-4 mx-0;
+  font-family: var(--font-serif);
 }
 
 h6 {
   @apply text-base md:text-lg lg:text-xl font-normal my-3 mx-0;
+  font-family: var(--font-serif);
 }
 
 /* Ensuring color contrast compliance */
@@ -262,11 +273,18 @@ h6 {
 /* Base styles for blog posts with increased vertical spacing */
 .blog-post {
   @apply text-foreground bg-background py-6 px-4;
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Paragraphs with more vertical spacing */
 .blog-post p {
-  @apply text-base md:text-lg leading-relaxed my-6;
+  @apply text-base md:text-lg my-6;
+  line-height: 1.7;
 }
 
 /* Blockquotes with more vertical spacing */
@@ -293,10 +311,16 @@ h6 {
   @apply font-mono text-sm md:text-base bg-muted rounded px-1 py-2;
 }
 
-/* Enhancing readability with vertical spacing */
-.blog-post {
-  @apply leading-loose;
+/* Serif headings inside posts */
+.blog-post h1,
+.blog-post h2,
+.blog-post h3,
+.blog-post h4,
+.blog-post h5,
+.blog-post h6 {
+  font-family: var(--font-serif);
 }
+
 
 /* Back to Home Button Styles with WCAG AA Compliant Contrast */
 .back-to-home-btn {

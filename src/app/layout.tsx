@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
+import { Inter, Merriweather } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 
-const nunito = Nunito({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const merriweather = Merriweather({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-serif",
+});
 
 export const metadata: Metadata = {
   title: "Andi1984",
@@ -28,7 +33,9 @@ export default function RootLayout({
         />
         <meta name="fediverse:creator" content="@andi1984@toot.cafe" />
       </head>
-      <body className={`${nunito.className} container`}>
+      <body
+        className={`${inter.variable} ${merriweather.variable} container font-sans`}
+      >
         {children}
         <Analytics />
       </body>
