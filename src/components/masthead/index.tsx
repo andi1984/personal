@@ -8,7 +8,7 @@ import DarkModeToggle from "../dark-mode-toggle";
 const MastHead: FC = () => {
   return (
     <div className="header relative flex items-center justify-center text-foreground">
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 via-emerald-400 to-indigo-600 opacity-80"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 via-emerald-400 to-indigo-600 opacity-70"></div>
       <div className="relative flex flex-col text-center items-center content-center justify-center transition-all ease-in-out duration-700 md:bg-muted/80 backdrop-blur-sm p-4 rounded-3xl max-w-xs lg:max-w-md ">
         <Link href="/" className="group-hover:invisible">
           <h1
