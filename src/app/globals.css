@@ -239,6 +239,17 @@ h6 {
   @apply bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-2 px-4 border border-border;
 }
 
+/* RSS button styles adapting to color scheme */
+.rss-button {
+  @apply bg-white text-orange-700 hover:bg-orange-700 hover:text-white;
+}
+
+@media (prefers-color-scheme: dark) {
+  .rss-button {
+    @apply bg-orange-800 text-white hover:bg-orange-700;
+  }
+}
+
 /* General rule for all links */
 a {
   @apply underline;

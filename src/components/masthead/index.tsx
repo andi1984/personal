@@ -23,7 +23,7 @@ const MastHead: FC = () => {
 
         <section className="flex flex-col gap-2 md:flex-row items-center mt-4">
           <Link href="/rss.xml">
-            <Button className="bg-white text-orange-700 hover:bg-orange-700 hover:text-white dark:bg-orange-800">
+            <Button className="rss-button">
               <FaSquareRss className="mr-2 h-4 w-4" /> RSS
             </Button>
           </Link>
