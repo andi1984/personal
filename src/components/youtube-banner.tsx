@@ -5,14 +5,14 @@ import { Button } from "@/components/ui/button";
 
 const YoutubeBanner: FC = () => {
   return (
-    <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-red-600 via-red-500 to-red-700 text-background p-8 shadow-lg">
+    <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-red-500 via-red-400 to-red-600 text-background p-8 shadow-lg">
       <div className="relative z-10 space-y-4 text-center">
         <h2 className="text-2xl md:text-3xl font-bold flex items-center justify-center gap-2">
           <FaYoutube className="h-8 w-8" />
           Find me on YouTube
         </h2>
         <p className="text-lg">
-          I regularly post short videos about web development and gardening. No embedded player, just a simple link.
+          I share short videos about web development and gardening. No embedded player, just a simple link.
         </p>
         <Button
           asChild
