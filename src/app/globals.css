@@ -421,3 +421,20 @@ a {
     text-align: left;
   }
 }
+
+@keyframes landingFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .landing-fade-up {
+    animation: landingFadeUp 1s ease-in-out both;
+  }
+}
