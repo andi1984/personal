@@ -444,10 +444,12 @@ a {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .landing-fade-up {
-    animation: landingFadeUp 1s ease-in-out both;
-  }
-  .gradient-luminosity {
-    animation: gradientLuminosity 3s ease-in-out infinite;
+  @media (min-width: 768px) {
+    .landing-fade-up {
+      animation: landingFadeUp 1s ease-in-out both;
+    }
+    .gradient-luminosity {
+      animation: gradientLuminosity 3s ease-in-out infinite;
+    }
   }
 }
