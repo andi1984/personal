@@ -5,6 +5,7 @@ import { getAllPosts } from "@/lib/get_all_posts";
 import SocialMediaInfluence from "@/components/influence";
 import * as Tabs from "@radix-ui/react-tabs";
 import MastHead from "@/components/masthead";
+import Sidebar from "@/components/sidebar";
 import Link from "next/link";
 
 const Page = async ({}) => {
@@ -23,8 +24,9 @@ const Page = async ({}) => {
         Skip to Main Content
       </a>
 
-      <main className="max-w-5xl mx-auto px-4 space-y-8">
-        <MastHead />
+      <div className="lg:flex lg:items-start lg:gap-8">
+        <main className="max-w-6xl lg:max-w-7xl mx-auto px-4 space-y-8 flex-1">
+          <MastHead />
         <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-600 via-emerald-400 to-indigo-600 dark:from-emerald-800 dark:via-emerald-600 dark:to-indigo-800 text-background p-8 shadow-lg">
           <div className="absolute inset-0 bg-[url('/header.png')] bg-cover bg-center opacity-10"></div>
           <div className="relative z-10 space-y-4 text-center">
@@ -61,7 +63,11 @@ const Page = async ({}) => {
             <SocialMediaInfluence count={data} />
           </Tabs.Content>
         </Tabs.Root>
-      </main>
+        </main>
+        <aside className="hidden lg:block w-64">
+          <Sidebar />
+        </aside>
+      </div>
       <footer>
         <Link href="/impressum">Imprint & Privacy statement</Link>
       </footer>

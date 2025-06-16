@@ -10,7 +10,7 @@ export default async function Impressum() {
     <>
       <BackButton />
       <header className="bg-muted p-6 md:p-12">
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div className="max-w-5xl lg:max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           <div className="flex justify-center md:justify-start">
             <Avatar className="h-64 w-64">
               <AvatarImage alt="Personal Portrait" src="/ava.jpg" />
@@ -36,7 +36,7 @@ export default async function Impressum() {
           </div>
         </div>
       </header>
-      <main className="max-w-4xl mx-auto my-8 px-6 md:px-0">
+      <main className="max-w-5xl lg:max-w-6xl mx-auto my-8 px-6 md:px-0">
         <section className="mb-8">
           <h2 className="text-2xl font-medium mb-4">Education</h2>
           <Card>

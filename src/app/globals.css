@@ -281,6 +281,12 @@ h6 {
   margin-right: auto;
 }
 
+@media (min-width: 1024px) {
+  .blog-post {
+    max-width: 75ch;
+  }
+}
+
 /* Paragraphs with more vertical spacing */
 .blog-post p {
   @apply text-base md:text-lg my-6;
@@ -451,5 +457,25 @@ a {
     .gradient-luminosity {
       animation: gradientLuminosity 3s ease-in-out infinite;
     }
+  }
+}
+
+@media (min-width: 1024px) {
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    background: linear-gradient(to bottom, #34d399, #6366f1);
+    opacity: 0.2;
+    z-index: -1;
+  }
+  body::before {
+    left: 0;
+  }
+  body::after {
+    right: 0;
   }
 }
