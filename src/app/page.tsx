@@ -23,17 +23,19 @@ const Page = async ({}) => {
         Skip to Main Content
       </a>
 
-      <main className="max-w-5xl mx-auto px-4 space-y-8">
-        <MastHead />
-        <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-600 via-emerald-400 to-indigo-600 dark:from-emerald-800 dark:via-emerald-600 dark:to-indigo-800 text-background p-8 shadow-lg">
-          <div className="absolute inset-0 bg-[url('/header.png')] bg-cover bg-center opacity-10"></div>
-          <div className="relative z-10 space-y-4 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold">Welcome to My Space: Where Web Development Meets Gardening</h2>
-            <p className="text-lg">
-              Hello and thanks for visiting! I&apos;m Andi, a dedicated senior frontend developer from the beautiful South-West of Germany. I&apos;m all about creating smooth and engaging web experiences with React, JavaScript, TypeScript, and CSS. But there&apos;s more to me than just code – I&apos;m also an avid gardener, finding parallels between nurturing plants and developing robust websites.
-            </p>
-          </div>
-        </section>
+      <main className="max-w-7xl mx-auto lg:grid lg:grid-cols-[1fr_3fr_1fr] lg:gap-6 px-4">
+        <div className="hidden lg:block sticky top-0 self-start h-screen rounded-r-3xl bg-gradient-to-b from-emerald-600 via-emerald-400 to-indigo-600 opacity-20"></div>
+        <div className="space-y-8">
+          <MastHead />
+          <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-600 via-emerald-400 to-indigo-600 dark:from-emerald-800 dark:via-emerald-600 dark:to-indigo-800 text-background p-8 shadow-lg">
+            <div className="absolute inset-0 bg-[url('/header.png')] bg-cover bg-center opacity-10"></div>
+            <div className="relative z-10 space-y-4 text-center">
+              <h2 className="text-2xl md:text-3xl font-bold">Welcome to My Space: Where Web Development Meets Gardening</h2>
+              <p className="text-lg">
+                Hello and thanks for visiting! I&apos;m Andi, a dedicated senior frontend developer from the beautiful South-West of Germany. I&apos;m all about creating smooth and engaging web experiences with React, JavaScript, TypeScript, and CSS. But there&apos;s more to me than just code – I&apos;m also an avid gardener, finding parallels between nurturing plants and developing robust websites.
+              </p>
+            </div>
+          </section>
         <Tabs.Root className="TabsRoot" defaultValue="posts">
           <Tabs.List className="TabsList">
             <Tabs.Trigger value="posts" className="TabsTrigger">
@@ -61,6 +63,8 @@ const Page = async ({}) => {
             <SocialMediaInfluence count={data} />
           </Tabs.Content>
         </Tabs.Root>
+        </div>
+        <div className="hidden lg:block sticky top-0 self-start h-screen rounded-l-3xl bg-gradient-to-b from-indigo-600 via-emerald-400 to-emerald-600 opacity-20"></div>
       </main>
       <footer>
         <Link href="/impressum">Imprint & Privacy statement</Link>
