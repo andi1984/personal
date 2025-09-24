@@ -272,43 +272,105 @@ h6 {
 
 /* Base styles for blog posts with increased vertical spacing */
 .blog-post {
-  @apply text-foreground bg-background py-6 px-4;
+  @apply mx-auto flex w-full max-w-3xl flex-col gap-6 rounded-[1.75rem] border border-emerald-100 bg-white/95 p-5 text-slate-800 shadow-md shadow-emerald-500/10 transition-colors break-words sm:p-8 md:p-10 dark:border-emerald-800/60 dark:bg-emerald-950/85 dark:text-emerald-50;
   font-family: var(--font-sans);
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
   line-height: 1.7;
-  max-width: 65ch;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-/* Paragraphs with more vertical spacing */
+/* Paragraphs with attentive spacing */
 .blog-post p {
-  @apply text-base md:text-lg my-6;
-  line-height: 1.7;
+  @apply my-5 text-base leading-relaxed text-slate-700 dark:text-emerald-50;
 }
 
-/* Blockquotes with more vertical spacing */
+/* Blockquotes with accent border */
 .blog-post blockquote {
-  @apply border-l-4 border-border italic pl-4 my-6 text-muted-foreground;
+  @apply my-6 rounded-xl border-l-4 border-emerald-400/80 bg-emerald-50/90 py-4 pl-6 pr-4 text-base italic text-slate-700 dark:border-emerald-400/60 dark:bg-emerald-900/50 dark:text-emerald-50;
 }
 
-/* Unordered and Ordered Lists with more vertical spacing */
+/* Unordered and Ordered Lists */
 .blog-post ul,
 .blog-post ol {
-  @apply list-inside list-disc my-6 pl-4 text-base md:text-lg;
+  @apply my-5 list-inside list-disc space-y-3 pl-5 text-base leading-relaxed text-slate-700 dark:text-emerald-50;
 }
 
 .blog-post ol {
   @apply list-decimal;
 }
 
-/* Code Blocks with more vertical spacing */
+/* Code Blocks */
 .blog-post pre {
-  @apply bg-muted py-4 px-3 my-6 rounded-lg overflow-x-auto;
+  @apply relative my-6 overflow-x-auto rounded-xl border border-emerald-100/70 bg-slate-950 p-5 text-sm text-slate-100 shadow-inner dark:border-emerald-800/60 dark:bg-emerald-950;
 }
 
-.blog-post code {
-  @apply font-mono text-sm md:text-base bg-muted rounded px-1 py-2;
+.blog-post :not(pre) > code {
+  @apply rounded-md bg-slate-200 px-2 py-1 font-mono text-sm text-slate-800 dark:bg-emerald-900/70 dark:text-emerald-100;
+}
+
+.blog-post pre code {
+  @apply block bg-transparent p-0 text-inherit;
+}
+
+/* Token colouring for syntax highlighting libraries */
+.blog-post pre code .token.comment,
+.blog-post pre code .token.prolog,
+.blog-post pre code .token.doctype,
+.blog-post pre code .token.cdata {
+  color: #94a3b8;
+}
+
+.blog-post pre code .token.punctuation {
+  color: #e2e8f0;
+}
+
+.blog-post pre code .token.property,
+.blog-post pre code .token.tag,
+.blog-post pre code .token.boolean,
+.blog-post pre code .token.number,
+.blog-post pre code .token.constant,
+.blog-post pre code .token.symbol,
+.blog-post pre code .token.deleted {
+  color: #bae6fd;
+}
+
+.blog-post pre code .token.selector,
+.blog-post pre code .token.attr-name,
+.blog-post pre code .token.string,
+.blog-post pre code .token.char,
+.blog-post pre code .token.builtin,
+.blog-post pre code .token.inserted {
+  color: #bbf7d0;
+}
+
+.blog-post pre code .token.operator,
+.blog-post pre code .token.entity,
+.blog-post pre code .token.url,
+.blog-post pre code .token.variable {
+  color: #fde68a;
+}
+
+.blog-post pre code .token.atrule,
+.blog-post pre code .token.attr-value,
+.blog-post pre code .token.keyword {
+  color: #a5b4fc;
+}
+
+.blog-post pre code .token.function,
+.blog-post pre code .token.class-name {
+  color: #f9a8d4;
+}
+
+.blog-post pre code .token.regex,
+.blog-post pre code .token.important {
+  color: #fca5a5;
+}
+
+.blog-post pre code .token.bold {
+  font-weight: 700;
+}
+
+.blog-post pre code .token.italic {
+  font-style: italic;
 }
 
 /* Serif headings inside posts */
@@ -324,7 +386,7 @@ h6 {
 
 /* Back to Home Button Styles with WCAG AA Compliant Contrast */
 .back-to-home-btn {
-  @apply bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-2 px-4 border border-border cursor-pointer;
+  @apply inline-flex items-center gap-2 self-start rounded-full border border-emerald-200 bg-white/95 px-4 py-2 text-sm font-semibold text-emerald-800 shadow-sm shadow-emerald-500/10 transition-transform transition-colors duration-150 ease-out hover:-translate-y-0.5 hover:border-emerald-300 hover:text-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 dark:border-emerald-700 dark:bg-emerald-950/70 dark:text-emerald-100 dark:hover:border-emerald-500;
 }
 
 /* RSS button styles adapting to color scheme */

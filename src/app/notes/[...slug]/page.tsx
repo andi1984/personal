@@ -1,5 +1,7 @@
 import BackButton from "@/components/back-button";
+import DetailPageShell from "@/components/detail-page-shell";
 import Metadata from "@/components/metadata";
+import ReadingPane from "@/components/reading-pane";
 import WebmentionsList from "@/components/webmentions.tsx";
 import { getContentAsHTML } from "@/lib/get-content-as-html";
 import { getPostBySlug } from "@/lib/get_post_by_slug";
@@ -29,14 +31,15 @@ export default async function Page(props: Params) {
   );
   const content = await getContentAsHTML(post.content);
   return (
-    <article>
-      <BackButton />
-      <section className="blog-post">
-        <h1>{post.title}</h1>
-        <Metadata {...post} />
-        <div dangerouslySetInnerHTML={{ __html: content }} />
-        <WebmentionsList />
-      </section>
-    </article>
+    <DetailPageShell backSlot={<BackButton />}>
+      <ReadingPane>
+        <article className="blog-post">
+          <h1>{post.title}</h1>
+          <Metadata {...post} />
+          <div dangerouslySetInnerHTML={{ __html: content }} />
+          <WebmentionsList />
+        </article>
+      </ReadingPane>
+    </DetailPageShell>
   );
 }
