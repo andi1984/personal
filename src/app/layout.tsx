@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Merriweather } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
@@ -21,8 +22,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <Script id="theme-sync" strategy="beforeInteractive">
+          {`
+            (function () {
+              var doc = document.documentElement;
+              var theme = 'light';
+              try {
+                var stored = window.localStorage.getItem('theme');
+                if (stored === 'dark' || stored === 'light') {
+                  theme = stored;
+                } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                  theme = 'dark';
+                }
+              } catch (error) {
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                  theme = 'dark';
+                }
+              }
+              doc.classList.remove('light', 'dark');
+              doc.classList.add(theme);
+              doc.style.colorScheme = theme;
+            })();
+          `}
+        </Script>
         <link
           rel="webmention"
           href="https://webmention.io/www.andi1984.dev/webmention"
