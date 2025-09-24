@@ -5,6 +5,7 @@ import { getAllPosts } from "@/lib/get_all_posts";
 import SocialMediaInfluence from "@/components/influence";
 import * as Tabs from "@radix-ui/react-tabs";
 import MastHead from "@/components/masthead";
+import YoutubeBanner from "@/components/youtube-banner";
 import Link from "next/link";
 import IntroAudioPlayer from "@/components/intro-audio-player";
 
@@ -36,6 +37,7 @@ const Page = async ({}) => {
             <IntroAudioPlayer className="mx-auto w-full max-w-xl" />
           </div>
         </section>
+        <YoutubeBanner />
         <Tabs.Root className="TabsRoot" defaultValue="posts">
           <Tabs.List className="TabsList">
             <Tabs.Trigger value="posts" className="TabsTrigger">
