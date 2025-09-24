@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ChangeEvent } from "react";
+import { FiLoader, FiPause, FiPlay, FiRotateCcw, FiVolume2, FiVolumeX } from "react-icons/fi";
 
 import { cn } from "@/lib/utils";
 
@@ -27,6 +28,8 @@ const IntroAudioPlayer = ({ className }: IntroAudioPlayerProps) => {
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(1);
+
+  const progressPercent = duration ? (progress / duration) * 100 : 0;
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -148,51 +151,66 @@ const IntroAudioPlayer = ({ className }: IntroAudioPlayerProps) => {
       </div>
 
       <div className="flex flex-col gap-3">
-        <div className="flex items-center gap-2 text-xs font-medium">
-          <span>{formatTime(progress)}</span>
-          <div className="h-[3px] flex-1 rounded-full bg-white/30">
-            <div
-              className="h-[3px] rounded-full bg-white"
-              style={{ width: duration ? `${(progress / duration) * 100}%` : "0%" }}
-            ></div>
-          </div>
-          <span>{duration ? formatTime(duration) : "0:00"}</span>
+        <div className="flex items-center gap-3 text-xs font-medium text-white/80">
+          <span className="tabular-nums">{formatTime(progress)}</span>
+          <input
+            type="range"
+            min={0}
+            max={duration || 0}
+            step={0.1}
+            value={progress}
+            onChange={handleProgressChange}
+            aria-label="Seek through introduction audio"
+            className="h-1 w-full cursor-pointer appearance-none rounded-full bg-white/20 [--tw-ring-color:theme(colors.white)] accent-white/90"
+            style={{
+              background: `linear-gradient(to right, rgba(255,255,255,0.95) ${progressPercent}%, rgba(255,255,255,0.2) ${progressPercent}%)`,
+            }}
+          />
+          <span className="tabular-nums">{duration ? formatTime(duration) : "0:00"}</span>
         </div>
-        <input
-          type="range"
-          min={0}
-          max={duration || 0}
-          step={0.1}
-          value={progress}
-          onChange={handleProgressChange}
-          aria-label="Seek through introduction audio"
-          className="h-1 w-full cursor-pointer appearance-none rounded-full bg-white/40 accent-white"
-        />
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
-        <button
-          type="button"
-          onClick={togglePlayback}
-          className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-          disabled={isLoading}
-        >
-          {isLoading ? "Loading…" : isPlaying ? "Pause" : "Play"}
-        </button>
-        <button
-          type="button"
-          onClick={restartAudio}
-          className="rounded-full border border-white/50 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-        >
-          Restart
-        </button>
-        <button
-          type="button"
-          onClick={toggleMute}
-          className="rounded-full border border-white/50 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-        >
-          {isMuted ? "Sound on" : "Mute"}
-        </button>
+        <div className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 p-1 text-white/90 shadow-sm">
+          <button
+            type="button"
+            onClick={togglePlayback}
+            className="grid h-9 w-9 place-items-center rounded-full transition hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            aria-label={isPlaying ? "Pause introduction audio" : "Play introduction audio"}
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <FiLoader className="h-4 w-4 animate-spin" aria-hidden="true" />
+            ) : isPlaying ? (
+              <FiPause className="h-4 w-4" aria-hidden="true" />
+            ) : (
+              <FiPlay className="h-4 w-4" aria-hidden="true" />
+            )}
+            <span className="sr-only">{isPlaying ? "Pause" : "Play"}</span>
+          </button>
+          <button
+            type="button"
+            onClick={restartAudio}
+            className="grid h-9 w-9 place-items-center rounded-full transition hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            aria-label="Restart introduction audio"
+          >
+            <FiRotateCcw className="h-4 w-4" aria-hidden="true" />
+            <span className="sr-only">Restart</span>
+          </button>
+          <button
+            type="button"
+            onClick={toggleMute}
+            className="grid h-9 w-9 place-items-center rounded-full transition hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            aria-label={isMuted ? "Unmute introduction audio" : "Mute introduction audio"}
+          >
+            {isMuted ? (
+              <FiVolumeX className="h-4 w-4" aria-hidden="true" />
+            ) : (
+              <FiVolume2 className="h-4 w-4" aria-hidden="true" />
+            )}
+            <span className="sr-only">{isMuted ? "Unmute" : "Mute"}</span>
+          </button>
+        </div>
         <label className="ml-auto flex items-center gap-2 text-xs uppercase tracking-wide text-white/80">
           Volume
           <input
