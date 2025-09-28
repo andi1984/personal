@@ -21,8 +21,23 @@ export default async function generateRssFeed(allPosts: Items[]) {
   const feed = new RSS(feedOptions);
 
   // Add each individual post to the feed.
+  const postsWithContent = allPosts.filter(
+    (
+      post,
+    ): post is Items & {
+      content: string;
+      title: string;
+      slug: string;
+      date: string;
+    } =>
+      typeof post.content === "string" &&
+      typeof post.title === "string" &&
+      typeof post.slug === "string" &&
+      typeof post.date === "string",
+  );
+
   return Promise.all(
-    allPosts.map((post) => {
+    postsWithContent.map((post) =>
       getContentAsHTML(post.content).then((html) => {
         return feed.item({
           title: post.title,
@@ -30,7 +45,7 @@ export default async function generateRssFeed(allPosts: Items[]) {
           url: `${site_url}/posts/${post.slug}`,
           date: post.date,
         });
-      });
-    }),
+      }),
+    ),
   ).then(() => feed);
 }

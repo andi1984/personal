@@ -31,6 +31,9 @@ export default async function Page(props: Params) {
     "date",
     "devto",
   ]);
+  if (typeof post.content !== "string") {
+    throw new Error("Post content is missing");
+  }
   const content = await getContentAsHTML(post.content);
   return (
     <DetailPageShell backSlot={<BackButton />}>

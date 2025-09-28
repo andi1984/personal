@@ -5,5 +5,6 @@ export type Items = {
   title?: string;
   date?: string;
   description?: string;
+  content?: string;
   [key: string]: unknown;
 };
