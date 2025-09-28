@@ -1,8 +1,9 @@
 "use server";
 
 import AllPostsList from "@/components/list/posts";
-import { getAllPosts } from "@/lib/get_all_posts";
 import SocialMediaInfluence from "@/components/influence";
+import VideoHighlights from "@/components/video-highlights";
+import { getAllPosts } from "@/lib/get_all_posts";
 import * as Tabs from "@radix-ui/react-tabs";
 import MastHead from "@/components/masthead";
 import Link from "next/link";
@@ -13,8 +14,33 @@ const Page = async ({}) => {
   const response = await api.GET();
   const data = await response.json();
 
-  const posts = getAllPosts(["slug", "title", "date", "description"]);
+  const posts = getAllPosts([
+    "slug",
+    "title",
+    "date",
+    "description",
+    "youtube",
+    "heroImage",
+  ]);
   const notes = getAllPosts(["slug", "title", "date", "description"], "note");
+  const youtubeHighlights = posts
+    .filter((post) =>
+      typeof post.youtube === "object" && post.youtube !== null
+        ? (post.youtube as { videoId?: string }).videoId
+        : false,
+    )
+    .sort((postA, postB) => {
+      const viewsA =
+        typeof postA.youtube === "object" && postA.youtube !== null
+          ? (postA.youtube as { views?: number }).views ?? 0
+          : 0;
+      const viewsB =
+        typeof postB.youtube === "object" && postB.youtube !== null
+          ? (postB.youtube as { views?: number }).views ?? 0
+          : 0;
+      return viewsB - viewsA;
+    })
+    .slice(0, 3);
   return (
     <>
       <a
@@ -36,6 +62,7 @@ const Page = async ({}) => {
             <IntroAudioPlayer className="mx-auto w-full max-w-xl" />
           </div>
         </section>
+        <VideoHighlights videos={youtubeHighlights} />
         <Tabs.Root className="TabsRoot" defaultValue="posts">
           <Tabs.List className="TabsList">
             <Tabs.Trigger value="posts" className="TabsTrigger">

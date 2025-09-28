@@ -5,7 +5,11 @@ import { FiArrowUpRight } from "react-icons/fi";
 import { Items, Types } from "@/lib/types";
 
 const BlogPostCard: FC<{ post: Items; type: Types }> = ({ post, type }) => {
-  const { slug, title, date, description } = post;
+  const slug = typeof post.slug === "string" ? post.slug : "";
+  const title = typeof post.title === "string" ? post.title : "";
+  const date = typeof post.date === "string" ? post.date : "";
+  const description =
+    typeof post.description === "string" ? post.description : undefined;
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString(undefined, {
@@ -15,7 +19,7 @@ const BlogPostCard: FC<{ post: Items; type: Types }> = ({ post, type }) => {
     });
   };
 
-  const formattedDate = formatDate(date);
+  const formattedDate = date ? formatDate(date) : "";
 
   return (
     <div className="group flex h-full flex-col gap-4">
@@ -26,12 +30,14 @@ const BlogPostCard: FC<{ post: Items; type: Types }> = ({ post, type }) => {
             className="h-1 w-1 rounded-full bg-emerald-600 dark:bg-emerald-300"
             aria-hidden="true"
           />
-          <time
-            dateTime={date}
-            className="text-[0.7rem] tracking-wider text-emerald-700 dark:text-emerald-100"
-          >
-            {formattedDate}
-          </time>
+          {date && (
+            <time
+              dateTime={date}
+              className="text-[0.7rem] tracking-wider text-emerald-700 dark:text-emerald-100"
+            >
+              {formattedDate}
+            </time>
+          )}
         </div>
 
         <Link
