@@ -29,10 +29,11 @@ export default async function Page(props: Params) {
     ["title", "slug", "content", "date", "devto"],
     "note",
   );
-  if (typeof post.content !== "string") {
+  const { content: rawContent } = post;
+  if (typeof rawContent !== "string") {
     throw new Error("Note content is missing");
   }
-  const content = await getContentAsHTML(post.content);
+  const content = await getContentAsHTML(rawContent);
   return (
     <DetailPageShell backSlot={<BackButton />}>
       <ReadingPane>
