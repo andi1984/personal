@@ -22,29 +22,19 @@ const BlogPostCard: FC<{ post: Items; type: Types }> = ({ post, type }) => {
   const formattedDate = date ? formatDate(date) : "";
 
   return (
-    <article className="group h-full">
+    <article className="group border-b border-slate-200 py-6 last:border-0 dark:border-slate-800">
       <Link
         href={`/${type}s/${slug}`}
-        className="flex h-full flex-col gap-4 rounded-xl border border-slate-200 bg-white p-6 transition-all duration-200 hover:border-slate-300 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700"
+        className="flex flex-col gap-2"
       >
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300">
-              {type === "post" ? "Article" : "Note"}
-            </span>
-            {date && (
-              <time
-                dateTime={date}
-                className="text-xs text-slate-500 dark:text-slate-500"
-              >
-                {formattedDate}
-              </time>
-            )}
-          </div>
-
-          <h3 className="text-xl font-bold leading-tight text-slate-900 transition-colors group-hover:text-slate-700 dark:text-slate-50 dark:group-hover:text-slate-200">
+        <div className="flex items-baseline gap-3">
+          <h3 className="text-lg font-semibold text-slate-900 transition-colors group-hover:text-slate-600 dark:text-slate-50 dark:group-hover:text-slate-300">
             {title}
           </h3>
+          <FiArrowUpRight
+            className="h-4 w-4 shrink-0 text-slate-400 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100 dark:text-slate-500"
+            aria-hidden="true"
+          />
         </div>
 
         {description && (
@@ -53,13 +43,14 @@ const BlogPostCard: FC<{ post: Items; type: Types }> = ({ post, type }) => {
           </p>
         )}
 
-        <div className="mt-auto flex items-center gap-1.5 pt-2 text-sm font-medium text-slate-900 dark:text-slate-100">
-          <span>Read more</span>
-          <FiArrowUpRight
-            className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            aria-hidden="true"
-          />
-        </div>
+        {date && (
+          <time
+            dateTime={date}
+            className="text-xs text-slate-500 dark:text-slate-500"
+          >
+            {formattedDate}
+          </time>
+        )}
       </Link>
     </article>
   );
