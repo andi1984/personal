@@ -13,21 +13,19 @@ const AllPostsList: FC<{
       : "Browse quick notes and garden-fresh updates worth bookmarking.";
 
   return (
-    <section className="space-y-6">
-      <div className="mx-auto max-w-3xl text-center sm:max-w-4xl">
-        <h2 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
+    <section className="space-y-12">
+      <div className="space-y-3">
+        <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50">
           {title}
         </h2>
-        <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">{leadCopy}</p>
+        <p className="text-base text-slate-600 dark:text-slate-400">{leadCopy}</p>
       </div>
 
       <nav>
-        <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
             <li key={post.slug}>
-              <article className="h-full">
-                <BlogPostCard post={post} type={type} />
-              </article>
+              <BlogPostCard post={post} type={type} />
             </li>
           ))}
         </ol>

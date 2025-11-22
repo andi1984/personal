@@ -22,43 +22,46 @@ const BlogPostCard: FC<{ post: Items; type: Types }> = ({ post, type }) => {
   const formattedDate = date ? formatDate(date) : "";
 
   return (
-    <div className="group flex h-full flex-col gap-4 p-5 rounded-lg border border-slate-200 bg-white transition-colors hover:border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-slate-600">
-      <div className="flex flex-col gap-3">
-        <div className="flex flex-wrap items-center gap-2 text-xs font-medium uppercase tracking-wide text-slate-600 dark:text-slate-300">
-          <span>{type === "post" ? "Article" : "Note"}</span>
-          {date && (
-            <>
-              <span className="text-slate-400 dark:text-slate-500">•</span>
+    <article className="group h-full">
+      <Link
+        href={`/${type}s/${slug}`}
+        className="flex h-full flex-col gap-4 rounded-xl border border-slate-200 bg-white p-6 transition-all duration-200 hover:border-slate-300 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700"
+      >
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center gap-2">
+            <span className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300">
+              {type === "post" ? "Article" : "Note"}
+            </span>
+            {date && (
               <time
                 dateTime={date}
-                className="text-xs text-slate-500 dark:text-slate-400"
+                className="text-xs text-slate-500 dark:text-slate-500"
               >
                 {formattedDate}
               </time>
-            </>
-          )}
+            )}
+          </div>
+
+          <h3 className="text-xl font-bold leading-tight text-slate-900 transition-colors group-hover:text-slate-700 dark:text-slate-50 dark:group-hover:text-slate-200">
+            {title}
+          </h3>
         </div>
 
-        <Link
-          href={`/${type}s/${slug}`}
-          className="group inline-flex items-baseline gap-2 text-left text-xl font-semibold leading-tight text-slate-900 transition-colors hover:text-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-500 dark:text-slate-50 dark:hover:text-slate-200"
-        >
-          <span>
-            {title}
-          </span>
+        {description && (
+          <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+            {description}
+          </p>
+        )}
+
+        <div className="mt-auto flex items-center gap-1.5 pt-2 text-sm font-medium text-slate-900 dark:text-slate-100">
+          <span>Read more</span>
           <FiArrowUpRight
-            className="h-4 w-4 translate-y-[2px] shrink-0 text-slate-500 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 dark:text-slate-400"
+            className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             aria-hidden="true"
           />
-        </Link>
-      </div>
-
-      {description && (
-        <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-          {description}
-        </p>
-      )}
-    </div>
+        </div>
+      </Link>
+    </article>
   );
 };
 

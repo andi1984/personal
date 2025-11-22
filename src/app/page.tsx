@@ -50,45 +50,58 @@ const Page = async ({}) => {
         Skip to Main Content
       </a>
 
-      <main className="max-w-5xl mx-auto px-4 space-y-8">
+      <main className="mx-auto max-w-6xl px-6 py-12 md:px-8 lg:px-12">
         <MastHead />
-        <section className="rounded-lg border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800 p-8">
-          <div className="space-y-6 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-50">Hi, I&apos;m Andi</h2>
-            <p className="text-base md:text-lg text-slate-800 dark:text-slate-200 leading-relaxed max-w-3xl mx-auto">
+
+        {/* Hero Section */}
+        <section className="mb-20 mt-12">
+          <div className="mx-auto max-w-3xl space-y-8 text-center">
+            <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-50 md:text-5xl">
+              Hi, I&apos;m Andi
+            </h2>
+            <p className="text-xl leading-relaxed text-slate-700 dark:text-slate-300">
               Senior frontend developer from South-West Germany, crafting web experiences with React, TypeScript, and CSS. When I&apos;m not writing code, you&apos;ll find me in the garden—I see the same care in growing plants as in growing great software.
             </p>
             <IntroAudioPlayer className="mx-auto w-full max-w-xl" />
           </div>
         </section>
+
         <VideoHighlights videos={youtubeHighlights} />
-        <Tabs.Root className="TabsRoot" defaultValue="posts">
-          <Tabs.List className="TabsList">
-            <Tabs.Trigger value="posts" className="TabsTrigger">
-              Blogposts
-            </Tabs.Trigger>
-            <Tabs.Trigger value="notes" className="TabsTrigger">
-              Notes
-            </Tabs.Trigger>
-            <Tabs.Trigger value="community" className="TabsTrigger">
-              Community
-            </Tabs.Trigger>
-          </Tabs.List>
-          <Tabs.Content value="posts" className="TabsContent">
-            <section id="posts">
-              <AllPostsList title="All posts" posts={posts} type="post" />
-            </section>
-          </Tabs.Content>
-          <Tabs.Content value="notes" className="TabsContent">
-            <section id="notes">
-              <AllPostsList title="All notes" posts={notes} type="note" />
-            </section>
-          </Tabs.Content>
-          <Tabs.Content value="community" className="TabsContent">
-            <p>Please contact me on one of those platforms listed below:</p>
-            <SocialMediaInfluence count={data} />
-          </Tabs.Content>
-        </Tabs.Root>
+
+        {/* Content Tabs */}
+        <section className="mt-20">
+          <Tabs.Root className="TabsRoot" defaultValue="posts">
+            <Tabs.List className="TabsList">
+              <Tabs.Trigger value="posts" className="TabsTrigger">
+                Articles
+              </Tabs.Trigger>
+              <Tabs.Trigger value="notes" className="TabsTrigger">
+                Notes
+              </Tabs.Trigger>
+              <Tabs.Trigger value="community" className="TabsTrigger">
+                Community
+              </Tabs.Trigger>
+            </Tabs.List>
+            <Tabs.Content value="posts" className="TabsContent">
+              <section id="posts">
+                <AllPostsList title="Latest Articles" posts={posts} type="post" />
+              </section>
+            </Tabs.Content>
+            <Tabs.Content value="notes" className="TabsContent">
+              <section id="notes">
+                <AllPostsList title="Quick Notes" posts={notes} type="note" />
+              </section>
+            </Tabs.Content>
+            <Tabs.Content value="community" className="TabsContent">
+              <div className="space-y-6">
+                <p className="text-lg text-slate-700 dark:text-slate-300">
+                  Let&apos;s connect! Find me on these platforms:
+                </p>
+                <SocialMediaInfluence count={data} />
+              </div>
+            </Tabs.Content>
+          </Tabs.Root>
+        </section>
       </main>
       <footer>
         <Link href="/impressum">Imprint & Privacy statement</Link>

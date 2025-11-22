@@ -221,90 +221,99 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50;
     font-family: var(--font-sans);
-    line-height: 1.6;
+    line-height: 1.7;
     font-size: 1rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-/* Base styles for headings with margins */
+/* Modern typography scale with better rhythm */
 h1 {
-  @apply text-4xl md:text-5xl lg:text-6xl font-bold my-8 mx-0;
+  @apply text-4xl md:text-5xl font-bold my-12 mx-0 tracking-tight;
   font-family: var(--font-serif);
+  line-height: 1.1;
 }
 
 h2 {
-  @apply text-3xl md:text-4xl lg:text-5xl font-semibold my-7 mx-0;
+  @apply text-3xl md:text-4xl font-bold my-10 mx-0 tracking-tight;
   font-family: var(--font-serif);
+  line-height: 1.2;
 }
 
 h3 {
-  @apply text-2xl md:text-3xl lg:text-4xl font-semibold my-6 mx-0;
+  @apply text-2xl md:text-3xl font-semibold my-8 mx-0 tracking-tight;
   font-family: var(--font-serif);
+  line-height: 1.3;
 }
 
 h4 {
-  @apply text-xl md:text-2xl lg:text-3xl font-medium my-5 mx-0;
+  @apply text-xl md:text-2xl font-semibold my-6 mx-0;
   font-family: var(--font-serif);
+  line-height: 1.4;
 }
 
 h5 {
-  @apply text-lg md:text-xl lg:text-2xl font-medium my-4 mx-0;
+  @apply text-lg md:text-xl font-medium my-5 mx-0;
   font-family: var(--font-serif);
+  line-height: 1.5;
 }
 
 h6 {
-  @apply text-base md:text-lg lg:text-xl font-normal my-3 mx-0;
+  @apply text-base md:text-lg font-medium my-4 mx-0;
   font-family: var(--font-serif);
+  line-height: 1.5;
 }
 
-/* Ensuring color contrast compliance */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply text-foreground;
-  /* Ensure good contrast with background */
+h1, h2, h3, h4, h5, h6 {
+  @apply text-slate-900 dark:text-slate-50;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
-/* Base styles for blog posts with increased vertical spacing */
+/* Premium blog post reading experience */
 .blog-post {
-  @apply mx-auto flex w-full max-w-3xl flex-col gap-6 p-5 text-slate-900 break-words sm:p-8 md:p-10 dark:text-slate-100;
+  @apply mx-auto flex w-full max-w-2xl flex-col gap-8 px-6 py-12 text-slate-900 break-words md:px-8 lg:max-w-3xl dark:text-slate-100;
   font-family: var(--font-sans);
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   line-height: 1.8;
 }
 
-/* Paragraphs with attentive spacing */
+/* Beautiful paragraph spacing */
 .blog-post p {
-  @apply my-5 text-base leading-relaxed text-slate-800 dark:text-slate-200;
+  @apply my-6 text-lg leading-relaxed text-slate-700 dark:text-slate-300;
+  max-width: 65ch;
 }
 
-/* Blockquotes with accent border */
+/* Elegant blockquotes */
 .blog-post blockquote {
-  @apply my-6 border-l-4 border-slate-400 bg-slate-50 py-4 pl-6 pr-4 text-base italic text-slate-800 dark:border-slate-500 dark:bg-slate-800/50 dark:text-slate-200;
+  @apply my-8 border-l-2 border-slate-900 bg-transparent py-2 pl-8 pr-4 text-lg italic text-slate-700 dark:border-slate-300 dark:text-slate-300;
+  font-family: var(--font-serif);
 }
 
-/* Unordered and Ordered Lists */
+/* Clean lists with proper spacing */
 .blog-post ul,
 .blog-post ol {
-  @apply my-5 list-inside list-disc space-y-3 pl-5 text-base leading-relaxed text-slate-800 dark:text-slate-200;
+  @apply my-6 list-outside space-y-2 pl-8 text-lg leading-relaxed text-slate-700 dark:text-slate-300;
+}
+
+.blog-post ul {
+  @apply list-disc;
 }
 
 .blog-post ol {
   @apply list-decimal;
 }
 
-/* Code Blocks */
+/* Modern code blocks */
 .blog-post pre {
-  @apply relative my-6 overflow-x-auto rounded-lg border border-slate-300 bg-slate-950 p-5 text-sm text-slate-50 dark:border-slate-600 dark:bg-slate-950;
+  @apply relative my-8 overflow-x-auto rounded-xl bg-slate-900 p-6 text-sm text-slate-50 shadow-lg dark:bg-slate-950 dark:ring-1 dark:ring-slate-800;
 }
 
 .blog-post :not(pre) > code {
-  @apply rounded bg-slate-100 px-2 py-1 font-mono text-sm text-slate-900 dark:bg-slate-800 dark:text-slate-100;
+  @apply rounded-md bg-slate-100 px-1.5 py-0.5 font-mono text-[0.9em] text-slate-900 dark:bg-slate-800 dark:text-slate-100;
 }
 
 .blog-post pre code {
@@ -384,9 +393,9 @@ h6 {
 }
 
 
-/* Back to Home Button Styles with WCAG AA Compliant Contrast */
+/* Refined button styles */
 .back-to-home-btn {
-  @apply inline-flex items-center gap-2 self-start rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-colors duration-150 ease-out hover:bg-slate-50 hover:border-slate-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:border-slate-500;
+  @apply inline-flex items-center gap-2 self-start rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-medium text-white transition-all duration-200 hover:bg-slate-800 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white;
 }
 
 /* RSS button styles adapting to color scheme */
@@ -430,42 +439,69 @@ a {
   @apply mt-3 mb-3;
 }
 
-/* Tabs List Styling */
+/* Modern tabs design */
 .TabsList {
   display: flex;
-  gap: 12px;
-  border-bottom: 1px solid var(--color-border);
-  padding-bottom: 0;
-  margin-bottom: 24px;
+  gap: 2px;
+  background-color: rgb(241 245 249);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 32px;
 }
 
-/* Tab Trigger Styling */
+@media (prefers-color-scheme: dark) {
+  .TabsList {
+    background-color: rgb(15 23 42);
+  }
+}
+
+.dark .TabsList {
+  background-color: rgb(15 23 42);
+}
+
 .TabsTrigger {
-  background: none;
+  background: transparent;
   border: none;
   cursor: pointer;
-  padding: 12px 16px;
+  padding: 10px 20px;
   font-size: 15px;
   font-weight: 500;
-  transition: color 0.15s ease;
-  border-bottom: 2px solid transparent;
-  color: var(--color-muted-foreground);
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  color: rgb(100 116 139);
+  flex: 1;
 }
 
-/* Active Tab Indicator */
 .TabsTrigger[data-state="active"] {
-  border-bottom: 2px solid var(--color-foreground);
-  color: var(--color-foreground);
+  background-color: white;
+  color: rgb(15 23 42);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
 }
 
-/* Content Styling */
+@media (prefers-color-scheme: dark) {
+  .TabsTrigger {
+    color: rgb(148 163 184);
+  }
+  .TabsTrigger[data-state="active"] {
+    background-color: rgb(30 41 59);
+    color: rgb(248 250 252);
+  }
+}
+
+.dark .TabsTrigger {
+  color: rgb(148 163 184);
+}
+
+.dark .TabsTrigger[data-state="active"] {
+  background-color: rgb(30 41 59);
+  color: rgb(248 250 252);
+}
+
 .TabsContent {
   padding: 0;
   border-radius: 0;
   border: none;
   background-color: transparent;
-  font-size: 16px;
-  color: var(--color-foreground);
 }
 
 /* Mobile responsiveness */

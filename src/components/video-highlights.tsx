@@ -36,13 +36,13 @@ const VideoHighlights: FC<{ videos: VideoHighlight[] }> = ({ videos }) => {
   }
 
   return (
-    <section className="space-y-6">
-      <div className="mx-auto max-w-3xl text-center sm:max-w-4xl">
-        <h2 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
+    <section className="mb-20 space-y-8">
+      <div className="space-y-3">
+        <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50">
           YouTube Highlights
         </h2>
-        <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">
-          Dive into the three most-watched videos from my channel. Each recap links to a full transcript so you can skim or read at your own pace before jumping to YouTube.
+        <p className="text-base text-slate-600 dark:text-slate-400">
+          My most-watched videos with full transcripts for quick reference.
         </p>
       </div>
 
@@ -73,7 +73,7 @@ const VideoHighlights: FC<{ videos: VideoHighlight[] }> = ({ videos }) => {
           return (
             <article
               key={slug || title}
-              className="group flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white transition-colors hover:border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-slate-600"
+              className="group flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white transition-all duration-200 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
             >
               <div className="relative aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-900">
                 {heroImage ? (
@@ -81,7 +81,7 @@ const VideoHighlights: FC<{ videos: VideoHighlight[] }> = ({ videos }) => {
                     src={heroImage}
                     alt={title || "YouTube video thumbnail"}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                     sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                     priority
                   />
@@ -93,33 +93,33 @@ const VideoHighlights: FC<{ videos: VideoHighlight[] }> = ({ videos }) => {
               </div>
 
               <div className="flex flex-1 flex-col gap-4 p-6">
-                <div className="space-y-1">
-                  <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50">
+                <div className="space-y-2">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-50">
                     {title}
                   </h3>
                   {(viewsLabel || publishedLabel) && (
-                    <p className="text-xs font-medium uppercase tracking-wide text-slate-600 dark:text-slate-300">
+                    <p className="text-xs text-slate-600 dark:text-slate-400">
                       {[viewsLabel, publishedLabel].filter(Boolean).join(" • ")}
                     </p>
                   )}
                   {description && (
-                    <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                    <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                       {description}
                     </p>
                   )}
                 </div>
 
-                <div className="mt-auto flex flex-col gap-2 text-sm font-medium">
+                <div className="mt-auto flex flex-col gap-2 text-sm">
                   <Link
                     href={`/posts/${slug}`}
-                    className="inline-flex items-center justify-center rounded-md bg-slate-900 px-4 py-2 text-white transition-colors hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500 dark:bg-slate-700 dark:hover:bg-slate-600"
+                    className="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2.5 font-medium text-white transition-colors hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
                   >
-                    Read the transcript
+                    Read transcript
                   </Link>
                   {youtubeUrl && (
                     <Link
                       href={youtubeUrl}
-                      className="inline-flex items-center justify-center rounded-md border border-slate-300 px-4 py-2 text-slate-700 transition-colors hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-700"
+                      className="inline-flex items-center justify-center rounded-lg border border-slate-200 px-4 py-2.5 font-medium text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
                       target="_blank"
                     >
                       Watch on YouTube
