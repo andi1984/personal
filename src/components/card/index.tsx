@@ -22,10 +22,10 @@ const BlogPostCard: FC<{ post: Items; type: Types }> = ({ post, type }) => {
   const formattedDate = date ? formatDate(date) : "";
 
   return (
-    <article className="group border-b border-slate-200 py-6 last:border-0 dark:border-slate-800">
+    <article className="group py-8 first:pt-0">
       <Link
         href={`/${type}s/${slug}`}
-        className="flex flex-col gap-2"
+        className="flex flex-col gap-1.5"
       >
         <div className="flex items-baseline gap-3">
           <h3 className="text-lg font-semibold text-slate-900 transition-colors group-hover:text-slate-600 dark:text-slate-50 dark:group-hover:text-slate-300">
@@ -46,7 +46,7 @@ const BlogPostCard: FC<{ post: Items; type: Types }> = ({ post, type }) => {
         {date && (
           <time
             dateTime={date}
-            className="text-xs text-slate-500 dark:text-slate-500"
+            className="mt-1 text-xs text-slate-500 dark:text-slate-500"
           >
             {formattedDate}
           </time>

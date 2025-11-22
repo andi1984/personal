@@ -22,9 +22,9 @@ const AllPostsList: FC<{
       </div>
 
       <nav>
-        <ol className="divide-y divide-slate-200 dark:divide-slate-800">
+        <ol className="border-t border-slate-200 dark:border-slate-800">
           {posts.map((post) => (
-            <li key={post.slug}>
+            <li key={post.slug} className="border-b border-slate-200 last:border-0 dark:border-slate-800">
               <BlogPostCard post={post} type={type} />
             </li>
           ))}

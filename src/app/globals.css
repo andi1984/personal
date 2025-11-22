@@ -473,6 +473,7 @@ a {
 .TabsTrigger[data-state="active"] {
   color: rgb(15 23 42);
   border-bottom-color: rgb(15 23 42);
+  font-weight: 600;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -482,6 +483,7 @@ a {
   .TabsTrigger[data-state="active"] {
     color: rgb(248 250 252);
     border-bottom-color: rgb(248 250 252);
+    font-weight: 600;
   }
 }
 
@@ -492,6 +494,7 @@ a {
 .dark .TabsTrigger[data-state="active"] {
   color: rgb(248 250 252);
   border-bottom-color: rgb(248 250 252);
+  font-weight: 600;
 }
 
 .TabsContent {
