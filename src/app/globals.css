@@ -332,71 +332,8 @@ h1, h2, h3, h4, h5, h6 {
   @apply block bg-transparent p-0 text-inherit;
 }
 
-/* Enhanced syntax highlighting with better colors */
-.blog-post pre code .token.comment,
-.blog-post pre code .token.prolog,
-.blog-post pre code .token.doctype,
-.blog-post pre code .token.cdata {
-  color: #64748b;
-  font-style: italic;
-}
-
-.blog-post pre code .token.punctuation {
-  color: #475569;
-}
-
-.blog-post pre code .token.property,
-.blog-post pre code .token.tag,
-.blog-post pre code .token.boolean,
-.blog-post pre code .token.number,
-.blog-post pre code .token.constant,
-.blog-post pre code .token.symbol {
-  color: #0ea5e9;
-  font-weight: 500;
-}
-
-.blog-post pre code .token.selector,
-.blog-post pre code .token.attr-name,
-.blog-post pre code .token.string,
-.blog-post pre code .token.char,
-.blog-post pre code .token.builtin,
-.blog-post pre code .token.inserted {
-  color: #10b981;
-}
-
-.blog-post pre code .token.operator,
-.blog-post pre code .token.entity,
-.blog-post pre code .token.url,
-.blog-post pre code .token.variable {
-  color: #f59e0b;
-}
-
-.blog-post pre code .token.atrule,
-.blog-post pre code .token.attr-value,
-.blog-post pre code .token.keyword {
-  color: #8b5cf6;
-  font-weight: 600;
-}
-
-.blog-post pre code .token.function,
-.blog-post pre code .token.class-name {
-  color: #ec4899;
-  font-weight: 500;
-}
-
-.blog-post pre code .token.regex,
-.blog-post pre code .token.important,
-.blog-post pre code .token.deleted {
-  color: #ef4444;
-}
-
-.blog-post pre code .token.bold {
-  font-weight: 700;
-}
-
-.blog-post pre code .token.italic {
-  font-style: italic;
-}
+/* Note: For syntax highlighting, install rehype-prism-plus or rehype-highlight
+   and add to markdown_to_html.ts processor */
 
 /* Serif headings inside posts */
 .blog-post h1,
@@ -530,7 +467,7 @@ a {
 .TabsTrigger[data-state="active"] {
   color: rgb(15 23 42);
   border-bottom-color: rgb(15 23 42);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -540,7 +477,7 @@ a {
   .TabsTrigger[data-state="active"] {
     color: rgb(248 250 252);
     border-bottom-color: rgb(248 250 252);
-    font-weight: 600;
+    font-weight: 700;
   }
 }
 
@@ -551,7 +488,7 @@ a {
 .dark .TabsTrigger[data-state="active"] {
   color: rgb(248 250 252);
   border-bottom-color: rgb(248 250 252);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .TabsContent {
