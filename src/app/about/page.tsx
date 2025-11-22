@@ -1,4 +1,3 @@
-import BackButton from "@/components/back-button";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -6,7 +5,6 @@ import Link from "next/link";
 export default async function Impressum() {
   return (
     <>
-      <BackButton />
       <header className="bg-muted p-6 md:p-12">
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           <div className="flex justify-center md:justify-start">

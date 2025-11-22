@@ -93,34 +93,34 @@
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
- 
+
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
- 
+
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
- 
+
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
- 
+
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
- 
+
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
- 
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
- 
+
     --radius: 0.5rem;
     --font-sans: Inter, system-ui, sans-serif;
     --font-serif: Merriweather, Georgia, serif;
   }
- 
+
   @media (prefers-color-scheme: dark) {
     :root {
       --background: 222.2 84% 4.9%;
@@ -215,162 +215,112 @@
     --ring: 222.2 84% 4.9%;
   }
 }
- 
+
 @layer base {
   * {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50;
     font-family: var(--font-sans);
-    line-height: 1.6;
+    line-height: 1.7;
     font-size: 1rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-/* Base styles for headings with margins */
+/* Modern typography scale with better rhythm */
 h1 {
-  @apply text-4xl md:text-5xl lg:text-6xl font-bold my-8 mx-0;
+  @apply text-4xl md:text-5xl font-bold my-6 mx-0 tracking-tight;
   font-family: var(--font-serif);
+  line-height: 1.1;
 }
 
 h2 {
-  @apply text-3xl md:text-4xl lg:text-5xl font-semibold my-7 mx-0;
+  @apply text-3xl md:text-4xl font-bold my-5 mx-0 tracking-tight;
   font-family: var(--font-serif);
+  line-height: 1.2;
 }
 
 h3 {
-  @apply text-2xl md:text-3xl lg:text-4xl font-semibold my-6 mx-0;
+  @apply text-2xl md:text-3xl font-semibold my-4 mx-0 tracking-tight;
   font-family: var(--font-serif);
+  line-height: 1.3;
 }
 
 h4 {
-  @apply text-xl md:text-2xl lg:text-3xl font-medium my-5 mx-0;
+  @apply text-xl md:text-2xl font-semibold my-3 mx-0;
   font-family: var(--font-serif);
+  line-height: 1.4;
 }
 
 h5 {
-  @apply text-lg md:text-xl lg:text-2xl font-medium my-4 mx-0;
+  @apply text-lg md:text-xl font-medium my-3 mx-0;
   font-family: var(--font-serif);
+  line-height: 1.5;
 }
 
 h6 {
-  @apply text-base md:text-lg lg:text-xl font-normal my-3 mx-0;
+  @apply text-base md:text-lg font-medium my-2 mx-0;
   font-family: var(--font-serif);
+  line-height: 1.5;
 }
 
-/* Ensuring color contrast compliance */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply text-foreground;
-  /* Ensure good contrast with background */
+h1, h2, h3, h4, h5, h6 {
+  @apply text-slate-900 dark:text-slate-50;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
-/* Base styles for blog posts with increased vertical spacing */
+/* Premium blog post reading experience */
 .blog-post {
-  @apply mx-auto flex w-full max-w-3xl flex-col gap-6 rounded-[1.75rem] border border-emerald-100 bg-white/95 p-5 text-slate-800 shadow-md shadow-emerald-500/10 transition-colors break-words sm:p-8 md:p-10 dark:border-emerald-800/60 dark:bg-emerald-950/85 dark:text-emerald-50;
+  @apply mx-auto flex w-full flex-col gap-2 text-slate-900 break-words dark:text-slate-100;
   font-family: var(--font-sans);
-  font-size: 1.0625rem;
-  line-height: 1.7;
+  font-size: 1.125rem;
+  line-height: 1.8;
 }
 
-/* Paragraphs with attentive spacing */
+/* Beautiful paragraph spacing */
 .blog-post p {
-  @apply my-5 text-base leading-relaxed text-slate-700 dark:text-emerald-50;
+  @apply my-6 text-lg leading-relaxed text-slate-700 dark:text-slate-300;
+  max-width: 65ch;
 }
 
-/* Blockquotes with accent border */
+/* Elegant blockquotes with visual highlight */
 .blog-post blockquote {
-  @apply my-6 rounded-xl border-l-4 border-emerald-400/80 bg-emerald-50/90 py-4 pl-6 pr-4 text-base italic text-slate-700 dark:border-emerald-400/60 dark:bg-emerald-900/50 dark:text-emerald-50;
+  @apply my-10 border-l-4 border-slate-900 bg-slate-50 py-6 pl-8 pr-6 text-lg italic text-slate-700 dark:border-slate-200 dark:bg-slate-900 dark:text-slate-300;
+  font-family: var(--font-serif);
+  border-radius: 0 0.5rem 0.5rem 0;
 }
 
-/* Unordered and Ordered Lists */
+.blog-post blockquote p {
+  margin: 0;
+  font-style: italic;
+}
+
+/* Clean lists with proper spacing */
 .blog-post ul,
 .blog-post ol {
-  @apply my-5 list-inside list-disc space-y-3 pl-5 text-base leading-relaxed text-slate-700 dark:text-emerald-50;
+  @apply my-6 list-outside space-y-2 pl-8 text-lg leading-relaxed text-slate-700 dark:text-slate-300;
+}
+
+.blog-post ul {
+  @apply list-disc;
 }
 
 .blog-post ol {
   @apply list-decimal;
 }
 
-/* Code Blocks */
+/* Modern code blocks - using rehype-highlight styles */
 .blog-post pre {
-  @apply relative my-6 overflow-x-auto rounded-xl border border-emerald-100/70 bg-slate-950 p-5 text-sm text-slate-100 shadow-inner dark:border-emerald-800/60 dark:bg-emerald-950;
+  @apply relative my-8 overflow-x-auto rounded-lg;
 }
 
 .blog-post :not(pre) > code {
-  @apply rounded-md bg-slate-200 px-2 py-1 font-mono text-sm text-slate-800 dark:bg-emerald-900/70 dark:text-emerald-100;
-}
-
-.blog-post pre code {
-  @apply block bg-transparent p-0 text-inherit;
-}
-
-/* Token colouring for syntax highlighting libraries */
-.blog-post pre code .token.comment,
-.blog-post pre code .token.prolog,
-.blog-post pre code .token.doctype,
-.blog-post pre code .token.cdata {
-  color: #94a3b8;
-}
-
-.blog-post pre code .token.punctuation {
-  color: #e2e8f0;
-}
-
-.blog-post pre code .token.property,
-.blog-post pre code .token.tag,
-.blog-post pre code .token.boolean,
-.blog-post pre code .token.number,
-.blog-post pre code .token.constant,
-.blog-post pre code .token.symbol,
-.blog-post pre code .token.deleted {
-  color: #bae6fd;
-}
-
-.blog-post pre code .token.selector,
-.blog-post pre code .token.attr-name,
-.blog-post pre code .token.string,
-.blog-post pre code .token.char,
-.blog-post pre code .token.builtin,
-.blog-post pre code .token.inserted {
-  color: #bbf7d0;
-}
-
-.blog-post pre code .token.operator,
-.blog-post pre code .token.entity,
-.blog-post pre code .token.url,
-.blog-post pre code .token.variable {
-  color: #fde68a;
-}
-
-.blog-post pre code .token.atrule,
-.blog-post pre code .token.attr-value,
-.blog-post pre code .token.keyword {
-  color: #a5b4fc;
-}
-
-.blog-post pre code .token.function,
-.blog-post pre code .token.class-name {
-  color: #f9a8d4;
-}
-
-.blog-post pre code .token.regex,
-.blog-post pre code .token.important {
-  color: #fca5a5;
-}
-
-.blog-post pre code .token.bold {
-  font-weight: 700;
-}
-
-.blog-post pre code .token.italic {
-  font-style: italic;
+  @apply rounded bg-slate-100 px-2 py-0.5 font-mono text-[0.95em] text-slate-900 dark:bg-slate-800 dark:text-slate-100;
+  font-weight: 500;
 }
 
 /* Serif headings inside posts */
@@ -383,10 +333,51 @@ h6 {
   font-family: var(--font-serif);
 }
 
+/* Links with subtle styling */
+.blog-post a {
+  @apply text-slate-900 underline decoration-slate-400 decoration-2 underline-offset-2 transition-colors hover:decoration-slate-900 dark:text-slate-100 dark:decoration-slate-500 dark:hover:decoration-slate-200;
+  font-weight: 500;
+}
 
-/* Back to Home Button Styles with WCAG AA Compliant Contrast */
+/* Strong and emphasis */
+.blog-post strong {
+  @apply font-bold text-slate-900 dark:text-slate-50;
+}
+
+.blog-post em {
+  font-style: italic;
+}
+
+/* Horizontal rules */
+.blog-post hr {
+  @apply my-12 border-0 border-t border-slate-200 dark:border-slate-800;
+}
+
+/* Tables */
+.blog-post table {
+  @apply my-8 w-full border-collapse text-base;
+}
+
+.blog-post thead {
+  @apply border-b-2 border-slate-900 dark:border-slate-200;
+}
+
+.blog-post th {
+  @apply px-4 py-3 text-left font-bold text-slate-900 dark:text-slate-50;
+}
+
+.blog-post td {
+  @apply border-b border-slate-200 px-4 py-3 text-slate-700 dark:border-slate-800 dark:text-slate-300;
+}
+
+.blog-post tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* Refined button styles */
 .back-to-home-btn {
-  @apply inline-flex items-center gap-2 self-start rounded-full border border-emerald-200 bg-white/95 px-4 py-2 text-sm font-semibold text-emerald-800 shadow-sm shadow-emerald-500/10 transition-transform transition-colors duration-150 ease-out hover:-translate-y-0.5 hover:border-emerald-300 hover:text-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 dark:border-emerald-700 dark:bg-emerald-950/70 dark:text-emerald-100 dark:hover:border-emerald-500;
+  @apply inline-flex items-center gap-2 self-start rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-medium text-white transition-all duration-200 hover:bg-slate-800 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white;
 }
 
 /* RSS button styles adapting to color scheme */
@@ -430,88 +421,100 @@ a {
   @apply mt-3 mb-3;
 }
 
-/* Tabs List Styling */
+/* Minimalist text-only tabs */
 .TabsList {
   display: flex;
-  gap: 16px;
-  /* Adds spacing between the tabs */
-  border-bottom: 2px solid var(--color-border);
-  /* Light border under the tabs */
-  padding-bottom: 8px;
-  margin-bottom: 16px;
+  gap: 32px;
+  border-bottom: 1px solid rgb(226 232 240);
+  margin-bottom: 48px;
 }
 
-/* Tab Trigger Styling */
+@media (prefers-color-scheme: dark) {
+  .TabsList {
+    border-bottom-color: rgb(51 65 85);
+  }
+}
+
+.dark .TabsList {
+  border-bottom-color: rgb(51 65 85);
+}
+
 .TabsTrigger {
-  background: none;
+  background: transparent;
   border: none;
   cursor: pointer;
-  padding: 8px 12px;
+  padding: 0 0 16px 0;
   font-size: 16px;
   font-weight: 500;
-  transition: color 0.2s ease, border-bottom-color 0.2s ease;
-  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  border-bottom: 3px solid transparent;
+  color: rgb(100 116 139);
+  position: relative;
 }
 
-/* Active Tab Indicator */
 .TabsTrigger[data-state="active"] {
-  border-bottom: 2px solid var(--color-primary);
-  /* Active border color */
-  color: var(--color-primary);
+  color: rgb(0 0 0);
+  border-bottom-color: rgb(0 0 0);
+  font-weight: 700;
 }
 
-/* Content Styling */
+@media (prefers-color-scheme: dark) {
+  .TabsTrigger {
+    color: rgb(148 163 184);
+  }
+  .TabsTrigger[data-state="active"] {
+    color: rgb(255 255 255);
+    border-bottom-color: rgb(255 255 255);
+    font-weight: 700;
+  }
+}
+
+.dark .TabsTrigger {
+  color: rgb(148 163 184);
+}
+
+.dark .TabsTrigger[data-state="active"] {
+  color: rgb(255 255 255);
+  border-bottom-color: rgb(255 255 255);
+  font-weight: 700;
+}
+
+.light .TabsTrigger[data-state="active"] {
+  color: rgb(0 0 0);
+  border-bottom-color: rgb(0 0 0);
+  font-weight: 700;
+}
+
 .TabsContent {
-  padding: 16px;
-  border-radius: 8px;
-  border: 1px solid var(--color-border);
-  /* Light border for the content */
-  background-color: var(--color-card);
-  font-size: 16px;
-  color: var(--color-foreground);
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  background-color: transparent;
 }
 
 /* Mobile responsiveness */
 @media (max-width: 640px) {
   .TabsList {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .TabsTrigger {
-    width: 100%;
-    text-align: left;
+    gap: 24px;
   }
 }
 
-@keyframes landingFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+/* Syntax highlighting theme switching */
+.hljs {
+  background: #f6f8fa !important;
+  color: #24292e !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .hljs {
+    background: #0d1117 !important;
+    color: #c9d1d9 !important;
   }
 }
 
-@keyframes gradientLuminosity {
-  0%,
-  100% {
-    filter: brightness(0.8);
-  }
-  50% {
-    filter: brightness(1.1);
-  }
+.dark .hljs {
+  background: #0d1117 !important;
+  color: #c9d1d9 !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  @media (min-width: 768px) {
-    .landing-fade-up {
-      animation: landingFadeUp 1s ease-in-out both;
-    }
-    .gradient-luminosity {
-      animation: gradientLuminosity 3s ease-in-out infinite;
-    }
-  }
-}
+/* Animations removed for cleaner, less distracting experience */

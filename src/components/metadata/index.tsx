@@ -8,18 +8,25 @@ const Metadata: FC<{ devto?: string; date?: string }> = ({ devto, date }) => {
   }
 
   return (
-    <aside className="sm:flex sm:flex-row gap-3 md:bg-muted px-3 py-3 rounded-md">
+    <aside className="flex flex-wrap items-center gap-3">
       {devto && (
-        <Badge className="block my-2 text-center">
-          <Link href={devto} target="_blank">
-            Read on DevTo
-          </Link>
-        </Badge>
+        <Link
+          href={devto}
+          target="_blank"
+          className="inline-flex items-center rounded-lg border-2 border-slate-900 bg-white px-3 py-1 text-sm font-semibold text-slate-900 transition-all hover:bg-slate-100 dark:border-slate-100 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-100 dark:hover:text-slate-900"
+        >
+          Read on Dev.to
+        </Link>
       )}
       {date && (
-        <Badge variant="secondary" className="block my-2 text-center">
-          Published on {new Date(date).toDateString()}
-        </Badge>
+        <span className="inline-flex items-center rounded-lg bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300">
+          Published{" "}
+          {new Date(date).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </span>
       )}
     </aside>
   );
