@@ -13,8 +13,8 @@ const AllPostsList: FC<{
       : "Browse quick notes and garden-fresh updates worth bookmarking.";
 
   return (
-    <section className="space-y-8">
-      <div className="space-y-2">
+    <section className="space-y-12">
+      <div className="space-y-3">
         <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-50">
           {title}
         </h2>
