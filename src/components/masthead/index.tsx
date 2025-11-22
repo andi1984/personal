@@ -7,8 +7,8 @@ import DarkModeToggle from "../dark-mode-toggle";
 
 const MastHead: FC = () => {
   return (
-    <div className="header flex items-center justify-center text-foreground py-8">
-      <div className="flex flex-col text-center items-center content-center justify-center p-4 max-w-xs lg:max-w-md">
+    <div className="header relative flex items-center justify-center py-8">
+      <div className="flex flex-col text-center items-center content-center justify-center p-6 max-w-xs lg:max-w-md bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm rounded-lg md:shadow-lg">
         <Link href="/">
           <h1 className="text-3xl md:text-3xl lg:text-4xl xl:text-5xl text-slate-900 dark:text-slate-100">
             Welcome to the gardening 🌱 WebDev
