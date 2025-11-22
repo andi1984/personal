@@ -7,7 +7,6 @@ import { getAllPosts } from "@/lib/get_all_posts";
 import * as Tabs from "@radix-ui/react-tabs";
 import MastHead from "@/components/masthead";
 import Link from "next/link";
-import IntroAudioPlayer from "@/components/intro-audio-player";
 
 const Page = async ({}) => {
   const api = await import("./api/follower/route");
@@ -60,9 +59,11 @@ const Page = async ({}) => {
               Hi, I&apos;m Andi
             </h2>
             <p className="text-xl leading-relaxed text-slate-700 dark:text-slate-300">
-              Senior frontend developer from South-West Germany, crafting web experiences with React, TypeScript, and CSS. When I&apos;m not writing code, you&apos;ll find me in the garden—I see the same care in growing plants as in growing great software.
+              Senior frontend developer from South-West Germany, crafting web experiences with{" "}
+              <span className="font-semibold text-slate-900 dark:text-slate-50">React</span>,{" "}
+              <span className="font-semibold text-slate-900 dark:text-slate-50">TypeScript</span>, and{" "}
+              <span className="font-semibold text-slate-900 dark:text-slate-50">CSS</span>. When I&apos;m not writing code, you&apos;ll find me in the garden—I see the same care in growing plants as in growing great software.
             </p>
-            <IntroAudioPlayer className="mx-auto w-full max-w-xl" />
           </div>
         </section>
 
