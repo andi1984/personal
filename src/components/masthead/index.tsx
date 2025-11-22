@@ -7,18 +7,11 @@ import DarkModeToggle from "../dark-mode-toggle";
 
 const MastHead: FC = () => {
   return (
-    <div className="header relative flex items-center justify-center text-foreground landing-fade-up">
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 via-emerald-400 to-indigo-600 opacity-70 gradient-luminosity"></div>
-      <div className="relative flex flex-col text-center items-center content-center justify-center transition-all ease-in-out duration-700 md:bg-muted/80 backdrop-blur-sm p-4 rounded-3xl max-w-xs lg:max-w-md ">
-        <Link href="/" className="group-hover:invisible">
-          <h1
-            className="text-3xl md:text-3xl lg:text-4xl xl:text-5xl"
-            data-aos="zoom-y-out"
-          >
-            Welcome to the{" "}
-            <span className="bg-clip-text text-transparent bg-linear-to-r   from-emerald-500 via-emerald-400 to-indigo-500">
-              gardening 🌱 WebDev
-            </span>
+    <div className="header flex items-center justify-center text-foreground py-8">
+      <div className="flex flex-col text-center items-center content-center justify-center p-4 max-w-xs lg:max-w-md">
+        <Link href="/">
+          <h1 className="text-3xl md:text-3xl lg:text-4xl xl:text-5xl text-slate-900 dark:text-slate-100">
+            Welcome to the gardening 🌱 WebDev
           </h1>
         </Link>
 

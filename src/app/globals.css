@@ -272,26 +272,26 @@ h6 {
 
 /* Base styles for blog posts with increased vertical spacing */
 .blog-post {
-  @apply mx-auto flex w-full max-w-3xl flex-col gap-6 rounded-[1.75rem] border border-emerald-100 bg-white/95 p-5 text-slate-800 shadow-md shadow-emerald-500/10 transition-colors break-words sm:p-8 md:p-10 dark:border-emerald-800/60 dark:bg-emerald-950/85 dark:text-emerald-50;
+  @apply mx-auto flex w-full max-w-3xl flex-col gap-6 p-5 text-slate-800 break-words sm:p-8 md:p-10 dark:text-slate-200;
   font-family: var(--font-sans);
   font-size: 1.0625rem;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 /* Paragraphs with attentive spacing */
 .blog-post p {
-  @apply my-5 text-base leading-relaxed text-slate-700 dark:text-emerald-50;
+  @apply my-5 text-base leading-relaxed text-slate-700 dark:text-slate-300;
 }
 
 /* Blockquotes with accent border */
 .blog-post blockquote {
-  @apply my-6 rounded-xl border-l-4 border-emerald-400/80 bg-emerald-50/90 py-4 pl-6 pr-4 text-base italic text-slate-700 dark:border-emerald-400/60 dark:bg-emerald-900/50 dark:text-emerald-50;
+  @apply my-6 border-l-4 border-slate-300 bg-slate-50 py-4 pl-6 pr-4 text-base italic text-slate-700 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300;
 }
 
 /* Unordered and Ordered Lists */
 .blog-post ul,
 .blog-post ol {
-  @apply my-5 list-inside list-disc space-y-3 pl-5 text-base leading-relaxed text-slate-700 dark:text-emerald-50;
+  @apply my-5 list-inside list-disc space-y-3 pl-5 text-base leading-relaxed text-slate-700 dark:text-slate-300;
 }
 
 .blog-post ol {
@@ -300,11 +300,11 @@ h6 {
 
 /* Code Blocks */
 .blog-post pre {
-  @apply relative my-6 overflow-x-auto rounded-xl border border-emerald-100/70 bg-slate-950 p-5 text-sm text-slate-100 shadow-inner dark:border-emerald-800/60 dark:bg-emerald-950;
+  @apply relative my-6 overflow-x-auto rounded-lg border border-slate-200 bg-slate-950 p-5 text-sm text-slate-100 dark:border-slate-700 dark:bg-slate-900;
 }
 
 .blog-post :not(pre) > code {
-  @apply rounded-md bg-slate-200 px-2 py-1 font-mono text-sm text-slate-800 dark:bg-emerald-900/70 dark:text-emerald-100;
+  @apply rounded bg-slate-100 px-2 py-1 font-mono text-sm text-slate-800 dark:bg-slate-800 dark:text-slate-200;
 }
 
 .blog-post pre code {
@@ -386,7 +386,7 @@ h6 {
 
 /* Back to Home Button Styles with WCAG AA Compliant Contrast */
 .back-to-home-btn {
-  @apply inline-flex items-center gap-2 self-start rounded-full border border-emerald-200 bg-white/95 px-4 py-2 text-sm font-semibold text-emerald-800 shadow-sm shadow-emerald-500/10 transition-transform transition-colors duration-150 ease-out hover:-translate-y-0.5 hover:border-emerald-300 hover:text-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 dark:border-emerald-700 dark:bg-emerald-950/70 dark:text-emerald-100 dark:hover:border-emerald-500;
+  @apply inline-flex items-center gap-2 self-start rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-colors duration-150 ease-out hover:bg-slate-50 hover:border-slate-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:border-slate-500;
 }
 
 /* RSS button styles adapting to color scheme */
@@ -433,12 +433,10 @@ a {
 /* Tabs List Styling */
 .TabsList {
   display: flex;
-  gap: 16px;
-  /* Adds spacing between the tabs */
-  border-bottom: 2px solid var(--color-border);
-  /* Light border under the tabs */
-  padding-bottom: 8px;
-  margin-bottom: 16px;
+  gap: 12px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0;
+  margin-bottom: 24px;
 }
 
 /* Tab Trigger Styling */
@@ -446,27 +444,26 @@ a {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 8px 12px;
-  font-size: 16px;
+  padding: 12px 16px;
+  font-size: 15px;
   font-weight: 500;
-  transition: color 0.2s ease, border-bottom-color 0.2s ease;
+  transition: color 0.15s ease;
   border-bottom: 2px solid transparent;
+  color: var(--color-muted-foreground);
 }
 
 /* Active Tab Indicator */
 .TabsTrigger[data-state="active"] {
-  border-bottom: 2px solid var(--color-primary);
-  /* Active border color */
-  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-foreground);
+  color: var(--color-foreground);
 }
 
 /* Content Styling */
 .TabsContent {
-  padding: 16px;
-  border-radius: 8px;
-  border: 1px solid var(--color-border);
-  /* Light border for the content */
-  background-color: var(--color-card);
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  background-color: transparent;
   font-size: 16px;
   color: var(--color-foreground);
 }
@@ -484,34 +481,4 @@ a {
   }
 }
 
-@keyframes landingFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes gradientLuminosity {
-  0%,
-  100% {
-    filter: brightness(0.8);
-  }
-  50% {
-    filter: brightness(1.1);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  @media (min-width: 768px) {
-    .landing-fade-up {
-      animation: landingFadeUp 1s ease-in-out both;
-    }
-    .gradient-luminosity {
-      animation: gradientLuminosity 3s ease-in-out infinite;
-    }
-  }
-}
+/* Animations removed for cleaner, less distracting experience */

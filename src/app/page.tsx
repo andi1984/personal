@@ -52,11 +52,10 @@ const Page = async ({}) => {
 
       <main className="max-w-5xl mx-auto px-4 space-y-8">
         <MastHead />
-        <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-600 via-emerald-400 to-indigo-600 dark:from-emerald-800 dark:via-emerald-600 dark:to-indigo-800 text-background p-8 shadow-lg">
-          <div className="absolute inset-0 bg-[url('/header.png')] bg-cover bg-center opacity-10"></div>
-          <div className="relative z-10 space-y-6 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold">Welcome to My Space: Where Web Development Meets Gardening</h2>
-            <p className="text-lg">
+        <section className="rounded-lg border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800 p-8">
+          <div className="space-y-6 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100">Welcome to My Space: Where Web Development Meets Gardening</h2>
+            <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto">
               Hello and thanks for visiting! I&apos;m Andi, a dedicated senior frontend developer from the beautiful South-West of Germany. I&apos;m all about creating smooth and engaging web experiences with React, JavaScript, TypeScript, and CSS. But there&apos;s more to me than just code – I&apos;m also an avid gardener, finding parallels between nurturing plants and developing robust websites.
             </p>
             <IntroAudioPlayer className="mx-auto w-full max-w-xl" />
