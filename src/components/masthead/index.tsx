@@ -10,7 +10,7 @@ const MastHead: FC = () => {
     <div className="header relative flex items-center justify-center py-8">
       <div className="flex flex-col text-center items-center content-center justify-center p-6 max-w-xs lg:max-w-md bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm rounded-lg md:shadow-lg">
         <Link href="/">
-          <h1 className="text-3xl md:text-3xl lg:text-4xl xl:text-5xl text-slate-900 dark:text-slate-100">
+          <h1 className="text-3xl md:text-3xl lg:text-4xl xl:text-5xl text-slate-900 dark:text-slate-50">
             Welcome to the gardening 🌱 WebDev
           </h1>
         </Link>

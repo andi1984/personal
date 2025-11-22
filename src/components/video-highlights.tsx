@@ -38,10 +38,10 @@ const VideoHighlights: FC<{ videos: VideoHighlight[] }> = ({ videos }) => {
   return (
     <section className="space-y-6">
       <div className="mx-auto max-w-3xl text-center sm:max-w-4xl">
-        <h2 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl">
+        <h2 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
           YouTube Highlights
         </h2>
-        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+        <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">
           Dive into the three most-watched videos from my channel. Each recap links to a full transcript so you can skim or read at your own pace before jumping to YouTube.
         </p>
       </div>
@@ -94,16 +94,16 @@ const VideoHighlights: FC<{ videos: VideoHighlight[] }> = ({ videos }) => {
 
               <div className="flex flex-1 flex-col gap-4 p-6">
                 <div className="space-y-1">
-                  <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50">
                     {title}
                   </h3>
                   {(viewsLabel || publishedLabel) && (
-                    <p className="text-xs font-medium uppercase tracking-wide text-slate-600 dark:text-slate-400">
+                    <p className="text-xs font-medium uppercase tracking-wide text-slate-600 dark:text-slate-300">
                       {[viewsLabel, publishedLabel].filter(Boolean).join(" • ")}
                     </p>
                   )}
                   {description && (
-                    <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                    <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
                       {description}
                     </p>
                   )}

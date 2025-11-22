@@ -15,10 +15,10 @@ const AllPostsList: FC<{
   return (
     <section className="space-y-6">
       <div className="mx-auto max-w-3xl text-center sm:max-w-4xl">
-        <h2 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl">
+        <h2 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
           {title}
         </h2>
-        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{leadCopy}</p>
+        <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">{leadCopy}</p>
       </div>
 
       <nav>

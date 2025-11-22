@@ -272,7 +272,7 @@ h6 {
 
 /* Base styles for blog posts with increased vertical spacing */
 .blog-post {
-  @apply mx-auto flex w-full max-w-3xl flex-col gap-6 p-5 text-slate-800 break-words sm:p-8 md:p-10 dark:text-slate-200;
+  @apply mx-auto flex w-full max-w-3xl flex-col gap-6 p-5 text-slate-900 break-words sm:p-8 md:p-10 dark:text-slate-100;
   font-family: var(--font-sans);
   font-size: 1.0625rem;
   line-height: 1.8;
@@ -280,18 +280,18 @@ h6 {
 
 /* Paragraphs with attentive spacing */
 .blog-post p {
-  @apply my-5 text-base leading-relaxed text-slate-700 dark:text-slate-300;
+  @apply my-5 text-base leading-relaxed text-slate-800 dark:text-slate-200;
 }
 
 /* Blockquotes with accent border */
 .blog-post blockquote {
-  @apply my-6 border-l-4 border-slate-300 bg-slate-50 py-4 pl-6 pr-4 text-base italic text-slate-700 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300;
+  @apply my-6 border-l-4 border-slate-400 bg-slate-50 py-4 pl-6 pr-4 text-base italic text-slate-800 dark:border-slate-500 dark:bg-slate-800/50 dark:text-slate-200;
 }
 
 /* Unordered and Ordered Lists */
 .blog-post ul,
 .blog-post ol {
-  @apply my-5 list-inside list-disc space-y-3 pl-5 text-base leading-relaxed text-slate-700 dark:text-slate-300;
+  @apply my-5 list-inside list-disc space-y-3 pl-5 text-base leading-relaxed text-slate-800 dark:text-slate-200;
 }
 
 .blog-post ol {
@@ -300,11 +300,11 @@ h6 {
 
 /* Code Blocks */
 .blog-post pre {
-  @apply relative my-6 overflow-x-auto rounded-lg border border-slate-200 bg-slate-950 p-5 text-sm text-slate-100 dark:border-slate-700 dark:bg-slate-900;
+  @apply relative my-6 overflow-x-auto rounded-lg border border-slate-300 bg-slate-950 p-5 text-sm text-slate-50 dark:border-slate-600 dark:bg-slate-950;
 }
 
 .blog-post :not(pre) > code {
-  @apply rounded bg-slate-100 px-2 py-1 font-mono text-sm text-slate-800 dark:bg-slate-800 dark:text-slate-200;
+  @apply rounded bg-slate-100 px-2 py-1 font-mono text-sm text-slate-900 dark:bg-slate-800 dark:text-slate-100;
 }
 
 .blog-post pre code {

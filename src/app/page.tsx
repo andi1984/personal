@@ -54,8 +54,8 @@ const Page = async ({}) => {
         <MastHead />
         <section className="rounded-lg border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800 p-8">
           <div className="space-y-6 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100">Hi, I&apos;m Andi</h2>
-            <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-50">Hi, I&apos;m Andi</h2>
+            <p className="text-base md:text-lg text-slate-800 dark:text-slate-200 leading-relaxed max-w-3xl mx-auto">
               Senior frontend developer from South-West Germany, crafting web experiences with React, TypeScript, and CSS. When I&apos;m not writing code, you&apos;ll find me in the garden—I see the same care in growing plants as in growing great software.
             </p>
             <IntroAudioPlayer className="mx-auto w-full max-w-xl" />
