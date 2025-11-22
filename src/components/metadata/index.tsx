@@ -13,7 +13,7 @@ const Metadata: FC<{ devto?: string; date?: string }> = ({ devto, date }) => {
         <Link
           href={devto}
           target="_blank"
-          className="inline-flex items-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
+          className="inline-flex items-center rounded-lg border-2 border-slate-900 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition-all hover:bg-slate-900 hover:text-white dark:border-slate-100 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-100 dark:hover:text-slate-900"
         >
           Read on Dev.to
         </Link>

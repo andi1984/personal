@@ -458,15 +458,15 @@ a {
   padding: 0 0 16px 0;
   font-size: 16px;
   font-weight: 500;
-  transition: color 0.2s ease;
-  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  border-bottom: 3px solid transparent;
   color: rgb(100 116 139);
   position: relative;
 }
 
 .TabsTrigger[data-state="active"] {
-  color: rgb(15 23 42);
-  border-bottom-color: rgb(15 23 42);
+  color: rgb(0 0 0);
+  border-bottom-color: rgb(0 0 0);
   font-weight: 700;
 }
 
@@ -475,8 +475,8 @@ a {
     color: rgb(148 163 184);
   }
   .TabsTrigger[data-state="active"] {
-    color: rgb(248 250 252);
-    border-bottom-color: rgb(248 250 252);
+    color: rgb(255 255 255);
+    border-bottom-color: rgb(255 255 255);
     font-weight: 700;
   }
 }
@@ -486,8 +486,8 @@ a {
 }
 
 .dark .TabsTrigger[data-state="active"] {
-  color: rgb(248 250 252);
-  border-bottom-color: rgb(248 250 252);
+  color: rgb(255 255 255);
+  border-bottom-color: rgb(255 255 255);
   font-weight: 700;
 }
 
