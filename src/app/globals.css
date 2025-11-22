@@ -275,7 +275,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Premium blog post reading experience */
 .blog-post {
-  @apply mx-auto flex w-full max-w-2xl flex-col gap-8 px-6 py-12 text-slate-900 break-words md:px-8 lg:max-w-3xl dark:text-slate-100;
+  @apply mx-auto flex w-full flex-col gap-8 text-slate-900 break-words dark:text-slate-100;
   font-family: var(--font-sans);
   font-size: 1.125rem;
   line-height: 1.8;
@@ -287,10 +287,16 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 65ch;
 }
 
-/* Elegant blockquotes */
+/* Elegant blockquotes with visual highlight */
 .blog-post blockquote {
-  @apply my-8 border-l-2 border-slate-900 bg-transparent py-2 pl-8 pr-4 text-lg italic text-slate-700 dark:border-slate-300 dark:text-slate-300;
+  @apply my-10 border-l-4 border-slate-900 bg-slate-50 py-6 pl-8 pr-6 text-lg italic text-slate-700 dark:border-slate-200 dark:bg-slate-900 dark:text-slate-300;
   font-family: var(--font-serif);
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.blog-post blockquote p {
+  margin: 0;
+  font-style: italic;
 }
 
 /* Clean lists with proper spacing */
@@ -307,29 +313,36 @@ h1, h2, h3, h4, h5, h6 {
   @apply list-decimal;
 }
 
-/* Modern code blocks */
+/* Modern code blocks with better highlighting */
 .blog-post pre {
-  @apply relative my-8 overflow-x-auto rounded-xl bg-slate-900 p-6 text-sm text-slate-50 shadow-lg dark:bg-slate-950 dark:ring-1 dark:ring-slate-800;
+  @apply relative my-8 overflow-x-auto rounded-lg border border-slate-200 bg-slate-50 p-6 text-sm leading-relaxed dark:border-slate-700 dark:bg-slate-900;
+}
+
+.blog-post pre code {
+  @apply text-slate-900 dark:text-slate-100;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
 }
 
 .blog-post :not(pre) > code {
-  @apply rounded-md bg-slate-100 px-1.5 py-0.5 font-mono text-[0.9em] text-slate-900 dark:bg-slate-800 dark:text-slate-100;
+  @apply rounded bg-slate-100 px-2 py-0.5 font-mono text-[0.95em] text-slate-900 dark:bg-slate-800 dark:text-slate-100;
+  font-weight: 500;
 }
 
 .blog-post pre code {
   @apply block bg-transparent p-0 text-inherit;
 }
 
-/* Token colouring for syntax highlighting libraries */
+/* Enhanced syntax highlighting with better colors */
 .blog-post pre code .token.comment,
 .blog-post pre code .token.prolog,
 .blog-post pre code .token.doctype,
 .blog-post pre code .token.cdata {
-  color: #94a3b8;
+  color: #64748b;
+  font-style: italic;
 }
 
 .blog-post pre code .token.punctuation {
-  color: #e2e8f0;
+  color: #475569;
 }
 
 .blog-post pre code .token.property,
@@ -337,9 +350,9 @@ h1, h2, h3, h4, h5, h6 {
 .blog-post pre code .token.boolean,
 .blog-post pre code .token.number,
 .blog-post pre code .token.constant,
-.blog-post pre code .token.symbol,
-.blog-post pre code .token.deleted {
-  color: #bae6fd;
+.blog-post pre code .token.symbol {
+  color: #0ea5e9;
+  font-weight: 500;
 }
 
 .blog-post pre code .token.selector,
@@ -348,30 +361,33 @@ h1, h2, h3, h4, h5, h6 {
 .blog-post pre code .token.char,
 .blog-post pre code .token.builtin,
 .blog-post pre code .token.inserted {
-  color: #bbf7d0;
+  color: #10b981;
 }
 
 .blog-post pre code .token.operator,
 .blog-post pre code .token.entity,
 .blog-post pre code .token.url,
 .blog-post pre code .token.variable {
-  color: #fde68a;
+  color: #f59e0b;
 }
 
 .blog-post pre code .token.atrule,
 .blog-post pre code .token.attr-value,
 .blog-post pre code .token.keyword {
-  color: #a5b4fc;
+  color: #8b5cf6;
+  font-weight: 600;
 }
 
 .blog-post pre code .token.function,
 .blog-post pre code .token.class-name {
-  color: #f9a8d4;
+  color: #ec4899;
+  font-weight: 500;
 }
 
 .blog-post pre code .token.regex,
-.blog-post pre code .token.important {
-  color: #fca5a5;
+.blog-post pre code .token.important,
+.blog-post pre code .token.deleted {
+  color: #ef4444;
 }
 
 .blog-post pre code .token.bold {
@@ -390,6 +406,47 @@ h1, h2, h3, h4, h5, h6 {
 .blog-post h5,
 .blog-post h6 {
   font-family: var(--font-serif);
+}
+
+/* Links with subtle styling */
+.blog-post a {
+  @apply text-slate-900 underline decoration-slate-400 decoration-2 underline-offset-2 transition-colors hover:decoration-slate-900 dark:text-slate-100 dark:decoration-slate-500 dark:hover:decoration-slate-200;
+  font-weight: 500;
+}
+
+/* Strong and emphasis */
+.blog-post strong {
+  @apply font-bold text-slate-900 dark:text-slate-50;
+}
+
+.blog-post em {
+  font-style: italic;
+}
+
+/* Horizontal rules */
+.blog-post hr {
+  @apply my-12 border-0 border-t border-slate-200 dark:border-slate-800;
+}
+
+/* Tables */
+.blog-post table {
+  @apply my-8 w-full border-collapse text-base;
+}
+
+.blog-post thead {
+  @apply border-b-2 border-slate-900 dark:border-slate-200;
+}
+
+.blog-post th {
+  @apply px-4 py-3 text-left font-bold text-slate-900 dark:text-slate-50;
+}
+
+.blog-post td {
+  @apply border-b border-slate-200 px-4 py-3 text-slate-700 dark:border-slate-800 dark:text-slate-300;
+}
+
+.blog-post tbody tr:last-child td {
+  border-bottom: none;
 }
 
 
