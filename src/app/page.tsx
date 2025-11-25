@@ -54,16 +54,44 @@ const Page = async ({}) => {
 
         {/* Hero Section */}
         <section className="mb-20 mt-12">
-          <div className="mx-auto max-w-3xl space-y-8 text-center">
-            <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-50 md:text-5xl">
-              Hi, I&apos;m Andi
-            </h2>
-            <p className="text-xl leading-relaxed text-slate-700 dark:text-slate-300">
-              Senior frontend developer from South-West Germany, crafting web experiences with{" "}
-              <span className="font-semibold text-slate-900 dark:text-slate-50">React</span>,{" "}
-              <span className="font-semibold text-slate-900 dark:text-slate-50">TypeScript</span>, and{" "}
-              <span className="font-semibold text-slate-900 dark:text-slate-50">CSS</span>. When I&apos;m not writing code, you&apos;ll find me in the garden—I see the same care in growing plants as in growing great software.
-            </p>
+          <div className="relative mx-auto max-w-4xl">
+            {/* Decorative gradient background */}
+            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-green-50 via-transparent to-blue-50 opacity-60 blur-3xl dark:from-green-950 dark:via-transparent dark:to-blue-950 dark:opacity-30" />
+
+            <div className="space-y-8 text-center px-6">
+              {/* Main heading with gradient text */}
+              <div className="space-y-4">
+                <div className="inline-block animate-in fade-in slide-in-from-bottom-4 duration-700">
+                  <h2 className="text-5xl font-bold tracking-tight md:text-7xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 dark:from-slate-50 dark:via-slate-200 dark:to-slate-400 bg-clip-text text-transparent">
+                    Hi, I&apos;m Andi
+                  </h2>
+                </div>
+
+                {/* Decorative underline */}
+                <div className="mx-auto h-1 w-24 rounded-full bg-gradient-to-r from-green-500 to-blue-500 animate-in fade-in duration-1000 delay-300" />
+              </div>
+
+              {/* Description with better spacing and accent highlights */}
+              <p className="text-xl md:text-2xl leading-relaxed text-slate-700 dark:text-slate-300 max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
+                Senior frontend developer from South-West Germany, crafting web experiences with{" "}
+                <span className="relative inline-block font-semibold text-slate-900 dark:text-slate-50">
+                  React
+                  <span className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-blue-500 to-cyan-500" />
+                </span>,{" "}
+                <span className="relative inline-block font-semibold text-slate-900 dark:text-slate-50">
+                  TypeScript
+                  <span className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-blue-600 to-blue-400" />
+                </span>, and{" "}
+                <span className="relative inline-block font-semibold text-slate-900 dark:text-slate-50">
+                  CSS
+                  <span className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-pink-500 to-purple-500" />
+                </span>. When I&apos;m not writing code, you&apos;ll find me in the garden—I see the same care in{" "}
+                <span className="inline-flex items-center gap-1 font-medium text-green-700 dark:text-green-400">
+                  growing plants 🌱
+                </span>{" "}
+                as in growing great software.
+              </p>
+            </div>
           </div>
         </section>
 
