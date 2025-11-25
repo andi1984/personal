@@ -1,6 +1,14 @@
+import BackToHome from "@/components/back-button";
+import MastHead from "@/components/masthead";
+
 export default async function Impressum() {
   return (
-    <>
+    <div className="container">
+      <main className="mx-auto max-w-6xl px-6 py-12 md:px-8 lg:px-12">
+        <MastHead />
+
+        <section className="mb-20 mt-12">
+          <div className="mx-auto max-w-4xl space-y-12">
       <h2>Datenschutz</h2>
       <p>
         Verantwortliche Stelle im Sinne der Datenschutzgesetze, insbesondere der
@@ -149,6 +157,14 @@ export default async function Impressum() {
         </a>
         <em>.</em>
       </p>
-    </>
+          </div>
+        </section>
+
+        {/* Back Link */}
+        <div className="mx-auto max-w-4xl">
+          <BackToHome />
+        </div>
+      </main>
+    </div>
   );
 }

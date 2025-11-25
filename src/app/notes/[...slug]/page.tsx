@@ -1,4 +1,4 @@
-import BackButton from "@/components/back-button";
+import BackToHome from "@/components/back-button";
 import DetailPageShell from "@/components/detail-page-shell";
 import Metadata from "@/components/metadata";
 import ReadingPane from "@/components/reading-pane";
@@ -35,7 +35,7 @@ export default async function Page(props: Params) {
   }
   const content = await getContentAsHTML(rawContent);
   return (
-    <DetailPageShell backSlot={<BackButton />}>
+    <DetailPageShell backSlot={<BackToHome />}>
       <ReadingPane>
         <article className="blog-post">
           <h1>{post.title}</h1>
