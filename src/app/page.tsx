@@ -2,6 +2,7 @@
 
 import AllPostsList from "@/components/list/posts";
 import SocialMediaInfluence from "@/components/influence";
+import TinyPNGShowcase from "@/components/tinypng-showcase";
 import VideoHighlights from "@/components/video-highlights";
 import { getAllPosts } from "@/lib/get_all_posts";
 import * as Tabs from "@radix-ui/react-tabs";
@@ -94,6 +95,8 @@ const Page = async ({}) => {
             </div>
           </div>
         </section>
+
+        <TinyPNGShowcase />
 
         <VideoHighlights videos={youtubeHighlights} />
 
