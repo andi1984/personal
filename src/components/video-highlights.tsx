@@ -123,25 +123,26 @@ const VideoHighlights: FC<{ videos: VideoHighlight[] }> = ({ videos }) => {
                 <div className="absolute inset-0 bg-gradient-to-br from-slate-300 to-slate-400 dark:from-slate-700 dark:to-slate-900" />
               )}
 
-              {/* Gradient overlays for text readability - stronger and theme-aware */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/60 to-slate-900/30 dark:from-black/95 dark:via-black/60 dark:to-black/30" />
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-900/40 to-transparent dark:from-black/40 dark:to-transparent" />
+              {/* Gradient overlays for text readability - theme-aware with proper contrast */}
+              {/* Light mode: light overlay with dark text */}
+              <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/70 to-white/20 dark:from-black/95 dark:via-black/60 dark:to-black/30" />
+              <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent dark:from-black/40 dark:to-transparent" />
 
               {/* Content overlay */}
               <div className="relative flex h-full flex-col justify-end p-5">
                 <div className="space-y-2">
                   {(viewsLabel || publishedLabel) && (
-                    <p className="text-xs font-medium text-white/90 drop-shadow-md">
+                    <p className="text-xs font-medium text-slate-700 drop-shadow-sm dark:text-white/90 dark:drop-shadow-md">
                       {[viewsLabel, publishedLabel].filter(Boolean).join(" • ")}
                     </p>
                   )}
 
-                  <h3 className="text-lg font-bold leading-snug text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                  <h3 className="text-lg font-bold leading-snug text-slate-900 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)] dark:text-white dark:drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                     {title}
                   </h3>
 
                   {description && (
-                    <p className="line-clamp-2 text-sm leading-relaxed text-white/95 drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]">
+                    <p className="line-clamp-2 text-sm leading-relaxed text-slate-800 drop-shadow-[0_1px_2px_rgba(255,255,255,0.6)] dark:text-white/95 dark:drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]">
                       {description}
                     </p>
                   )}
@@ -150,14 +151,14 @@ const VideoHighlights: FC<{ videos: VideoHighlight[] }> = ({ videos }) => {
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Link
                     href={`/posts/${slug}`}
-                    className="inline-flex items-center justify-center rounded-lg bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-[0_4px_12px_rgba(0,0,0,0.3)] transition-all hover:scale-105 hover:bg-slate-50 hover:shadow-[0_6px_16px_rgba(0,0,0,0.4)]"
+                    className="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_12px_rgba(0,0,0,0.2)] transition-all hover:scale-105 hover:bg-slate-800 hover:shadow-[0_6px_16px_rgba(0,0,0,0.3)] dark:bg-white dark:text-slate-900 dark:shadow-[0_4px_12px_rgba(0,0,0,0.3)] dark:hover:bg-slate-50 dark:hover:shadow-[0_6px_16px_rgba(0,0,0,0.4)]"
                   >
                     Read transcript
                   </Link>
                   {youtubeUrl && (
                     <Link
                       href={youtubeUrl}
-                      className="inline-flex items-center justify-center rounded-lg border-2 border-white/40 bg-white/15 px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_12px_rgba(0,0,0,0.3)] backdrop-blur-sm transition-all hover:scale-105 hover:border-white/60 hover:bg-white/25 hover:shadow-[0_6px_16px_rgba(0,0,0,0.4)]"
+                      className="inline-flex items-center justify-center rounded-lg border-2 border-slate-900/30 bg-slate-900/10 px-4 py-2 text-sm font-semibold text-slate-900 shadow-[0_4px_12px_rgba(0,0,0,0.15)] backdrop-blur-sm transition-all hover:scale-105 hover:border-slate-900/50 hover:bg-slate-900/20 hover:shadow-[0_6px_16px_rgba(0,0,0,0.25)] dark:border-white/40 dark:bg-white/15 dark:text-white dark:shadow-[0_4px_12px_rgba(0,0,0,0.3)] dark:hover:border-white/60 dark:hover:bg-white/25 dark:hover:shadow-[0_6px_16px_rgba(0,0,0,0.4)]"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
