@@ -4,6 +4,7 @@ import AllPostsList from "@/components/list/posts";
 import SocialMediaInfluence from "@/components/influence";
 import TinyPNGShowcase from "@/components/tinypng-showcase";
 import VideoHighlights from "@/components/video-highlights";
+import SkipToSection from "@/components/skip-to-section";
 import { getAllPosts } from "@/lib/get_all_posts";
 import * as Tabs from "@radix-ui/react-tabs";
 import MastHead from "@/components/masthead";
@@ -43,18 +44,15 @@ const Page = async ({}) => {
     .slice(0, 3);
   return (
     <>
-      <a
-        href="#posts"
-        className="absolute left-[-9999px] focus:left-0 focus:top-0 focus:z-50 focus:p-4 focus:m-4 focus:bg-background focus:text-foreground focus:border focus:border-border"
-      >
-        Skip to Main Content
-      </a>
+      <SkipToSection targetId="tools" label="Skip to Tools" />
+      <SkipToSection targetId="videos" label="Skip to Videos" />
+      <SkipToSection targetId="content" label="Skip to Articles" />
 
       <main className="mx-auto max-w-6xl px-6 py-12 md:px-8 lg:px-12">
         <MastHead />
 
         {/* Hero Section */}
-        <section className="mb-20 mt-12">
+        <section className="mb-16 mt-12">
           <div className="relative mx-auto max-w-4xl">
             {/* Decorative gradient background */}
             <div className="absolute inset-0 -z-10 bg-gradient-to-br from-green-50 via-transparent to-blue-50 opacity-60 blur-3xl dark:from-green-950 dark:via-transparent dark:to-blue-950 dark:opacity-30" />
@@ -96,12 +94,16 @@ const Page = async ({}) => {
           </div>
         </section>
 
-        <TinyPNGShowcase />
+        <div id="tools">
+          <TinyPNGShowcase />
+        </div>
 
-        <VideoHighlights videos={youtubeHighlights} />
+        <div id="videos">
+          <VideoHighlights videos={youtubeHighlights} />
+        </div>
 
         {/* Content Tabs */}
-        <section className="mt-20">
+        <section id="content" className="mt-16">
           <Tabs.Root className="TabsRoot" defaultValue="posts">
             <Tabs.List className="TabsList">
               <Tabs.Trigger value="posts" className="TabsTrigger">
