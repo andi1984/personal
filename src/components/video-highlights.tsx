@@ -106,58 +106,62 @@ const VideoHighlights: FC<{ videos: VideoHighlight[] }> = ({ videos }) => {
           return (
             <article
               key={slug || title}
-              className="group flex flex-col overflow-hidden rounded-lg border border-slate-200 bg-white transition-all duration-200 hover:shadow-lg sm:flex-row dark:border-slate-800 dark:bg-slate-900"
+              className="group relative overflow-hidden rounded-xl border border-slate-200 bg-slate-900 shadow-md transition-all duration-300 hover:shadow-2xl dark:border-slate-800"
+              style={{ aspectRatio: "16 / 9" }}
             >
-              <div className="relative w-full overflow-hidden bg-slate-100 sm:w-48 sm:flex-shrink-0 dark:bg-slate-900">
-                <div style={{ aspectRatio: "16 / 9" }} className="relative">
-                  {heroImage ? (
-                    <Image
-                      src={heroImage}
-                      alt={title || "YouTube video thumbnail"}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      sizes="(min-width: 640px) 192px, 100vw"
-                    />
-                  ) : (
-                    <div className="flex h-full items-center justify-center text-xs text-slate-600 dark:text-slate-400">
-                      No thumbnail
-                    </div>
-                  )}
-                </div>
-              </div>
+              {/* Background thumbnail */}
+              {heroImage ? (
+                <Image
+                  src={heroImage}
+                  alt=""
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  aria-hidden="true"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-700 to-slate-900" />
+              )}
 
-              <div className="flex flex-1 flex-col gap-3 p-4">
-                <div className="space-y-1.5">
-                  <h3 className="text-base font-bold leading-snug text-slate-900 dark:text-slate-50">
-                    {title}
-                  </h3>
+              {/* Gradient overlays for text readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
+              <div className="absolute inset-0 bg-gradient-to-br from-black/30 to-transparent" />
+
+              {/* Content overlay */}
+              <div className="relative flex h-full flex-col justify-end p-5">
+                <div className="space-y-2">
                   {(viewsLabel || publishedLabel) && (
-                    <p className="text-xs text-slate-600 dark:text-slate-400">
+                    <p className="text-xs font-medium text-white/80">
                       {[viewsLabel, publishedLabel].filter(Boolean).join(" • ")}
                     </p>
                   )}
+
+                  <h3 className="text-lg font-bold leading-snug text-white drop-shadow-lg">
+                    {title}
+                  </h3>
+
                   {description && (
-                    <p className="line-clamp-2 text-xs leading-relaxed text-slate-600 dark:text-slate-400">
+                    <p className="line-clamp-2 text-sm leading-relaxed text-white/90 drop-shadow-md">
                       {description}
                     </p>
                   )}
                 </div>
 
-                <div className="mt-auto flex flex-wrap gap-2 text-xs">
+                <div className="mt-4 flex flex-wrap gap-2">
                   <Link
                     href={`/posts/${slug}`}
-                    className="inline-flex items-center justify-center rounded-md bg-slate-900 px-3 py-1.5 font-medium text-white transition-colors hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
+                    className="inline-flex items-center justify-center rounded-lg bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-lg transition-all hover:scale-105 hover:bg-white/95"
                   >
                     Read transcript
                   </Link>
                   {youtubeUrl && (
                     <Link
                       href={youtubeUrl}
-                      className="inline-flex items-center justify-center rounded-md border border-slate-200 px-3 py-1.5 font-medium text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+                      className="inline-flex items-center justify-center rounded-lg border-2 border-white/30 bg-white/10 px-4 py-2 text-sm font-semibold text-white shadow-lg backdrop-blur-sm transition-all hover:scale-105 hover:border-white/50 hover:bg-white/20"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Watch
+                      Watch on YouTube
                     </Link>
                   )}
                 </div>
