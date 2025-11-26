@@ -109,7 +109,7 @@ const VideoHighlights: FC<{ videos: VideoHighlight[] }> = ({ videos }) => {
               className="group flex flex-col overflow-hidden rounded-lg border border-slate-200 bg-white transition-all duration-200 hover:shadow-lg sm:flex-row dark:border-slate-800 dark:bg-slate-900"
             >
               <div className="relative w-full overflow-hidden bg-slate-100 sm:w-48 sm:flex-shrink-0 dark:bg-slate-900">
-                <div className="aspect-video sm:h-full sm:aspect-auto">
+                <div style={{ aspectRatio: "16 / 9" }} className="relative">
                   {heroImage ? (
                     <Image
                       src={heroImage}
