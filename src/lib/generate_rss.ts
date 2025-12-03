@@ -28,24 +28,23 @@ export default async function generateRssFeed(allPosts: Items[]) {
       content: string;
       title: string;
       slug: string;
-      date: string;
+      date: string | Date;
     } =>
       typeof post.content === "string" &&
       typeof post.title === "string" &&
       typeof post.slug === "string" &&
-      typeof post.date === "string",
+      (typeof post.date === "string" || post.date instanceof Date),
   );
 
-  return Promise.all(
-    postsWithContent.map((post) =>
-      getContentAsHTML(post.content).then((html) => {
-        return feed.item({
-          title: post.title,
-          description: html,
-          url: `${site_url}/posts/${post.slug}`,
-          date: post.date,
-        });
-      }),
-    ),
-  ).then(() => feed);
+  for (const post of postsWithContent) {
+    const html = await getContentAsHTML(post.content);
+    feed.item({
+      title: post.title,
+      description: html,
+      url: `${site_url}/posts/${post.slug}`,
+      date: post.date,
+    });
+  }
+
+  return feed;
 }
