@@ -7,6 +7,10 @@ import { unstable_ViewTransition as ViewTransition } from "react";
 
 import { Items, Types } from "@/lib/types";
 
+/**
+ * Card component for displaying a blog post or note in a list.
+ * Features a modern hover effect and view transition for the title.
+ */
 const BlogPostCard: FC<{ post: Items; type: Types }> = ({ post, type }) => {
   const slug = typeof post.slug === "string" ? post.slug : "";
   const title = typeof post.title === "string" ? post.title : "";
@@ -23,6 +27,8 @@ const BlogPostCard: FC<{ post: Items; type: Types }> = ({ post, type }) => {
   };
 
   const formattedDate = date ? formatDate(date) : "";
+
+  // Unique transition name for view transitions between list and detail pages
   const transitionName = `${type}-title-${slug.replace(/\//g, "-")}`;
 
   return (

@@ -2,6 +2,10 @@ import { Items, Types } from "@/lib/types";
 import { FC } from "react";
 import BlogPostCard from "../card";
 
+/**
+ * Renders a list of blog posts or notes with a title and description.
+ * Used on the homepage to display articles and notes in separate tabs.
+ */
 const AllPostsList: FC<{
   title: string;
   posts: Items[];
