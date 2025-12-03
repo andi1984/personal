@@ -1,6 +1,7 @@
 import BackToHome from "@/components/back-button";
 import DetailPageShell from "@/components/detail-page-shell";
 import Metadata from "@/components/metadata";
+import PostTitle from "@/components/post-title";
 import ReadingPane from "@/components/reading-pane";
 import WebmentionsList from "@/components/webmentions.tsx";
 import { getContentAsHTML } from "@/lib/get-content-as-html";
@@ -38,7 +39,11 @@ export default async function Page(props: Params) {
     <DetailPageShell backSlot={<BackToHome />}>
       <ReadingPane>
         <article className="blog-post">
-          <h1>{post.title}</h1>
+          <PostTitle
+            title={post.title as string}
+            slug={params.slug.join("/")}
+            type="note"
+          />
           <Metadata {...post} />
           <div dangerouslySetInnerHTML={{ __html: content }} />
           <WebmentionsList />
