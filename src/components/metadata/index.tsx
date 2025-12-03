@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Badge } from "../ui/badge";
 import Link from "next/link";
 
-const Metadata: FC<{ devto?: string; date?: string }> = ({ devto, date }) => {
+const Metadata: FC<{ devto?: string; date?: string | Date }> = ({ devto, date }) => {
   if (!devto && !date) {
     return null;
   }
