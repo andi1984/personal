@@ -1,6 +1,6 @@
 "use client";
 
-import { unstable_ViewTransition as ViewTransition } from "react";
+import { ViewTransition } from "react";
 
 type PostTitleProps = {
   title: string;

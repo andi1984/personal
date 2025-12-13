@@ -3,7 +3,7 @@
 import React, { FC } from "react";
 import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi";
-import { unstable_ViewTransition as ViewTransition } from "react";
+import { ViewTransition } from "react";
 
 import { Items, Types } from "@/lib/types";
 
@@ -47,7 +47,10 @@ const BlogPostCard: FC<{ post: Items; type: Types }> = ({ post, type }) => {
                 {formattedDate}
               </time>
             )}
-            <span className="text-slate-300 dark:text-slate-700" aria-hidden="true">
+            <span
+              className="text-slate-300 dark:text-slate-700"
+              aria-hidden="true"
+            >
               /
             </span>
             <ViewTransition name={transitionName}>
