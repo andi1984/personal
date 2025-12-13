@@ -9,15 +9,20 @@ import {
   TableFooter,
   TableRow,
 } from "@/components/ui/table";
-const SocialMediaInfluence: FC<{
-  count: {
-    total: number;
-    youtube: number;
-    github: number;
-    devto: number;
-    mastodon: number;
-  };
-}> = ({ count }) => {
+import { cacheTag } from "next/cache";
+
+const SocialMediaInfluence: FC = async () => {
+  "use cache";
+
+  async function getFollowerCount() {
+    const api = await import("../../app/api/follower/route");
+    return api.GET();
+  }
+
+  const countResponse = await getFollowerCount();
+  cacheTag("follower-count");
+  const count = await countResponse.json();
+
   return (
     <div className="max-w-3xl mx-auto my-4">
       <div

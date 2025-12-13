@@ -11,10 +11,6 @@ import MastHead from "@/components/masthead";
 import Link from "next/link";
 
 const Page = async ({}) => {
-  const api = await import("./api/follower/route");
-  const response = await api.GET();
-  const data = await response.json();
-
   const posts = getAllPosts([
     "slug",
     "title",
@@ -140,7 +136,8 @@ const Page = async ({}) => {
                 <p className="text-lg text-slate-700 dark:text-slate-300">
                   Let&apos;s connect! Find me on these platforms:
                 </p>
-                <SocialMediaInfluence count={data} />
+
+                <SocialMediaInfluence />
               </div>
             </Tabs.Content>
           </Tabs.Root>
