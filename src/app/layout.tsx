@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script id="theme-sync" strategy="beforeInteractive">
+        <Script id="theme-sync" strategy="afterInteractive">
           {`
             (function () {
               var doc = document.documentElement;
