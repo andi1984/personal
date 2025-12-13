@@ -33,11 +33,11 @@ const Page = async ({}) => {
     .sort((postA, postB) => {
       const viewsA =
         typeof postA.youtube === "object" && postA.youtube !== null
-          ? (postA.youtube as { views?: number }).views ?? 0
+          ? ((postA.youtube as { views?: number }).views ?? 0)
           : 0;
       const viewsB =
         typeof postB.youtube === "object" && postB.youtube !== null
-          ? (postB.youtube as { views?: number }).views ?? 0
+          ? ((postB.youtube as { views?: number }).views ?? 0)
           : 0;
       return viewsB - viewsA;
     })
@@ -72,19 +72,24 @@ const Page = async ({}) => {
 
               {/* Description with better spacing and accent highlights */}
               <p className="text-xl md:text-2xl leading-relaxed text-slate-700 dark:text-slate-300 max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
-                Senior frontend developer from South-West Germany, crafting web experiences with{" "}
+                Senior frontend developer from South-West Germany, crafting web
+                experiences with{" "}
                 <span className="relative inline-block font-semibold text-slate-900 dark:text-slate-50">
                   React
                   <span className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-blue-500 to-cyan-500" />
-                </span>,{" "}
+                </span>
+                ,{" "}
                 <span className="relative inline-block font-semibold text-slate-900 dark:text-slate-50">
                   TypeScript
                   <span className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-blue-600 to-blue-400" />
-                </span>, and{" "}
+                </span>
+                , and{" "}
                 <span className="relative inline-block font-semibold text-slate-900 dark:text-slate-50">
                   CSS
                   <span className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-pink-500 to-purple-500" />
-                </span>. When I&apos;m not writing code, you&apos;ll find me in the garden—I see the same care in{" "}
+                </span>
+                . When I&apos;m not writing code, you&apos;ll find me in the
+                garden—I see the same care in{" "}
                 <span className="inline-flex items-center gap-1 font-medium text-green-700 dark:text-green-400">
                   growing plants 🌱
                 </span>{" "}
@@ -118,7 +123,11 @@ const Page = async ({}) => {
             </Tabs.List>
             <Tabs.Content value="posts" className="TabsContent">
               <section id="posts">
-                <AllPostsList title="Latest Articles" posts={posts} type="post" />
+                <AllPostsList
+                  title="Latest Articles"
+                  posts={posts}
+                  type="post"
+                />
               </section>
             </Tabs.Content>
             <Tabs.Content value="notes" className="TabsContent">

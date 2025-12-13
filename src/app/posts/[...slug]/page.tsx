@@ -1,3 +1,5 @@
+"use server";
+
 import BackToHome from "@/components/back-button";
 import DetailPageShell from "@/components/detail-page-shell";
 import Metadata from "@/components/metadata";
@@ -48,7 +50,7 @@ export default async function Page(props: Params) {
           />
           <Metadata {...post} />
           <div dangerouslySetInnerHTML={{ __html: content }} />
-          <WebmentionsList />
+          <WebmentionsList slug={`posts/${params.slug.join("/")}`} />
         </article>
       </ReadingPane>
     </DetailPageShell>
