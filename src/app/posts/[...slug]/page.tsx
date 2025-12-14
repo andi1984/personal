@@ -8,11 +8,19 @@ import ReadingPane from "@/components/reading-pane";
 import WebmentionsList from "@/components/webmentions.tsx";
 import { getContentAsHTML } from "@/lib/get-content-as-html";
 import { getPostBySlug } from "@/lib/get_post_by_slug";
+import { getPostSlugs } from "@/lib/get_post_slugs";
 
 type Params = {
   params: Promise<{ slug: string[] }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
+
+export async function generateStaticParams() {
+  const slugs = getPostSlugs();
+  return slugs.map((slug) => ({
+    slug: slug.split("/"),
+  }));
+}
 type PostType = {
   slug: string;
   title: string;

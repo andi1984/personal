@@ -1,10 +1,11 @@
+import { cache } from "react";
 import { readFileSync } from "fs";
 import matter from "gray-matter";
 import { findMarkdownFile } from "./find_md_file";
 import { Items, Types } from "./types";
 
 // Reference https://github.com/vercel/next.js/blob/canary/examples/blog-starter/lib/api.ts
-export function getPostBySlug(
+export const getPostBySlug = cache(function (
   slug: string,
   fields: string[] = [],
   type: Types = "post"
@@ -35,4 +36,4 @@ export function getPostBySlug(
   });
 
   return items;
-}
+});
