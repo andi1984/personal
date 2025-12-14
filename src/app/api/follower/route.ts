@@ -6,9 +6,7 @@ export async function GET() {
     return Response.json({ total: 0 });
   }
 
-  const res = await fetch(process.env.FOLLOWER_API_ENDPOINT, {
-    next: { revalidate: 60 * 60 }, // Revalidate every hour
-  });
+  const res = await fetch(process.env.FOLLOWER_API_ENDPOINT);
 
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.

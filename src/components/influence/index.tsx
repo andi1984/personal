@@ -13,6 +13,7 @@ import { cacheTag } from "next/cache";
 
 const SocialMediaInfluence: FC = async () => {
   "use cache";
+  cacheTag("socialcount");
 
   async function getFollowerCount() {
     const api = await import("../../app/api/follower/route");
@@ -20,7 +21,6 @@ const SocialMediaInfluence: FC = async () => {
   }
 
   const countResponse = await getFollowerCount();
-  cacheTag("follower-count");
   const count = await countResponse.json();
 
   return (
