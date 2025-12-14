@@ -62,7 +62,6 @@ export default function RootLayout({
         className={`${inter.variable} ${merriweather.variable} container font-sans`}
       >
         {children}
-        <Analytics />
       </body>
     </html>
   );
