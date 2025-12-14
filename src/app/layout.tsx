@@ -4,7 +4,6 @@ import { Inter, Merriweather } from "next/font/google";
 import "./globals.css";
 import "highlight.js/styles/github.css";
 import "highlight.js/styles/github-dark.css";
-import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const merriweather = Merriweather({
