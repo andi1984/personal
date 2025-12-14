@@ -1,5 +1,3 @@
-"use server";
-
 type API_RESPONSE = { total: number };
 export async function GET() {
   if (!process.env.FOLLOWER_API_ENDPOINT) {

@@ -1,5 +1,3 @@
-"use server";
-
 import AllPostsList from "@/components/list/posts";
 import SocialMediaInfluence from "@/components/influence";
 import TinyPNGShowcase from "@/components/tinypng-showcase";

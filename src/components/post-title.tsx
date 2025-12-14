@@ -1,5 +1,3 @@
-"use client";
-
 import { ViewTransition } from "react";
 
 type PostTitleProps = {

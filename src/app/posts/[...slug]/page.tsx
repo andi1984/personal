@@ -1,5 +1,3 @@
-"use server";
-
 import BackToHome from "@/components/back-button";
 import DetailPageShell from "@/components/detail-page-shell";
 import Metadata from "@/components/metadata";
