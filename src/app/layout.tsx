@@ -5,6 +5,9 @@ import "./globals.css";
 import "highlight.js/styles/github.css";
 import "highlight.js/styles/github-dark.css";
 
+import { AudioPlayerProvider } from "@/contexts/audio-player-context";
+import BackgroundAudioPlayer from "@/components/background-audio-player";
+
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const merriweather = Merriweather({
   subsets: ["latin"],
@@ -61,7 +64,10 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${merriweather.variable} container font-sans`}
       >
-        {children}
+        <AudioPlayerProvider>
+          {children}
+          <BackgroundAudioPlayer />
+        </AudioPlayerProvider>
       </body>
     </html>
   );
