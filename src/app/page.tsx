@@ -7,6 +7,7 @@ import { getAllPosts } from "@/lib/get_all_posts";
 import * as Tabs from "@radix-ui/react-tabs";
 import MastHead from "@/components/masthead";
 import Link from "next/link";
+import FilterLink from "@/components/filter-link";
 
 const Page = async ({}) => {
   const posts = getAllPosts([
@@ -68,20 +69,26 @@ const Page = async ({}) => {
               <p className="text-xl md:text-2xl leading-relaxed text-slate-700 dark:text-slate-300 max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
                 Senior frontend developer from South-West Germany, crafting web
                 experiences with{" "}
-                <span className="relative inline-block font-semibold text-slate-900 dark:text-slate-50">
+                <FilterLink
+                  filter="react"
+                  underlineClassName="bg-gradient-to-r from-blue-500 to-cyan-500"
+                >
                   React
-                  <span className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-blue-500 to-cyan-500" />
-                </span>
+                </FilterLink>
                 ,{" "}
-                <span className="relative inline-block font-semibold text-slate-900 dark:text-slate-50">
+                <FilterLink
+                  filter="typescript"
+                  underlineClassName="bg-gradient-to-r from-blue-600 to-blue-400"
+                >
                   TypeScript
-                  <span className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-blue-600 to-blue-400" />
-                </span>
+                </FilterLink>
                 , and{" "}
-                <span className="relative inline-block font-semibold text-slate-900 dark:text-slate-50">
+                <FilterLink
+                  filter="css"
+                  underlineClassName="bg-gradient-to-r from-pink-500 to-purple-500"
+                >
                   CSS
-                  <span className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-pink-500 to-purple-500" />
-                </span>
+                </FilterLink>
                 . When I&apos;m not writing code, you&apos;ll find me in the
                 garden—I see the same care in{" "}
                 <span className="inline-flex items-center gap-1 font-medium text-green-700 dark:text-green-400">
