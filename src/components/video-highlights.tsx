@@ -15,66 +15,36 @@ type VideoHighlight = Items & {
   };
 };
 
-const formatPublishedDate = (value?: string) => {
-  if (!value) {
-    return "";
-  }
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) {
-    return value;
-  }
-  return date.toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-};
-
 const VideoHighlights: FC<{ videos: VideoHighlight[] }> = ({ videos }) => {
   if (!videos.length) {
     return null;
   }
 
-  // Show only top 2 videos for more compact layout
   const displayVideos = videos.slice(0, 2);
 
   return (
-    <section className="mb-12 space-y-6">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div className="space-y-2">
-          <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-50">
-            Video Highlights
-          </h2>
-          <p className="text-sm text-slate-600 dark:text-slate-400">
-            Top videos with full transcripts for quick reference
-          </p>
-        </div>
-
-        {/* Channel promotion links */}
-        <div className="flex items-center gap-3 text-sm">
+    <section className="mb-12">
+      {/* Simple header */}
+      <div className="mb-6 flex items-baseline justify-between">
+        <h2 className="text-xl font-bold text-slate-900 dark:text-slate-50">
+          Video Highlights
+        </h2>
+        <div className="flex items-center gap-4">
           <Link
             href="https://www.youtube.com/@andi1984dev"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-1.5 rounded-lg border border-red-200 bg-gradient-to-r from-red-50 to-pink-50 px-3 py-1.5 font-medium text-red-700 transition-all hover:border-red-300 hover:shadow-md dark:border-red-900 dark:from-red-950 dark:to-pink-950 dark:text-red-400 dark:hover:border-red-800"
+            className="text-sm text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"
           >
-            <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-            </svg>
-            <span className="hidden sm:inline">YouTube</span>
-            <span className="transition-transform group-hover:translate-x-0.5">→</span>
+            YouTube →
           </Link>
           <Link
             href="https://www.twitch.tv/andi1984"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-1.5 rounded-lg border border-purple-200 bg-gradient-to-r from-purple-50 to-indigo-50 px-3 py-1.5 font-medium text-purple-700 transition-all hover:border-purple-300 hover:shadow-md dark:border-purple-900 dark:from-purple-950 dark:to-indigo-950 dark:text-purple-400 dark:hover:border-purple-800"
+            className="text-sm text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"
           >
-            <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
-            </svg>
-            <span className="hidden sm:inline">Twitch</span>
-            <span className="transition-transform group-hover:translate-x-0.5">→</span>
+            Twitch →
           </Link>
         </div>
       </div>
@@ -83,89 +53,66 @@ const VideoHighlights: FC<{ videos: VideoHighlight[] }> = ({ videos }) => {
         {displayVideos.map((video) => {
           const slug = typeof video.slug === "string" ? video.slug : "";
           const title = typeof video.title === "string" ? video.title : "";
-          const description =
-            typeof video.description === "string"
-              ? video.description
-              : undefined;
           const heroImage =
             typeof video.heroImage === "string" ? video.heroImage : undefined;
           const youtubeMeta =
             typeof video.youtube === "object" && video.youtube !== null
               ? (video.youtube as VideoHighlight["youtube"])
               : undefined;
-          const youtubeUrl = youtubeMeta?.url ?? (youtubeMeta?.videoId
-            ? `https://www.youtube.com/watch?v=${youtubeMeta.videoId}`
-            : undefined);
           const viewsLabel = youtubeMeta?.viewsText
             ? `${youtubeMeta.viewsText} views`
             : youtubeMeta?.views
-            ? `${youtubeMeta.views.toLocaleString()} views`
-            : undefined;
-          const publishedLabel = formatPublishedDate(youtubeMeta?.published);
+              ? `${youtubeMeta.views.toLocaleString()} views`
+              : undefined;
 
           return (
             <article
               key={slug || title}
-              className="group relative overflow-hidden rounded-xl border border-slate-300 bg-slate-100 shadow-lg transition-all duration-300 hover:shadow-2xl dark:border-slate-700 dark:bg-slate-900"
-              style={{ aspectRatio: "16 / 9" }}
+              className="group overflow-hidden rounded-xl border border-slate-200 bg-white transition-shadow hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
             >
-              {/* Background thumbnail */}
-              {heroImage ? (
-                <Image
-                  src={heroImage}
-                  alt=""
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  aria-hidden="true"
-                />
-              ) : (
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-300 to-slate-400 dark:from-slate-700 dark:to-slate-900" />
-              )}
+              {/* Thumbnail */}
+              <Link
+                href={`/posts/${slug}`}
+                className="relative block aspect-video overflow-hidden"
+              >
+                {heroImage ? (
+                  <Image
+                    src={heroImage}
+                    alt=""
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800" />
+                )}
+                {/* Play button overlay */}
+                <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/20">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
+                    <svg
+                      className="ml-0.5 h-5 w-5 text-slate-900"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </Link>
 
-              {/* Gradient overlays for text readability - theme-aware with proper contrast */}
-              {/* Light mode: light overlay with dark text */}
-              <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/70 to-white/20 dark:from-black/95 dark:via-black/60 dark:to-black/30" />
-              <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent dark:from-black/40 dark:to-transparent" />
-
-              {/* Content overlay */}
-              <div className="relative flex h-full flex-col justify-end p-5">
-                <div className="space-y-2">
-                  {(viewsLabel || publishedLabel) && (
-                    <p className="text-xs font-medium text-slate-700 drop-shadow-sm dark:text-white/90 dark:drop-shadow-md">
-                      {[viewsLabel, publishedLabel].filter(Boolean).join(" • ")}
-                    </p>
-                  )}
-
-                  <h3 className="text-lg font-bold leading-snug text-slate-900 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)] dark:text-white dark:drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+              {/* Content */}
+              <div className="p-4">
+                <Link href={`/posts/${slug}`}>
+                  <h3 className="font-semibold leading-snug text-slate-900 transition-colors hover:text-slate-600 dark:text-slate-50 dark:hover:text-slate-300">
                     {title}
                   </h3>
-
-                  {description && (
-                    <p className="line-clamp-2 text-sm leading-relaxed text-slate-800 drop-shadow-[0_1px_2px_rgba(255,255,255,0.6)] dark:text-white/95 dark:drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]">
-                      {description}
-                    </p>
-                  )}
-                </div>
-
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <Link
-                    href={`/posts/${slug}`}
-                    className="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_12px_rgba(0,0,0,0.2)] transition-all hover:scale-105 hover:bg-slate-800 hover:shadow-[0_6px_16px_rgba(0,0,0,0.3)] dark:bg-white dark:text-slate-900 dark:shadow-[0_4px_12px_rgba(0,0,0,0.3)] dark:hover:bg-slate-50 dark:hover:shadow-[0_6px_16px_rgba(0,0,0,0.4)]"
-                  >
-                    Read transcript
-                  </Link>
-                  {youtubeUrl && (
-                    <Link
-                      href={youtubeUrl}
-                      className="inline-flex items-center justify-center rounded-lg border-2 border-slate-900/30 bg-slate-900/10 px-4 py-2 text-sm font-semibold text-slate-900 shadow-[0_4px_12px_rgba(0,0,0,0.15)] backdrop-blur-sm transition-all hover:scale-105 hover:border-slate-900/50 hover:bg-slate-900/20 hover:shadow-[0_6px_16px_rgba(0,0,0,0.25)] dark:border-white/40 dark:bg-white/15 dark:text-white dark:shadow-[0_4px_12px_rgba(0,0,0,0.3)] dark:hover:border-white/60 dark:hover:bg-white/25 dark:hover:shadow-[0_6px_16px_rgba(0,0,0,0.4)]"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Watch on YouTube
-                    </Link>
-                  )}
-                </div>
+                </Link>
+                {viewsLabel && (
+                  <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                    {viewsLabel}
+                  </p>
+                )}
               </div>
             </article>
           );
