@@ -1,6 +1,12 @@
 import { Items } from "./types";
 
 /**
+ * Featured topics that should always appear in the filter list.
+ * These match the hero section links (React, TypeScript, CSS).
+ */
+export const FEATURED_TOPICS = ["react", "typescript", "css"] as const;
+
+/**
  * Extracts the primary topic from a post/note slug.
  * Topics are derived from the folder structure (first path segment).
  * E.g., "react/synthetic-blur-bubbles" -> "react"
@@ -25,12 +31,18 @@ function getTopicFromSlug(slug: string): string | null {
 
 /**
  * Extracts all unique topics from a collection of posts/notes.
- * Returns topics sorted alphabetically with their counts.
+ * Always includes featured topics (React, TypeScript, CSS) even if count is 0.
+ * Returns topics sorted with featured topics first, then alphabetically.
  */
 export function getTopicsFromPosts(
   posts: Items[],
 ): { topic: string; count: number }[] {
   const topicCounts = new Map<string, number>();
+
+  // Initialize featured topics with 0 count
+  for (const topic of FEATURED_TOPICS) {
+    topicCounts.set(topic, 0);
+  }
 
   for (const post of posts) {
     const slug = typeof post.slug === "string" ? post.slug : "";
@@ -41,10 +53,28 @@ export function getTopicsFromPosts(
     }
   }
 
-  // Convert to array and sort alphabetically
-  return Array.from(topicCounts.entries())
-    .map(([topic, count]) => ({ topic, count }))
-    .sort((a, b) => a.topic.localeCompare(b.topic));
+  // Convert to array
+  const topics = Array.from(topicCounts.entries()).map(([topic, count]) => ({
+    topic,
+    count,
+  }));
+
+  // Sort: featured topics first (in order), then others alphabetically
+  return topics.sort((a, b) => {
+    const aFeatured = FEATURED_TOPICS.indexOf(a.topic as (typeof FEATURED_TOPICS)[number]);
+    const bFeatured = FEATURED_TOPICS.indexOf(b.topic as (typeof FEATURED_TOPICS)[number]);
+
+    // Both are featured - sort by featured order
+    if (aFeatured !== -1 && bFeatured !== -1) {
+      return aFeatured - bFeatured;
+    }
+    // Only a is featured - a comes first
+    if (aFeatured !== -1) return -1;
+    // Only b is featured - b comes first
+    if (bFeatured !== -1) return 1;
+    // Neither featured - sort alphabetically
+    return a.topic.localeCompare(b.topic);
+  });
 }
 
 /**

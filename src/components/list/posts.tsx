@@ -23,7 +23,7 @@ const AllPostsList: FC<{
   const viewAllLabel = type === "post" ? "View all articles" : "View all notes";
 
   return (
-    <section className="space-y-8">
+    <section className="space-y-6">
       <div className="space-y-2">
         <h2 className="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">
           {title}
@@ -31,30 +31,29 @@ const AllPostsList: FC<{
         <p className="text-sm text-slate-500 dark:text-slate-400">{leadCopy}</p>
       </div>
 
-      <nav>
-        <ol className="space-y-1">
-          {posts.map((post) => (
-            <li key={post.slug}>
-              <BlogPostCard post={post} type={type} />
-            </li>
-          ))}
-        </ol>
-      </nav>
+      <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 overflow-hidden">
+        <nav>
+          <ol className="divide-y divide-slate-100 dark:divide-slate-800">
+            {posts.map((post) => (
+              <li key={post.slug}>
+                <BlogPostCard post={post} type={type} />
+              </li>
+            ))}
+          </ol>
+        </nav>
 
-      {showViewAll && (
-        <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
-          <Link
-            href={viewAllHref}
-            className="group inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors"
-          >
-            {viewAllLabel}
-            <FiArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
-          <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">
-            Browse with filtering options
-          </p>
-        </div>
-      )}
+        {showViewAll && (
+          <div className="px-4 py-3 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800">
+            <Link
+              href={viewAllHref}
+              className="group inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors"
+            >
+              {viewAllLabel}
+              <FiArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
+        )}
+      </div>
     </section>
   );
 };
