@@ -33,7 +33,7 @@ const BlogPostCard: FC<{ post: Items; type: Types }> = ({ post, type }) => {
     <article className="group">
       <Link
         href={`/${type}s/${slug}`}
-        className="flex items-start justify-between gap-4 rounded-lg px-4 py-4 -mx-4 transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/50 !no-underline"
+        className="flex items-start justify-between gap-4 px-4 py-4 transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/50 !no-underline"
       >
         <div className="flex-1 min-w-0 space-y-1">
           <div className="flex items-center gap-3">

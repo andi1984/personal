@@ -4,12 +4,12 @@ import TinyPNGShowcase from "@/components/tinypng-showcase";
 import VideoHighlights from "@/components/video-highlights";
 import SkipToSection from "@/components/skip-to-section";
 import { getAllPosts } from "@/lib/get_all_posts";
-import * as Tabs from "@radix-ui/react-tabs";
 import MastHead from "@/components/masthead";
 import Link from "next/link";
+import FilterLink from "@/components/filter-link";
 
 const Page = async ({}) => {
-  const posts = getAllPosts([
+  const allPosts = getAllPosts([
     "slug",
     "title",
     "date",
@@ -17,8 +17,16 @@ const Page = async ({}) => {
     "youtube",
     "heroImage",
   ]);
-  const notes = getAllPosts(["slug", "title", "date", "description"], "note");
-  const youtubeHighlights = posts
+  const allNotes = getAllPosts(
+    ["slug", "title", "date", "description"],
+    "note",
+  );
+
+  // Limit to 3 items each for the homepage
+  const posts = allPosts.slice(0, 3);
+  const notes = allNotes.slice(0, 3);
+
+  const youtubeHighlights = allPosts
     .filter((post) =>
       typeof post.youtube === "object" && post.youtube !== null
         ? (post.youtube as { videoId?: string }).videoId
@@ -36,11 +44,13 @@ const Page = async ({}) => {
       return viewsB - viewsA;
     })
     .slice(0, 3);
+
   return (
     <>
       <SkipToSection targetId="tools" label="Skip to Tools" />
       <SkipToSection targetId="videos" label="Skip to Videos" />
-      <SkipToSection targetId="content" label="Skip to Articles" />
+      <SkipToSection targetId="content" label="Skip to Content" />
+      <SkipToSection targetId="community" label="Skip to Community" />
 
       <main className="mx-auto max-w-6xl px-6 py-12 md:px-8 lg:px-12">
         <MastHead />
@@ -68,20 +78,26 @@ const Page = async ({}) => {
               <p className="text-xl md:text-2xl leading-relaxed text-slate-700 dark:text-slate-300 max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
                 Senior frontend developer from South-West Germany, crafting web
                 experiences with{" "}
-                <span className="relative inline-block font-semibold text-slate-900 dark:text-slate-50">
+                <FilterLink
+                  topic="react"
+                  underlineClassName="bg-gradient-to-r from-blue-500 to-cyan-500"
+                >
                   React
-                  <span className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-blue-500 to-cyan-500" />
-                </span>
+                </FilterLink>
                 ,{" "}
-                <span className="relative inline-block font-semibold text-slate-900 dark:text-slate-50">
+                <FilterLink
+                  topic="typescript"
+                  underlineClassName="bg-gradient-to-r from-blue-600 to-blue-400"
+                >
                   TypeScript
-                  <span className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-blue-600 to-blue-400" />
-                </span>
+                </FilterLink>
                 , and{" "}
-                <span className="relative inline-block font-semibold text-slate-900 dark:text-slate-50">
+                <FilterLink
+                  topic="css"
+                  underlineClassName="bg-gradient-to-r from-pink-500 to-purple-500"
+                >
                   CSS
-                  <span className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-pink-500 to-purple-500" />
-                </span>
+                </FilterLink>
                 . When I&apos;m not writing code, you&apos;ll find me in the
                 garden—I see the same care in{" "}
                 <span className="inline-flex items-center gap-1 font-medium text-green-700 dark:text-green-400">
@@ -101,44 +117,34 @@ const Page = async ({}) => {
           <VideoHighlights videos={youtubeHighlights} />
         </div>
 
-        {/* Content Tabs */}
-        <section id="content" className="mt-16">
-          <Tabs.Root className="TabsRoot" defaultValue="posts">
-            <Tabs.List className="TabsList">
-              <Tabs.Trigger value="posts" className="TabsTrigger">
-                Articles
-              </Tabs.Trigger>
-              <Tabs.Trigger value="notes" className="TabsTrigger">
-                Notes
-              </Tabs.Trigger>
-              <Tabs.Trigger value="community" className="TabsTrigger">
-                Community
-              </Tabs.Trigger>
-            </Tabs.List>
-            <Tabs.Content value="posts" className="TabsContent">
-              <section id="posts">
-                <AllPostsList
-                  title="Latest Articles"
-                  posts={posts}
-                  type="post"
-                />
-              </section>
-            </Tabs.Content>
-            <Tabs.Content value="notes" className="TabsContent">
-              <section id="notes">
-                <AllPostsList title="Quick Notes" posts={notes} type="note" />
-              </section>
-            </Tabs.Content>
-            <Tabs.Content value="community" className="TabsContent">
-              <div className="space-y-6">
-                <p className="text-lg text-slate-700 dark:text-slate-300">
-                  Let&apos;s connect! Find me on these platforms:
-                </p>
+        {/* Content Section - Articles and Notes */}
+        <section id="content" className="mt-16 space-y-12">
+          <div className="grid gap-12 md:grid-cols-2">
+            {/* Latest Articles */}
+            <section id="posts">
+              <AllPostsList title="Latest Articles" posts={posts} type="post" />
+            </section>
 
-                <SocialMediaInfluence />
-              </div>
-            </Tabs.Content>
-          </Tabs.Root>
+            {/* Quick Notes */}
+            <section id="notes">
+              <AllPostsList title="Quick Notes" posts={notes} type="note" />
+            </section>
+          </div>
+        </section>
+
+        {/* Community Section */}
+        <section id="community" className="mt-16">
+          <div className="space-y-6">
+            <div className="space-y-2">
+              <h2 className="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">
+                Community
+              </h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                Let&apos;s connect! Find me on these platforms:
+              </p>
+            </div>
+            <SocialMediaInfluence />
+          </div>
         </section>
       </main>
       <footer>
