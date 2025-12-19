@@ -79,21 +79,21 @@ const Page = async ({}) => {
                 Senior frontend developer from South-West Germany, crafting web
                 experiences with{" "}
                 <FilterLink
-                  filter="react"
+                  topic="react"
                   underlineClassName="bg-gradient-to-r from-blue-500 to-cyan-500"
                 >
                   React
                 </FilterLink>
                 ,{" "}
                 <FilterLink
-                  filter="typescript"
+                  topic="typescript"
                   underlineClassName="bg-gradient-to-r from-blue-600 to-blue-400"
                 >
                   TypeScript
                 </FilterLink>
                 , and{" "}
                 <FilterLink
-                  filter="css"
+                  topic="css"
                   underlineClassName="bg-gradient-to-r from-pink-500 to-purple-500"
                 >
                   CSS

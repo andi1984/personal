@@ -12,57 +12,39 @@ interface TopicFilterProps {
 /**
  * Multi-select topic filter component.
  * Allows users to filter posts/notes by one or more topics.
- * Filter state is stored in URL search params for shareability.
- * Supports both legacy ?filter= and new ?topic= params.
+ * Uses ?topic= URL param which supports multiple values.
  */
 const TopicFilter: FC<TopicFilterProps> = ({ topics }) => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
 
-  // Get currently selected topics from URL (support both legacy and new params)
-  const legacyFilter = searchParams.get("filter");
-  const topicParams = searchParams.getAll("topic");
-
-  // Combine legacy filter with topic params for display
-  const selectedTopics = legacyFilter
-    ? [legacyFilter, ...topicParams.filter((t) => t !== legacyFilter)]
-    : topicParams;
+  const selectedTopics = searchParams.getAll("topic");
 
   const toggleTopic = useCallback(
     (topic: string) => {
       const params = new URLSearchParams(searchParams.toString());
 
-      // Remove old 'filter' param if it exists (migration from old system)
-      params.delete("filter");
-
-      // Get current topics without legacy filter
-      const currentTopics = legacyFilter
-        ? [legacyFilter, ...topicParams.filter((t) => t !== legacyFilter)]
-        : topicParams;
-
-      if (currentTopics.includes(topic)) {
+      if (selectedTopics.includes(topic)) {
         // Remove this topic
         params.delete("topic");
-        currentTopics
+        selectedTopics
           .filter((t) => t !== topic)
           .forEach((t) => params.append("topic", t));
       } else {
-        // Add this topic (also migrate any legacy filter to topic params)
-        params.delete("topic");
-        [...currentTopics, topic].forEach((t) => params.append("topic", t));
+        // Add this topic
+        params.append("topic", topic);
       }
 
       const newUrl = params.toString() ? `${pathname}?${params}` : pathname;
       router.push(newUrl, { scroll: false });
     },
-    [searchParams, router, pathname, legacyFilter, topicParams],
+    [searchParams, router, pathname, selectedTopics],
   );
 
   const clearAll = useCallback(() => {
     const params = new URLSearchParams(searchParams.toString());
     params.delete("topic");
-    params.delete("filter");
     const newUrl = params.toString() ? `${pathname}?${params}` : pathname;
     router.push(newUrl, { scroll: false });
   }, [searchParams, router, pathname]);

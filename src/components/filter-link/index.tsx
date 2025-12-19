@@ -1,29 +1,28 @@
 import { FC, ReactNode } from "react";
 import Link from "next/link";
-import { FilterTerm } from "@/hooks/use-filter";
 
 interface FilterLinkProps {
-  filter: Exclude<FilterTerm, null>;
+  topic: string;
   children: ReactNode;
   className?: string;
   underlineClassName?: string;
 }
 
 /**
- * A link component that navigates to /posts with a filter applied.
+ * A link component that navigates to /posts with a topic filter applied.
  * Used in the hero section to make technology names clickable.
  */
 const FilterLink: FC<FilterLinkProps> = ({
-  filter,
+  topic,
   children,
   className = "",
   underlineClassName = "",
 }) => {
   return (
     <Link
-      href={`/posts?filter=${filter}`}
+      href={`/posts?topic=${topic}`}
       className={`relative inline-block font-semibold text-slate-900 dark:text-slate-50 transition-opacity hover:opacity-80 cursor-pointer group ${className}`}
-      title={`View ${filter} articles`}
+      title={`View ${topic} articles`}
     >
       {children}
       <span

@@ -15,21 +15,20 @@ interface FilterablePostListProps {
 
 /**
  * Client component that renders a filterable list of posts or notes.
- * Uses URL search params for filter state management.
- * Supports both legacy single filter and multi-topic selection.
+ * Uses ?topic= URL param for filter state management.
  */
 const FilterablePostList: FC<FilterablePostListProps> = ({
   title,
   posts,
   type,
-  topics,
+  topics: availableTopics,
 }) => {
-  const { activeFilters, isFiltered } = useFilter();
+  const { topics: selectedTopics, isFiltered } = useFilter();
 
   const filteredPosts = useMemo(() => {
-    if (activeFilters.length === 0) return posts;
-    return posts.filter((post) => matchesFilter(post, activeFilters));
-  }, [posts, activeFilters]);
+    if (selectedTopics.length === 0) return posts;
+    return posts.filter((post) => matchesFilter(post, selectedTopics));
+  }, [posts, selectedTopics]);
 
   const leadCopy =
     type === "post"
@@ -45,13 +44,13 @@ const FilterablePostList: FC<FilterablePostListProps> = ({
         <p className="text-sm text-slate-500 dark:text-slate-400">{leadCopy}</p>
       </div>
 
-      <TopicFilter topics={topics} />
+      <TopicFilter topics={availableTopics} />
 
       {filteredPosts.length === 0 ? (
         <div className="rounded-lg border border-dashed border-slate-200 dark:border-slate-700 p-8 text-center">
           <p className="text-slate-500 dark:text-slate-400">
             No {type === "post" ? "articles" : "notes"} found matching the
-            selected {activeFilters.length > 1 ? "topics" : "topic"}.
+            selected {selectedTopics.length > 1 ? "topics" : "topic"}.
           </p>
         </div>
       ) : (
