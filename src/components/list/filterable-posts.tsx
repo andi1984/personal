@@ -3,24 +3,33 @@
 import { FC, useMemo } from "react";
 import { Items, Types } from "@/lib/types";
 import BlogPostCard from "../card";
-import FilterIndicator from "../filter-indicator";
+import TopicFilter from "../topic-filter";
 import { useFilter, matchesFilter } from "@/hooks/use-filter";
+
+interface FilterablePostListProps {
+  title: string;
+  posts: Items[];
+  type: Types;
+  topics: { topic: string; count: number }[];
+}
 
 /**
  * Client component that renders a filterable list of posts or notes.
  * Uses URL search params for filter state management.
+ * Supports both legacy single filter and multi-topic selection.
  */
-const FilterablePostList: FC<{
-  title: string;
-  posts: Items[];
-  type: Types;
-}> = ({ title, posts, type }) => {
-  const { filter, isFiltered } = useFilter();
+const FilterablePostList: FC<FilterablePostListProps> = ({
+  title,
+  posts,
+  type,
+  topics,
+}) => {
+  const { activeFilters, isFiltered } = useFilter();
 
   const filteredPosts = useMemo(() => {
-    if (!filter) return posts;
-    return posts.filter((post) => matchesFilter(post, filter));
-  }, [posts, filter]);
+    if (activeFilters.length === 0) return posts;
+    return posts.filter((post) => matchesFilter(post, activeFilters));
+  }, [posts, activeFilters]);
 
   const leadCopy =
     type === "post"
@@ -36,16 +45,13 @@ const FilterablePostList: FC<{
         <p className="text-sm text-slate-500 dark:text-slate-400">{leadCopy}</p>
       </div>
 
-      <FilterIndicator />
+      <TopicFilter topics={topics} />
 
       {filteredPosts.length === 0 ? (
         <div className="rounded-lg border border-dashed border-slate-200 dark:border-slate-700 p-8 text-center">
           <p className="text-slate-500 dark:text-slate-400">
-            No {type === "post" ? "articles" : "notes"} found matching{" "}
-            <strong className="text-slate-700 dark:text-slate-300">
-              {filter}
-            </strong>
-            .
+            No {type === "post" ? "articles" : "notes"} found matching the
+            selected {activeFilters.length > 1 ? "topics" : "topic"}.
           </p>
         </div>
       ) : (

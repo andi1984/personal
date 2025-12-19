@@ -1,7 +1,9 @@
 import { Suspense } from "react";
 import { getAllPosts } from "@/lib/get_all_posts";
+import { getTopicsFromPosts } from "@/lib/get_topics";
 import FilterablePostList from "@/components/list/filterable-posts";
 import MastHead from "@/components/masthead";
+import Breadcrumb from "@/components/breadcrumb";
 import Link from "next/link";
 
 export const metadata = {
@@ -15,12 +17,18 @@ const NotesPage = async () => {
     "note",
   );
 
+  const topics = getTopicsFromPosts(notes);
+
   return (
     <>
       <main className="mx-auto max-w-6xl px-6 py-12 md:px-8 lg:px-12">
         <MastHead />
 
-        <section className="mt-12">
+        <div className="mt-8">
+          <Breadcrumb current="Notes" />
+        </div>
+
+        <section className="mt-8">
           <Suspense
             fallback={
               <div className="space-y-8">
@@ -31,7 +39,12 @@ const NotesPage = async () => {
               </div>
             }
           >
-            <FilterablePostList title="All Notes" posts={notes} type="note" />
+            <FilterablePostList
+              title="All Notes"
+              posts={notes}
+              type="note"
+              topics={topics}
+            />
           </Suspense>
         </section>
       </main>
