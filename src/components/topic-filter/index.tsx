@@ -13,14 +13,21 @@ interface TopicFilterProps {
  * Multi-select topic filter component.
  * Allows users to filter posts/notes by one or more topics.
  * Filter state is stored in URL search params for shareability.
+ * Supports both legacy ?filter= and new ?topic= params.
  */
 const TopicFilter: FC<TopicFilterProps> = ({ topics }) => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
 
-  // Get currently selected topics from URL
-  const selectedTopics = searchParams.getAll("topic");
+  // Get currently selected topics from URL (support both legacy and new params)
+  const legacyFilter = searchParams.get("filter");
+  const topicParams = searchParams.getAll("topic");
+
+  // Combine legacy filter with topic params for display
+  const selectedTopics = legacyFilter
+    ? [legacyFilter, ...topicParams.filter((t) => t !== legacyFilter)]
+    : topicParams;
 
   const toggleTopic = useCallback(
     (topic: string) => {
@@ -29,21 +36,27 @@ const TopicFilter: FC<TopicFilterProps> = ({ topics }) => {
       // Remove old 'filter' param if it exists (migration from old system)
       params.delete("filter");
 
-      if (selectedTopics.includes(topic)) {
+      // Get current topics without legacy filter
+      const currentTopics = legacyFilter
+        ? [legacyFilter, ...topicParams.filter((t) => t !== legacyFilter)]
+        : topicParams;
+
+      if (currentTopics.includes(topic)) {
         // Remove this topic
         params.delete("topic");
-        selectedTopics
+        currentTopics
           .filter((t) => t !== topic)
           .forEach((t) => params.append("topic", t));
       } else {
-        // Add this topic
-        params.append("topic", topic);
+        // Add this topic (also migrate any legacy filter to topic params)
+        params.delete("topic");
+        [...currentTopics, topic].forEach((t) => params.append("topic", t));
       }
 
       const newUrl = params.toString() ? `${pathname}?${params}` : pathname;
       router.push(newUrl, { scroll: false });
     },
-    [searchParams, router, pathname, selectedTopics],
+    [searchParams, router, pathname, legacyFilter, topicParams],
   );
 
   const clearAll = useCallback(() => {
@@ -56,13 +69,15 @@ const TopicFilter: FC<TopicFilterProps> = ({ topics }) => {
 
   if (topics.length === 0) return null;
 
+  const hasActiveFilters = selectedTopics.length > 0;
+
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
         <h3 className="text-sm font-medium text-slate-700 dark:text-slate-300">
           Filter by topic
         </h3>
-        {selectedTopics.length > 0 && (
+        {hasActiveFilters && (
           <button
             onClick={clearAll}
             className="flex items-center gap-1 text-xs text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors"
@@ -102,7 +117,7 @@ const TopicFilter: FC<TopicFilterProps> = ({ topics }) => {
         })}
       </div>
 
-      {selectedTopics.length > 0 && (
+      {hasActiveFilters && (
         <p className="text-xs text-slate-500 dark:text-slate-400">
           {selectedTopics.length} topic{selectedTopics.length > 1 ? "s" : ""}{" "}
           selected
