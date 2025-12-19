@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter, Merriweather } from "next/font/google";
 import "./globals.css";
+import "./holiday.css"; // HOLIDAY: Remove this line after Jan 5
 import "highlight.js/styles/github.css";
 import "highlight.js/styles/github-dark.css";
 
 import { AudioPlayerProvider } from "@/contexts/audio-player-context";
 import BackgroundAudioPlayer from "@/components/background-audio-player";
+import { HolidayWrapper } from "@/components/holiday"; // HOLIDAY: Remove this import after Jan 5
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const merriweather = Merriweather({
@@ -64,10 +66,15 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${merriweather.variable} container font-sans`}
       >
-        <AudioPlayerProvider>
-          {children}
-          <BackgroundAudioPlayer />
-        </AudioPlayerProvider>
+        <HolidayWrapper>
+          {" "}
+          {/* HOLIDAY: Remove this wrapper after Jan 5 */}
+          <AudioPlayerProvider>
+            {children}
+            <BackgroundAudioPlayer />
+          </AudioPlayerProvider>
+        </HolidayWrapper>{" "}
+        {/* HOLIDAY: Remove this closing tag after Jan 5 */}
       </body>
     </html>
   );

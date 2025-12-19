@@ -1,0 +1,71 @@
+/**
+ * Holiday theme styles
+ * HOLIDAY: Delete this file after January 5
+ */
+
+/* Holiday theme CSS variables for light and dark modes */
+@layer base {
+  .holiday-active {
+    /* Christmas colors - light mode */
+    --holiday-primary: 220 38% 45%; /* Deep blue */
+    --holiday-secondary: 356 75% 53%; /* Festive red */
+    --holiday-accent: 142 76% 36%; /* Pine green */
+    --holiday-gold: 48 89% 55%; /* Gold accent */
+    --holiday-bg-gradient-from: 142 76% 96%;
+    --holiday-bg-gradient-to: 220 38% 96%;
+  }
+
+  .holiday-active.dark {
+    /* Christmas colors - dark mode */
+    --holiday-primary: 220 38% 65%;
+    --holiday-secondary: 356 75% 63%;
+    --holiday-accent: 142 76% 56%;
+    --holiday-gold: 48 89% 65%;
+    --holiday-bg-gradient-from: 142 76% 10%;
+    --holiday-bg-gradient-to: 220 38% 10%;
+  }
+}
+
+/* Subtle sparkle animation for interactive elements */
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.holiday-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* Gentle snowfall effect - very subtle */
+@keyframes snowfall {
+  0% {
+    transform: translateY(-10px) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+.holiday-snow {
+  position: fixed;
+  top: -10px;
+  color: hsl(var(--holiday-primary) / 0.6);
+  pointer-events: none;
+  z-index: 1;
+  animation: snowfall linear infinite;
+}
