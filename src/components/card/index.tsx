@@ -33,42 +33,41 @@ const BlogPostCard: FC<{ post: Items; type: Types }> = ({ post, type }) => {
     <article className="group">
       <Link
         href={`/${type}s/${slug}`}
-        className="flex items-start justify-between gap-4 px-4 py-4 transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/50 !no-underline"
+        className="grid grid-cols-[1fr_auto] gap-x-4 gap-y-2 px-5 py-5 transition-all hover:bg-slate-50/80 dark:hover:bg-slate-800/30 !no-underline border-l-2 border-transparent hover:border-l-slate-300 dark:hover:border-l-slate-600 hover:shadow-sm"
       >
-        <div className="flex-1 min-w-0 space-y-1">
-          <div className="flex items-center gap-3">
-            {date && (
-              <time
-                dateTime={date}
-                className="shrink-0 text-xs font-medium text-slate-400 dark:text-slate-500 tabular-nums"
-              >
-                {formattedDate}
-              </time>
-            )}
-            <span
-              className="text-slate-300 dark:text-slate-700"
-              aria-hidden="true"
-            >
-              /
-            </span>
-            <ViewTransition name={transitionName}>
-              <h3 className="text-base font-medium text-slate-900 dark:text-slate-100 truncate group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors">
-                {title}
-              </h3>
-            </ViewTransition>
-          </div>
+        {/* Date - spans full width on mobile, first row on desktop */}
+        {date && (
+          <time
+            dateTime={date}
+            className="col-span-2 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 tabular-nums"
+          >
+            {formattedDate}
+          </time>
+        )}
 
+        {/* Title - wraps naturally, no truncation */}
+        <div className="col-span-1 min-w-0">
+          <ViewTransition name={transitionName}>
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">
+              {title}
+            </h3>
+          </ViewTransition>
+
+          {/* Description */}
           {description && (
-            <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">
+            <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400 line-clamp-2">
               {description}
             </p>
           )}
         </div>
 
-        <FiArrowRight
-          className="mt-1 h-4 w-4 shrink-0 text-slate-300 transition-all group-hover:text-slate-500 group-hover:translate-x-1 dark:text-slate-600 dark:group-hover:text-slate-400"
-          aria-hidden="true"
-        />
+        {/* Arrow icon - positioned on the right */}
+        <div className="flex items-start pt-1">
+          <FiArrowRight
+            className="h-5 w-5 shrink-0 text-slate-300 transition-all group-hover:text-blue-500 group-hover:translate-x-1 group-hover:scale-110 dark:text-slate-600 dark:group-hover:text-blue-400"
+            aria-hidden="true"
+          />
+        </div>
       </Link>
     </article>
   );
