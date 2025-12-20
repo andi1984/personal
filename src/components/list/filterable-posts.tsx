@@ -37,38 +37,42 @@ const FilterablePostList: FC<FilterablePostListProps> = ({
 
   return (
     <section className="space-y-6">
-      <div className="space-y-2">
-        <h2 className="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">
+      <div className="space-y-3">
+        <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-50">
           {title}
         </h2>
-        <p className="text-sm text-slate-500 dark:text-slate-400">{leadCopy}</p>
+        <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+          {leadCopy}
+        </p>
       </div>
 
       <TopicFilter topics={availableTopics} />
 
       {filteredPosts.length === 0 ? (
-        <div className="rounded-lg border border-dashed border-slate-200 dark:border-slate-700 p-8 text-center">
-          <p className="text-slate-500 dark:text-slate-400">
+        <div className="rounded-2xl border border-dashed border-slate-200 dark:border-slate-700 p-12 text-center">
+          <p className="text-slate-600 dark:text-slate-400">
             No {type === "post" ? "articles" : "notes"} found matching the
             selected {selectedTopics.length > 1 ? "topics" : "topic"}.
           </p>
         </div>
       ) : (
-        <nav>
-          <ol className="space-y-1">
-            {filteredPosts.map((post) => (
-              <li key={post.slug}>
-                <BlogPostCard post={post} type={type} />
-              </li>
-            ))}
-          </ol>
+        <div>
+          <nav className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 overflow-hidden shadow-sm">
+            <ol className="divide-y divide-slate-100 dark:divide-slate-800">
+              {filteredPosts.map((post) => (
+                <li key={post.slug}>
+                  <BlogPostCard post={post} type={type} />
+                </li>
+              ))}
+            </ol>
+          </nav>
           {isFiltered && (
-            <p className="mt-4 text-sm text-slate-400 dark:text-slate-500">
+            <p className="mt-4 text-sm font-medium text-slate-500 dark:text-slate-400">
               Showing {filteredPosts.length} of {posts.length}{" "}
               {type === "post" ? "articles" : "notes"}
             </p>
           )}
-        </nav>
+        </div>
       )}
     </section>
   );
