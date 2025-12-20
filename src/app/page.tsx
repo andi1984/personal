@@ -133,18 +133,16 @@ const Page = async ({}) => {
         </section>
 
         {/* Community Section */}
-        <section id="community" className="mt-16">
-          <div className="space-y-6">
-            <div className="space-y-2">
-              <h2 className="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">
-                Community
-              </h2>
-              <p className="text-sm text-slate-500 dark:text-slate-400">
-                Let&apos;s connect! Find me on these platforms:
-              </p>
-            </div>
-            <SocialMediaInfluence />
-          </div>
+        <section
+          id="community"
+          className="mt-16"
+          aria-labelledby="community-heading"
+        >
+          {/* Accessible heading for screen readers */}
+          <h2 id="community-heading" className="sr-only">
+            Community and Social Media
+          </h2>
+          <SocialMediaInfluence />
         </section>
       </main>
       <footer>
