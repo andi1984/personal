@@ -1,6 +1,6 @@
 import { Items, Types } from "@/lib/types";
 import { FC } from "react";
-import Link from "next/link";
+import { Link } from "@tanstack/react-router";
 import { FiArrowRight } from "react-icons/fi";
 import BlogPostCard from "../card";
 
@@ -47,7 +47,7 @@ const AllPostsList: FC<{
         {showViewAll && (
           <div className="px-5 py-4 bg-gradient-to-r from-slate-50 via-white to-slate-50 dark:from-slate-800/50 dark:via-slate-900/30 dark:to-slate-800/50 border-t border-slate-200 dark:border-slate-800">
             <Link
-              href={viewAllHref}
+              to={viewAllHref}
               className="group inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-all"
             >
               {viewAllLabel}

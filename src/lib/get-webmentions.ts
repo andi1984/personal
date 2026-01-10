@@ -34,9 +34,7 @@ export async function getWebmentions(
     const targetUrl = `https://www.andi1984.dev/${pathname}/`;
     const apiUrl = `https://webmention.io/api/mentions.jf2?target=${encodeURIComponent(targetUrl)}`;
 
-    const res = await fetch(apiUrl, {
-      next: { revalidate: 60 * 60 }, // Revalidate every hour
-    });
+    const res = await fetch(apiUrl);
 
     if (!res.ok) {
       console.error("Failed to fetch webmentions:", res.statusText);

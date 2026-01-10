@@ -1,7 +1,5 @@
-"use client";
-
 import { FC, useCallback } from "react";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { useSearch, useNavigate, useLocation } from "@tanstack/react-router";
 import { FiCheck, FiX } from "react-icons/fi";
 import { formatTopicName } from "@/lib/get_topics";
 
@@ -9,47 +7,57 @@ interface TopicFilterProps {
   topics: { topic: string; count: number }[];
 }
 
+type SearchParams = {
+  topic?: string | string[];
+};
+
 /**
  * Multi-select topic filter component.
  * Allows users to filter posts/notes by one or more topics.
  * Uses ?topic= URL param which supports multiple values.
  */
-const TopicFilter: FC<TopicFilterProps> = ({ topics }) => {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const pathname = usePathname();
+const TopicFilter: FC<TopicFilterProps> = ({ topics: availableTopics }) => {
+  const search = useSearch({ strict: false }) as SearchParams;
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const selectedTopics = searchParams.getAll("topic");
+  // Normalize topic to always be an array
+  const selectedTopics = Array.isArray(search.topic)
+    ? search.topic
+    : search.topic
+      ? [search.topic]
+      : [];
 
   const toggleTopic = useCallback(
     (topic: string) => {
-      const params = new URLSearchParams(searchParams.toString());
+      let newTopics: string[];
 
       if (selectedTopics.includes(topic)) {
         // Remove this topic
-        params.delete("topic");
-        selectedTopics
-          .filter((t) => t !== topic)
-          .forEach((t) => params.append("topic", t));
+        newTopics = selectedTopics.filter((t) => t !== topic);
       } else {
         // Add this topic
-        params.append("topic", topic);
+        newTopics = [...selectedTopics, topic];
       }
 
-      const newUrl = params.toString() ? `${pathname}?${params}` : pathname;
-      router.push(newUrl, { scroll: false });
+      navigate({
+        to: location.pathname,
+        search: newTopics.length > 0 ? { topic: newTopics } : {},
+        replace: true,
+      });
     },
-    [searchParams, router, pathname, selectedTopics],
+    [selectedTopics, navigate, location.pathname]
   );
 
   const clearAll = useCallback(() => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.delete("topic");
-    const newUrl = params.toString() ? `${pathname}?${params}` : pathname;
-    router.push(newUrl, { scroll: false });
-  }, [searchParams, router, pathname]);
+    navigate({
+      to: location.pathname,
+      search: {},
+      replace: true,
+    });
+  }, [navigate, location.pathname]);
 
-  if (topics.length === 0) return null;
+  if (availableTopics.length === 0) return null;
 
   const hasActiveFilters = selectedTopics.length > 0;
 
@@ -71,7 +79,7 @@ const TopicFilter: FC<TopicFilterProps> = ({ topics }) => {
       </div>
 
       <div className="flex flex-wrap gap-2">
-        {topics.map(({ topic, count }) => {
+        {availableTopics.map(({ topic, count }) => {
           const isSelected = selectedTopics.includes(topic);
           return (
             <button

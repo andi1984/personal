@@ -1,5 +1,3 @@
-"use client";
-
 import { FC, useMemo } from "react";
 import { Items, Types } from "@/lib/types";
 import BlogPostCard from "../card";

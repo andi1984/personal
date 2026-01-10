@@ -1,7 +1,9 @@
-"use client";
-
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { useSearch, useNavigate, useLocation } from "@tanstack/react-router";
 import { useCallback } from "react";
+
+type SearchParams = {
+  topic?: string | string[];
+};
 
 /**
  * Hook for managing post/note filtering via URL search params.
@@ -9,18 +11,24 @@ import { useCallback } from "react";
  * Filter state is stored in the URL for shareability.
  */
 export function useFilter() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const pathname = usePathname();
+  const search = useSearch({ strict: false }) as SearchParams;
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const topics = searchParams.getAll("topic");
+  // Normalize topic to always be an array
+  const topics = Array.isArray(search.topic)
+    ? search.topic
+    : search.topic
+      ? [search.topic]
+      : [];
 
   const clearFilter = useCallback(() => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.delete("topic");
-    const newUrl = params.toString() ? `${pathname}?${params}` : pathname;
-    router.push(newUrl, { scroll: false });
-  }, [searchParams, router, pathname]);
+    navigate({
+      to: location.pathname,
+      search: {},
+      replace: true,
+    });
+  }, [navigate, location.pathname]);
 
   return {
     topics,
@@ -35,7 +43,7 @@ export function useFilter() {
  */
 export function matchesFilter(
   item: { slug?: string; title?: string; description?: string; content?: string },
-  topics: string[],
+  topics: string[]
 ): boolean {
   if (topics.length === 0) return true;
 

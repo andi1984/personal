@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import Link from "next/link";
+import { Link } from "@tanstack/react-router";
 
 interface FilterLinkProps {
   topic: string;
@@ -20,7 +20,8 @@ const FilterLink: FC<FilterLinkProps> = ({
 }) => {
   return (
     <Link
-      href={`/posts?topic=${topic}`}
+      to="/posts"
+      search={{ topic }}
       className={`relative inline-block font-semibold text-slate-900 dark:text-slate-50 transition-opacity hover:opacity-80 cursor-pointer group ${className}`}
       title={`View ${topic} articles`}
     >

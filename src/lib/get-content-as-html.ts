@@ -1,6 +1,5 @@
-import { cache } from "react";
 import markdownToHtml from "./markdown_to_html";
 
-export const getContentAsHTML = cache(async function (content: string) {
+export async function getContentAsHTML(content: string): Promise<string> {
   return await markdownToHtml(content);
-});
+}

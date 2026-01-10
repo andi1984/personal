@@ -1,19 +1,18 @@
-import { cache } from "react";
 import { readFileSync } from "fs";
 import matter from "gray-matter";
 import { findMarkdownFile } from "./find_md_file";
 import { Items, Types } from "./types";
 
 // Reference https://github.com/vercel/next.js/blob/canary/examples/blog-starter/lib/api.ts
-export const getPostBySlug = cache(function (
+export function getPostBySlug(
   slug: string,
   fields: string[] = [],
   type: Types = "post"
-) {
+): Items {
   const realSlug = slug.replace(/\.md$/, "");
   const fullPath = findMarkdownFile(slug, type);
   if (!fullPath) {
-    throw new Error(`Could not find markdown for ${slug}`);
+    return {};
   }
   const fileContents = readFileSync(fullPath, "utf8");
   const matterData = matter(fileContents);
@@ -36,4 +35,4 @@ export const getPostBySlug = cache(function (
   });
 
   return items;
-});
+}

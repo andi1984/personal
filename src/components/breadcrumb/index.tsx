@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Link from "next/link";
+import { Link } from "@tanstack/react-router";
 import { FiHome, FiChevronRight } from "react-icons/fi";
 
 interface BreadcrumbProps {
@@ -18,7 +18,7 @@ const Breadcrumb: FC<BreadcrumbProps> = ({ current }) => {
       className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400"
     >
       <Link
-        href="/"
+        to="/"
         className="flex items-center gap-1 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
       >
         <FiHome className="h-4 w-4" />

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { FC } from "react";
 
 import { TableCell, TableRow } from "@/components/ui/table";
@@ -36,10 +35,10 @@ const Summand: FC<{
       <TableCell>
         {url ? (
           <Button className="p-0 underline" asChild variant="link">
-            <Link href={url} target="_blank">
+            <a href={url} target="_blank" rel="noopener noreferrer">
               <Icon className="mr-1 fill-current" />
               {platform}
-            </Link>
+            </a>
           </Button>
         ) : (
           platform

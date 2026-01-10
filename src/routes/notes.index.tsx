@@ -1,27 +1,37 @@
 import { Suspense } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/react-start";
 import { getAllPosts } from "@/lib/get_all_posts";
 import { getTopicsFromPosts } from "@/lib/get_topics";
 import FilterablePostList from "@/components/list/filterable-posts";
 import MastHead from "@/components/masthead";
 import Breadcrumb from "@/components/breadcrumb";
-import Link from "next/link";
 
-export const metadata = {
-  title: "Articles | Gardening WebDev",
-  description:
-    "Long-form pieces on web development, tooling, and the craft of building for the web.",
-};
+const getNotesData = createServerFn().handler(async () => {
+  const notes = getAllPosts(
+    ["slug", "title", "date", "description", "content"],
+    "note"
+  );
+  const topics = getTopicsFromPosts(notes);
+  return { notes, topics };
+});
 
-const PostsPage = async () => {
-  const posts = getAllPosts([
-    "slug",
-    "title",
-    "date",
-    "description",
-    "content",
-  ]);
+export const Route = createFileRoute("/notes/")({
+  head: () => ({
+    meta: [
+      { title: "Notes | Gardening WebDev" },
+      {
+        name: "description",
+        content: "Quick notes, discoveries, and garden-fresh updates.",
+      },
+    ],
+  }),
+  loader: () => getNotesData(),
+  component: NotesPage,
+});
 
-  const topics = getTopicsFromPosts(posts);
+function NotesPage() {
+  const { notes, topics } = Route.useLoaderData();
 
   return (
     <>
@@ -29,7 +39,7 @@ const PostsPage = async () => {
         <MastHead />
 
         <div className="mt-8">
-          <Breadcrumb current="Articles" />
+          <Breadcrumb current="Notes" />
         </div>
 
         <section className="mt-8">
@@ -44,19 +54,17 @@ const PostsPage = async () => {
             }
           >
             <FilterablePostList
-              title="All Articles"
-              posts={posts}
-              type="post"
+              title="All Notes"
+              posts={notes}
+              type="note"
               topics={topics}
             />
           </Suspense>
         </section>
       </main>
       <footer className="mx-auto max-w-6xl px-6 py-8 md:px-8 lg:px-12">
-        <Link href="/impressum">Imprint & Privacy statement</Link>
+        <Link to="/impressum">Imprint & Privacy statement</Link>
       </footer>
     </>
   );
-};
-
-export default PostsPage;
+}

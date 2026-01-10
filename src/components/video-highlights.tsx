@@ -1,5 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@tanstack/react-router";
 import { FC } from "react";
 
 import { Items } from "@/lib/types";
@@ -30,22 +29,22 @@ const VideoHighlights: FC<{ videos: VideoHighlight[] }> = ({ videos }) => {
           Video Highlights
         </h2>
         <div className="flex items-center gap-4">
-          <Link
+          <a
             href="https://www.youtube.com/@andi1984dev"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"
           >
             YouTube →
-          </Link>
-          <Link
+          </a>
+          <a
             href="https://www.twitch.tv/andi1984"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"
           >
             Twitch →
-          </Link>
+          </a>
         </div>
       </div>
 
@@ -72,16 +71,14 @@ const VideoHighlights: FC<{ videos: VideoHighlight[] }> = ({ videos }) => {
             >
               {/* Thumbnail */}
               <Link
-                href={`/posts/${slug}`}
+                to={`/posts/${slug}`}
                 className="relative block aspect-video overflow-hidden"
               >
                 {heroImage ? (
-                  <Image
+                  <img
                     src={heroImage}
                     alt=""
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     aria-hidden="true"
                   />
                 ) : (
@@ -103,7 +100,7 @@ const VideoHighlights: FC<{ videos: VideoHighlight[] }> = ({ videos }) => {
 
               {/* Content */}
               <div className="p-4">
-                <Link href={`/posts/${slug}`}>
+                <Link to={`/posts/${slug}`}>
                   <h3 className="font-semibold leading-snug text-slate-900 transition-colors hover:text-slate-600 dark:text-slate-50 dark:hover:text-slate-300">
                     {title}
                   </h3>
