@@ -4,15 +4,13 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { FaSquareRss } from "react-icons/fa6";
 import DarkModeToggle from "../dark-mode-toggle";
-import { HolidayIcon, HolidayBanner } from "../holiday"; // HOLIDAY: Remove this import after Jan 5
 
 const MastHead: FC = () => {
   return (
     <header className="relative mb-8 flex items-center justify-between py-6">
-      <HolidayBanner /> {/* HOLIDAY: Remove this line after Jan 5 */}
       <Link href="/" className="group flex items-center gap-3">
         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-900 text-2xl transition-transform group-hover:scale-105 dark:bg-slate-100">
-          <HolidayIcon /> {/* HOLIDAY: Replace with 🌱 after Jan 5 */}
+          🌱
         </div>
         <div className="hidden md:block">
           <div className="text-lg font-bold text-slate-900 dark:text-slate-50">
