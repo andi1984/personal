@@ -1,16 +1,16 @@
 import React from "react";
 import { FC } from "react";
 import { Button } from "../ui/button";
-import Link from "next/link";
+import { Link } from "@tanstack/react-router";
 import { FaSquareRss } from "react-icons/fa6";
 import DarkModeToggle from "../dark-mode-toggle";
 
 const MastHead: FC = () => {
   return (
     <header className="relative mb-8 flex items-center justify-between py-6">
-      <Link href="/" className="group flex items-center gap-3">
+      <Link to="/" className="group flex items-center gap-3">
         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-900 text-2xl transition-transform group-hover:scale-105 dark:bg-slate-100">
-          🌱
+          <span aria-hidden="true">&#127793;</span>
         </div>
         <div className="hidden md:block">
           <div className="text-lg font-bold text-slate-900 dark:text-slate-50">
@@ -23,13 +23,13 @@ const MastHead: FC = () => {
       </Link>
 
       <nav className="flex items-center gap-3">
-        <Link href="/rss.xml">
+        <Link to="/rss">
           <Button className="rss-button flex items-center gap-2 rounded-lg bg-orange-50 px-3 py-2 text-sm font-medium text-orange-700 transition-colors hover:bg-orange-100 dark:bg-orange-950 dark:text-orange-300 dark:hover:bg-orange-900">
             <FaSquareRss className="h-4 w-4" />
             <span className="hidden sm:inline">RSS</span>
           </Button>
         </Link>
-        <Link target="_blank" href="/about">
+        <Link to="/about" target="_blank">
           <Button className="rounded-lg bg-slate-100 px-3 py-2 text-sm font-medium text-slate-900 transition-colors hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700">
             About
           </Button>

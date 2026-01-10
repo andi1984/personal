@@ -1,13 +1,12 @@
 import React, { FC } from "react";
-import Link from "next/link";
+import { Link } from "@tanstack/react-router";
 import { FiArrowRight } from "react-icons/fi";
-import { ViewTransition } from "react";
 
 import { Items, Types } from "@/lib/types";
 
 /**
  * Card component for displaying a blog post or note in a list.
- * Features a modern hover effect and view transition for the title.
+ * Features a modern hover effect.
  */
 const BlogPostCard: FC<{ post: Items; type: Types }> = ({ post, type }) => {
   const slug = typeof post.slug === "string" ? post.slug : "";
@@ -26,13 +25,12 @@ const BlogPostCard: FC<{ post: Items; type: Types }> = ({ post, type }) => {
 
   const formattedDate = date ? formatDate(date) : "";
 
-  // Unique transition name for view transitions between list and detail pages
-  const transitionName = `${type}-title-${slug.replace(/\//g, "-")}`;
+  const href = type === "post" ? `/posts/${slug}` : `/notes/${slug}`;
 
   return (
     <article className="group">
       <Link
-        href={`/${type}s/${slug}`}
+        to={href}
         className="grid grid-cols-[1fr_auto] gap-x-4 gap-y-2 px-5 py-5 transition-all hover:bg-slate-50/80 dark:hover:bg-slate-800/30 !no-underline border-l-2 border-transparent hover:border-l-slate-300 dark:hover:border-l-slate-600 hover:shadow-sm"
       >
         {/* Date - spans full width on mobile, first row on desktop */}
@@ -47,11 +45,9 @@ const BlogPostCard: FC<{ post: Items; type: Types }> = ({ post, type }) => {
 
         {/* Title - wraps naturally, no truncation */}
         <div className="col-span-1 min-w-0">
-          <ViewTransition name={transitionName}>
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">
-              {title}
-            </h3>
-          </ViewTransition>
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">
+            {title}
+          </h3>
 
           {/* Description */}
           {description && (

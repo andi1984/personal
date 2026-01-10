@@ -1,3 +1,5 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/react-start";
 import AllPostsList from "@/components/list/posts";
 import SocialMediaInfluence from "@/components/influence";
 import TinyPNGShowcase from "@/components/tinypng-showcase";
@@ -5,10 +7,9 @@ import VideoHighlights from "@/components/video-highlights";
 import SkipToSection from "@/components/skip-to-section";
 import { getAllPosts } from "@/lib/get_all_posts";
 import MastHead from "@/components/masthead";
-import Link from "next/link";
 import FilterLink from "@/components/filter-link";
 
-const Page = async ({}) => {
+const getHomeData = createServerFn().handler(async () => {
   const allPosts = getAllPosts([
     "slug",
     "title",
@@ -19,7 +20,7 @@ const Page = async ({}) => {
   ]);
   const allNotes = getAllPosts(
     ["slug", "title", "date", "description"],
-    "note",
+    "note"
   );
 
   // Limit to 3 items each for the homepage
@@ -30,7 +31,7 @@ const Page = async ({}) => {
     .filter((post) =>
       typeof post.youtube === "object" && post.youtube !== null
         ? (post.youtube as { videoId?: string }).videoId
-        : false,
+        : false
     )
     .sort((postA, postB) => {
       const viewsA =
@@ -44,6 +45,20 @@ const Page = async ({}) => {
       return viewsB - viewsA;
     })
     .slice(0, 3);
+
+  return { posts, notes, youtubeHighlights };
+});
+
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [{ title: "Andi1984" }],
+  }),
+  loader: () => getHomeData(),
+  component: HomePage,
+});
+
+function HomePage() {
+  const { posts, notes, youtubeHighlights } = Route.useLoaderData();
 
   return (
     <>
@@ -101,7 +116,7 @@ const Page = async ({}) => {
                 . When I&apos;m not writing code, you&apos;ll find me in the
                 garden—I see the same care in{" "}
                 <span className="inline-flex items-center gap-1 font-medium text-green-700 dark:text-green-400">
-                  growing plants 🌱
+                  growing plants
                 </span>{" "}
                 as in growing great software.
               </p>
@@ -146,10 +161,8 @@ const Page = async ({}) => {
         </section>
       </main>
       <footer>
-        <Link href="/impressum">Imprint & Privacy statement</Link>
+        <Link to="/impressum">Imprint & Privacy statement</Link>
       </footer>
     </>
   );
-};
-
-export default Page;
+}

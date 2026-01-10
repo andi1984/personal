@@ -1,10 +1,20 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import BackToHome from "@/components/back-button";
 import MastHead from "@/components/masthead";
-import Link from "next/link";
 
-export default async function Impressum() {
+export const Route = createFileRoute("/about")({
+  head: () => ({
+    meta: [
+      { title: "About | Gardening WebDev" },
+      { name: "description", content: "About Andreas Sander - Frontend Developer" },
+    ],
+  }),
+  component: AboutPage,
+});
+
+function AboutPage() {
   return (
     <div className="container">
       <main className="mx-auto max-w-6xl px-6 py-12 md:px-8 lg:px-12">
@@ -34,14 +44,15 @@ export default async function Impressum() {
                   </div>
 
                   <div>
-                    <Link
+                    <a
                       target="_blank"
                       href="https://www.linkedin.com/in/andi1984/"
+                      rel="noreferrer"
                     >
                       <Button className="rounded-lg bg-slate-900 px-6 py-3 text-base font-medium text-white transition-all duration-200 hover:bg-slate-800 hover:shadow-lg dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white">
                         Contact Me
                       </Button>
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>

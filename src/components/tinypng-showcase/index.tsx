@@ -1,5 +1,3 @@
-import Link from "next/link";
-import Image from "next/image";
 import { SiGithub } from "react-icons/si";
 
 const TinyPNGShowcase = () => {
@@ -35,13 +33,12 @@ const TinyPNGShowcase = () => {
                 <div className="relative">
                   {/* Icon container with official VSCode logo */}
                   <div className="relative flex h-20 w-20 items-center justify-center rounded-xl bg-white p-3 shadow-md transition-transform duration-300 group-hover:scale-105 dark:bg-slate-800">
-                    <Image
+                    <img
                       src="/vscode.svg"
                       alt="Visual Studio Code"
                       width={64}
                       height={64}
                       className="h-full w-full"
-                      priority
                     />
                   </div>
                 </div>
@@ -58,27 +55,27 @@ const TinyPNGShowcase = () => {
                     My VSCode extension for image compression.{" "}
                     <span className="font-medium">Powered by TinyPNG</span>{" "}
                     (with permission from{" "}
-                    <Link
+                    <a
                       href="https://tinypng.com"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-600 hover:underline dark:text-blue-400"
                     >
                       tinyjpg.com
-                    </Link>
+                    </a>
                     ).
                   </p>
                 </div>
 
                 {/* CTAs */}
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-                  <Link
+                  <a
                     href="https://marketplace.visualstudio.com/items?itemName=andi1984.tinypng"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group/btn inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/30"
                   >
-                    <Image
+                    <img
                       src="/vscode.svg"
                       alt="VS Code"
                       width={16}
@@ -86,9 +83,9 @@ const TinyPNGShowcase = () => {
                       className="h-4 w-4 brightness-0 invert transition-transform group-hover/btn:scale-110"
                     />
                     <span>VS Marketplace</span>
-                  </Link>
+                  </a>
 
-                  <Link
+                  <a
                     href="https://github.com/andi1984/vscode-tinypng"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -96,7 +93,7 @@ const TinyPNGShowcase = () => {
                   >
                     <SiGithub className="h-4 w-4 transition-transform group-hover/btn:scale-110" />
                     <span>GitHub</span>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

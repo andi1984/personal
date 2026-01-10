@@ -1,6 +1,4 @@
 import { FC } from "react";
-import Link from "next/link";
-import { cacheTag } from "next/cache";
 import { FaMastodon, FaYoutube, FaDev, FaGithub } from "react-icons/fa";
 import { HiSparkles, HiHeart } from "react-icons/hi2";
 import Number from "./number.client";
@@ -54,28 +52,27 @@ const platforms: SocialPlatform[] = [
   },
 ];
 
-const SocialMediaInfluence: FC = async () => {
-  "use cache";
-  cacheTag("socialcount");
+interface SocialMediaInfluenceProps {
+  count?: {
+    devto?: number;
+    mastodon?: number;
+    youtube?: number;
+    github?: number;
+    total?: number;
+  };
+}
 
-  async function getFollowerCount() {
-    const api = await import("../../app/api/follower/route");
-    return api.GET();
-  }
-
-  const countResponse = await getFollowerCount();
-  const count = await countResponse.json();
-
+const SocialMediaInfluence: FC<SocialMediaInfluenceProps> = ({ count = {} }) => {
   const getCount = (platform: string): number => {
     switch (platform.toLowerCase()) {
       case "dev.to":
-        return count.devto;
+        return count.devto ?? 0;
       case "mastodon":
-        return count.mastodon;
+        return count.mastodon ?? 0;
       case "youtube":
-        return count.youtube;
+        return count.youtube ?? 0;
       case "github":
-        return count.github;
+        return count.github ?? 0;
       default:
         return 0;
     }
@@ -130,7 +127,7 @@ const SocialMediaInfluence: FC = async () => {
             const Icon = platform.icon;
             const platformCount = getCount(platform.name);
             return (
-              <Link
+              <a
                 key={platform.name}
                 href={platform.url}
                 target="_blank"
@@ -160,7 +157,7 @@ const SocialMediaInfluence: FC = async () => {
 
                 {/* Hover indicator */}
                 <div className="absolute bottom-3 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-300 group-hover:w-12" />
-              </Link>
+              </a>
             );
           })}
         </nav>
@@ -173,7 +170,7 @@ const SocialMediaInfluence: FC = async () => {
             </div>
             <div>
               <div className="text-2xl font-bold tabular-nums text-slate-900 dark:text-slate-100">
-                <Number n={count.total} />
+                <Number n={count.total ?? 0} />
               </div>
               <div className="text-sm text-slate-600 dark:text-slate-400">
                 amazing followers across the web

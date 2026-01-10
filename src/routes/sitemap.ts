@@ -1,3 +1,4 @@
+import { createFileRoute } from "@tanstack/react-router";
 import { getAllPosts } from "@/lib/get_all_posts";
 import { Items } from "@/lib/types";
 
@@ -30,21 +31,28 @@ function generateSiteMap(posts: Items[], notes: Items[]) {
    </urlset>
  `;
 }
-export async function GET() {
-  const posts = getAllPosts([
-    "slug",
-    "title",
-    "date",
-    "description",
-    "content",
-  ]);
-  const notes = getAllPosts(
-    ["slug", "title", "date", "description", "content"],
-    "note",
-  );
-  const feed = generateSiteMap(posts, notes);
-  return new Response(feed, {
-    status: 200,
-    headers: { "Content-Type": "application/xml; charset=utf-8" },
-  });
-}
+
+export const Route = createFileRoute("/sitemap")({
+  server: {
+    handlers: {
+      GET: async () => {
+        const posts = getAllPosts([
+          "slug",
+          "title",
+          "date",
+          "description",
+          "content",
+        ]);
+        const notes = getAllPosts(
+          ["slug", "title", "date", "description", "content"],
+          "note"
+        );
+        const feed = generateSiteMap(posts, notes);
+        return new Response(feed, {
+          status: 200,
+          headers: { "Content-Type": "application/xml; charset=utf-8" },
+        });
+      },
+    },
+  },
+});
