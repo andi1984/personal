@@ -9,9 +9,10 @@ import ReadingPane from "@/components/reading-pane";
 import WebmentionsList from "@/components/webmentions.tsx";
 import { getContentAsHTML } from "@/lib/get-content-as-html";
 import { getPostBySlug } from "@/lib/get_post_by_slug";
+import { Items } from "@/lib/types";
 
 const getPostData = createServerFn()
-  .validator((data: { slug: string }) => data)
+  .inputValidator((data: { slug: string }) => data)
   .handler(async ({ data }) => {
     const post = getPostBySlug(data.slug, [
       "title",
@@ -30,7 +31,10 @@ const getPostData = createServerFn()
       throw new Error("Post content is missing");
     }
     const content = await getContentAsHTML(rawContent);
-    return { post, content };
+    return { post: post as Items & Record<string, {}>, content } as {
+      post: Items & Record<string, {}>;
+      content: string;
+    };
   });
 
 export const Route = createFileRoute("/posts/$")({
@@ -55,11 +59,7 @@ function PostPage() {
     <DetailPageShell backSlot={<BackToHome />}>
       <ReadingPane>
         <article className="blog-post">
-          <PostTitle
-            title={post.title as string}
-            slug={slug}
-            type="post"
-          />
+          <PostTitle title={post.title as string} slug={slug} type="post" />
           <Metadata {...post} />
           <div dangerouslySetInnerHTML={{ __html: content }} />
           <Suspense fallback={null}>

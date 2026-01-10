@@ -9,14 +9,15 @@ import ReadingPane from "@/components/reading-pane";
 import WebmentionsList from "@/components/webmentions.tsx";
 import { getContentAsHTML } from "@/lib/get-content-as-html";
 import { getPostBySlug } from "@/lib/get_post_by_slug";
+import { Items } from "@/lib/types";
 
 const getNoteData = createServerFn()
-  .validator((data: { slug: string }) => data)
+  .inputValidator((data: { slug: string }) => data)
   .handler(async ({ data }) => {
     const post = getPostBySlug(
       data.slug,
       ["title", "slug", "content", "date", "devto"],
-      "note"
+      "note",
     );
 
     if (!post.title) {
@@ -28,7 +29,10 @@ const getNoteData = createServerFn()
       throw new Error("Note content is missing");
     }
     const content = await getContentAsHTML(rawContent);
-    return { post, content };
+    return { post: post as Items & Record<string, {}>, content } as {
+      post: Items & Record<string, {}>;
+      content: string;
+    };
   });
 
 export const Route = createFileRoute("/notes/$")({
@@ -53,11 +57,7 @@ function NotePage() {
     <DetailPageShell backSlot={<BackToHome />}>
       <ReadingPane>
         <article className="blog-post">
-          <PostTitle
-            title={post.title as string}
-            slug={slug}
-            type="note"
-          />
+          <PostTitle title={post.title as string} slug={slug} type="note" />
           <Metadata {...post} />
           <div dangerouslySetInnerHTML={{ __html: content }} />
           <Suspense fallback={null}>
