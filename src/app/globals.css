@@ -417,8 +417,16 @@ h1, h2, h3, h4, h5, h6 {
 /* First paragraph - greeting style */
 .blog-post .letter p:first-child {
   @apply mt-1;
-  font-style: italic;
   color: #5c4a3d;
+}
+
+/* First line - large greeting like "Dear..." */
+.blog-post .letter p:first-child::first-line {
+  font-family: var(--font-handwritten);
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #3d3028;
 }
 
 .blog-post .letter p:last-child {
@@ -489,6 +497,10 @@ h1, h2, h3, h4, h5, h6 {
     color: #94a3b8;
   }
 
+  .blog-post .letter p:first-child::first-line {
+    color: #d4e4f8;
+  }
+
   .blog-post .letter h1,
   .blog-post .letter h2,
   .blog-post .letter h3,
@@ -530,6 +542,10 @@ h1, h2, h3, h4, h5, h6 {
   color: #94a3b8;
 }
 
+.dark .blog-post .letter p:first-child::first-line {
+  color: #d4e4f8;
+}
+
 .dark .blog-post .letter h1,
 .dark .blog-post .letter h2,
 .dark .blog-post .letter h3,
@@ -557,6 +573,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .light .blog-post .letter p:first-child {
   color: #5c4a3d;
+}
+
+.light .blog-post .letter p:first-child::first-line {
+  color: #3d3028;
 }
 
 .light .blog-post .letter h1,
