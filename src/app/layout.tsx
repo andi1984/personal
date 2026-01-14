@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter, Merriweather } from "next/font/google";
+import { Inter, Merriweather, Caveat } from "next/font/google";
 import "./globals.css";
 import "highlight.js/styles/github.css";
 import "highlight.js/styles/github-dark.css";
@@ -13,6 +13,11 @@ const merriweather = Merriweather({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-serif",
+});
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-handwritten",
 });
 
 export const metadata: Metadata = {
@@ -62,7 +67,7 @@ export default function RootLayout({
         <meta name="fediverse:creator" content="@andi1984@toot.cafe" />
       </head>
       <body
-        className={`${inter.variable} ${merriweather.variable} container font-sans`}
+        className={`${inter.variable} ${merriweather.variable} ${caveat.variable} container font-sans`}
       >
         <AudioPlayerProvider>
           {children}

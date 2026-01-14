@@ -119,6 +119,7 @@
     --radius: 0.5rem;
     --font-sans: Inter, system-ui, sans-serif;
     --font-serif: Merriweather, Georgia, serif;
+    --font-handwritten: Caveat, "Segoe Script", "Bradley Hand", cursive;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -356,11 +357,13 @@ h1, h2, h3, h4, h5, h6 {
 /* Letter format - premium personal letter styling with AHA effect */
 .blog-post .letter {
   @apply my-12 rounded-sm;
-  padding: 3rem 2.5rem 4rem;
+  padding: 2.5rem 2rem 3.5rem;
+  padding-bottom: 4.5rem; /* Extra space for wax seal */
   background:
     linear-gradient(180deg, rgba(255,252,245,0) 0%, rgba(245,235,220,0.3) 100%),
     linear-gradient(135deg, #fffcf5 0%, #f8f4eb 50%, #f5f0e6 100%);
   border: none;
+  border-left: 3px solid rgba(180, 60, 60, 0.2);
   box-shadow:
     0 1px 1px rgba(0, 0, 0, 0.02),
     0 2px 4px rgba(0, 0, 0, 0.02),
@@ -374,7 +377,7 @@ h1, h2, h3, h4, h5, h6 {
   overflow: visible;
 }
 
-/* Elegant paper texture with subtle lines */
+/* Subtle paper texture - no lines, just grain */
 .blog-post .letter::before {
   content: "";
   position: absolute;
@@ -382,97 +385,58 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 31px,
-      rgba(180, 160, 140, 0.15) 31px,
-      rgba(180, 160, 140, 0.15) 32px
-    );
-  background-position: 0 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
   pointer-events: none;
   border-radius: inherit;
 }
 
-/* Decorative header flourish */
+/* Decorative header flourish - subtle swash */
 .blog-post .letter::after {
-  content: "✦ ✦ ✦";
+  content: "~ ~ ~";
   position: absolute;
-  top: 1.25rem;
+  top: 0.75rem;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 0.625rem;
-  letter-spacing: 0.75em;
-  color: rgba(139, 90, 43, 0.25);
-  font-family: serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.5em;
+  color: rgba(139, 90, 43, 0.2);
+  font-family: var(--font-handwritten);
 }
 
-/* Wax seal decoration */
-.blog-post .letter-seal {
-  position: absolute;
-  bottom: -1rem;
-  right: 2rem;
-  width: 4rem;
-  height: 4rem;
-  z-index: 10;
+/* Wax seal - positioned inside the letter at bottom right */
+.blog-post .letter > *:last-child {
+  position: relative;
 }
 
-/* CSS-only wax seal using the letter element itself */
 .blog-post .letter > *:last-child::after {
   content: "";
   position: absolute;
-  bottom: -2.5rem;
-  right: 1rem;
-  width: 3.5rem;
-  height: 3.5rem;
+  bottom: -2rem;
+  right: 0;
+  width: 3rem;
+  height: 3rem;
   background:
-    radial-gradient(circle at 35% 35%, #d44 0%, #b22 30%, #8b1a1a 70%, #6b1010 100%);
+    radial-gradient(circle at 30% 30%, #e55 0%, #c33 25%, #a22 50%, #811 75%, #611 100%);
   border-radius: 50%;
   box-shadow:
-    inset -2px -2px 6px rgba(0, 0, 0, 0.3),
-    inset 2px 2px 6px rgba(255, 200, 200, 0.2),
-    0 3px 8px rgba(0, 0, 0, 0.25),
-    0 1px 3px rgba(0, 0, 0, 0.15);
-  transform: rotate(12deg);
+    inset -3px -3px 8px rgba(0, 0, 0, 0.35),
+    inset 2px 2px 4px rgba(255, 180, 180, 0.25),
+    0 2px 6px rgba(0, 0, 0, 0.2);
+  transform: rotate(8deg);
 }
 
-/* Seal emblem/pattern */
+/* Seal emblem - centered envelope icon */
 .blog-post .letter > *:last-child::before {
   content: "✉";
   position: absolute;
-  bottom: -1.75rem;
-  right: 1.75rem;
-  font-size: 1.25rem;
-  color: rgba(255, 220, 220, 0.6);
+  bottom: -1.4rem;
+  right: 0.7rem;
+  font-size: 1rem;
+  color: rgba(255, 230, 230, 0.7);
   z-index: 11;
-  transform: rotate(12deg);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-/* Paper corner fold effect */
-.blog-post .letter-fold {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 2.5rem 2.5rem 0;
-  border-color: transparent #e8e0d0 transparent transparent;
-  filter: drop-shadow(-1px 1px 1px rgba(0, 0, 0, 0.08));
-}
-
-/* Fold shadow/depth using box decoration */
-.blog-post .letter > p:first-child::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 2.5rem;
-  height: 2.5rem;
-  background: linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.04) 50%);
-  pointer-events: none;
+  transform: rotate(8deg);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 .blog-post .letter > * {
@@ -480,49 +444,66 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .blog-post .letter p {
-  @apply text-slate-800 my-5;
+  @apply text-slate-700 my-4;
   font-family: var(--font-serif);
-  font-size: 1.1rem;
-  line-height: 2;
+  font-size: 1.05rem;
+  line-height: 1.9;
   max-width: none;
-  text-indent: 0;
 }
 
-/* First paragraph - no indent, greeting style */
+/* First paragraph - greeting style */
 .blog-post .letter p:first-child {
-  @apply mt-2;
+  @apply mt-1;
   font-style: italic;
   color: #5c4a3d;
 }
 
 .blog-post .letter p:last-child {
-  @apply mb-2;
+  @apply mb-4;
 }
 
-/* Left margin "red line" accent like classic letter paper */
-.blog-post .letter {
-  border-left: 3px solid rgba(180, 60, 60, 0.2);
+/* Letter headings - handwritten style */
+.blog-post .letter h1,
+.blog-post .letter h2,
+.blog-post .letter h3,
+.blog-post .letter h4,
+.blog-post .letter h5,
+.blog-post .letter h6 {
+  font-family: var(--font-handwritten);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #4a3c31;
+  border: none;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
 }
+
+.blog-post .letter h1 { font-size: 2.25rem; }
+.blog-post .letter h2 { font-size: 1.875rem; }
+.blog-post .letter h3 { font-size: 1.5rem; }
+.blog-post .letter h4 { font-size: 1.25rem; }
+.blog-post .letter h5 { font-size: 1.125rem; }
+.blog-post .letter h6 { font-size: 1rem; }
 
 /* Responsive adjustments */
 @media (min-width: 768px) {
   .blog-post .letter {
-    padding: 3.5rem 3rem 5rem 3.5rem;
+    padding: 3rem 2.5rem 5rem 3rem;
     margin-left: 1rem;
     margin-right: 1rem;
   }
 
   .blog-post .letter > *:last-child::after {
-    width: 4.5rem;
-    height: 4.5rem;
-    bottom: -3rem;
-    right: 1.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    bottom: -2.5rem;
+    right: 0.5rem;
   }
 
   .blog-post .letter > *:last-child::before {
-    font-size: 1.5rem;
-    bottom: -2rem;
-    right: 2.25rem;
+    font-size: 1.2rem;
+    bottom: -1.7rem;
+    right: 1rem;
   }
 }
 
@@ -543,45 +524,42 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .blog-post .letter::before {
-    background-image:
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 31px,
-        rgba(100, 130, 180, 0.1) 31px,
-        rgba(100, 130, 180, 0.1) 32px
-      );
+    opacity: 0.02;
   }
 
   .blog-post .letter::after {
-    color: rgba(100, 130, 180, 0.3);
+    color: rgba(100, 130, 180, 0.25);
   }
 
   .blog-post .letter p {
-    @apply text-slate-200;
+    @apply text-slate-300;
   }
 
   .blog-post .letter p:first-child {
     color: #94a3b8;
   }
 
+  .blog-post .letter h1,
+  .blog-post .letter h2,
+  .blog-post .letter h3,
+  .blog-post .letter h4,
+  .blog-post .letter h5,
+  .blog-post .letter h6 {
+    color: #c4d4e8;
+  }
+
   /* Dark mode wax seal - deep burgundy */
   .blog-post .letter > *:last-child::after {
     background:
-      radial-gradient(circle at 35% 35%, #6b3a3a 0%, #4a2828 30%, #3a1a1a 70%, #2a1010 100%);
+      radial-gradient(circle at 30% 30%, #7a4040 0%, #5a2828 25%, #401818 50%, #301010 75%, #200808 100%);
     box-shadow:
-      inset -2px -2px 6px rgba(0, 0, 0, 0.4),
-      inset 2px 2px 6px rgba(150, 100, 100, 0.15),
-      0 3px 8px rgba(0, 0, 0, 0.4),
-      0 1px 3px rgba(0, 0, 0, 0.2);
+      inset -3px -3px 8px rgba(0, 0, 0, 0.5),
+      inset 2px 2px 4px rgba(180, 120, 120, 0.15),
+      0 2px 6px rgba(0, 0, 0, 0.3);
   }
 
   .blog-post .letter > *:last-child::before {
-    color: rgba(180, 150, 150, 0.5);
-  }
-
-  .blog-post .letter > p:first-child::before {
-    background: linear-gradient(135deg, transparent 50%, rgba(255,255,255,0.02) 50%);
+    color: rgba(200, 160, 160, 0.5);
   }
 }
 
@@ -601,44 +579,41 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .dark .blog-post .letter::before {
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 31px,
-      rgba(100, 130, 180, 0.1) 31px,
-      rgba(100, 130, 180, 0.1) 32px
-    );
+  opacity: 0.02;
 }
 
 .dark .blog-post .letter::after {
-  color: rgba(100, 130, 180, 0.3);
+  color: rgba(100, 130, 180, 0.25);
 }
 
 .dark .blog-post .letter p {
-  @apply text-slate-200;
+  @apply text-slate-300;
 }
 
 .dark .blog-post .letter p:first-child {
   color: #94a3b8;
 }
 
+.dark .blog-post .letter h1,
+.dark .blog-post .letter h2,
+.dark .blog-post .letter h3,
+.dark .blog-post .letter h4,
+.dark .blog-post .letter h5,
+.dark .blog-post .letter h6 {
+  color: #c4d4e8;
+}
+
 .dark .blog-post .letter > *:last-child::after {
   background:
-    radial-gradient(circle at 35% 35%, #6b3a3a 0%, #4a2828 30%, #3a1a1a 70%, #2a1010 100%);
+    radial-gradient(circle at 30% 30%, #7a4040 0%, #5a2828 25%, #401818 50%, #301010 75%, #200808 100%);
   box-shadow:
-    inset -2px -2px 6px rgba(0, 0, 0, 0.4),
-    inset 2px 2px 6px rgba(150, 100, 100, 0.15),
-    0 3px 8px rgba(0, 0, 0, 0.4),
-    0 1px 3px rgba(0, 0, 0, 0.2);
+    inset -3px -3px 8px rgba(0, 0, 0, 0.5),
+    inset 2px 2px 4px rgba(180, 120, 120, 0.15),
+    0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .dark .blog-post .letter > *:last-child::before {
-  color: rgba(180, 150, 150, 0.5);
-}
-
-.dark .blog-post .letter > p:first-child::before {
-  background: linear-gradient(135deg, transparent 50%, rgba(255,255,255,0.02) 50%);
+  color: rgba(200, 160, 160, 0.5);
 }
 
 /* Light mode - manual class toggle */
@@ -650,15 +625,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .light .blog-post .letter::after {
-  color: rgba(139, 90, 43, 0.25);
+  color: rgba(139, 90, 43, 0.2);
 }
 
 .light .blog-post .letter p {
-  @apply text-slate-800;
+  @apply text-slate-700;
 }
 
 .light .blog-post .letter p:first-child {
   color: #5c4a3d;
+}
+
+.light .blog-post .letter h1,
+.light .blog-post .letter h2,
+.light .blog-post .letter h3,
+.light .blog-post .letter h4,
+.light .blog-post .letter h5,
+.light .blog-post .letter h6 {
+  color: #4a3c31;
 }
 
 /* Tables */
