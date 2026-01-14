@@ -6,8 +6,8 @@ template: blogpost.twig
 
 This could be a letter to my younger self as a starting frontend developer, sharing insights and lessons learned over the years. But maybe it could also be a letter to anyone starting out in the field, offering encouragement and advice.
 
-```
 :::letter
+
 Dear Younger Me,
 
 I hope this letter finds you well. As I sit down to write this, I am reflecting on the journey I have taken as a frontend developer. It has been a transformative experience, and I am grateful for the lessons I have learned along the way.
@@ -43,5 +43,5 @@ Your private life and human, non-digital interactions are essential for your wel
 
 ## Desk work is poison for your body
 Remember to take care of your physical health. Sitting for long hours can lead to various health issues. Make it a habit to take breaks, stretch, and move around regularly. Consider incorporating exercise into your routine, whether it's a daily walk, having a big garden or hitting the gym. Following this in your 20s and 30s will pay off in your 40s and 50s.
+
 :::
-```
