@@ -354,11 +354,10 @@ h1, h2, h3, h4, h5, h6 {
   @apply my-12 border-0 border-t border-slate-200 dark:border-slate-800;
 }
 
-/* Letter format - premium personal letter styling with AHA effect */
+/* Letter format - premium personal letter styling */
 .blog-post .letter {
   @apply my-12 rounded-sm;
-  padding: 2.5rem 2rem 3.5rem;
-  padding-bottom: 4.5rem; /* Extra space for wax seal */
+  padding: 2.5rem 2rem 3rem;
   background:
     linear-gradient(180deg, rgba(255,252,245,0) 0%, rgba(245,235,220,0.3) 100%),
     linear-gradient(135deg, #fffcf5 0%, #f8f4eb 50%, #f5f0e6 100%);
@@ -374,10 +373,9 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
   position: relative;
   transform: rotate(-0.3deg);
-  overflow: visible;
 }
 
-/* Subtle paper texture - no lines, just grain */
+/* Subtle paper texture - grain effect */
 .blog-post .letter::before {
   content: "";
   position: absolute;
@@ -391,7 +389,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: inherit;
 }
 
-/* Decorative header flourish - subtle swash */
+/* Decorative header flourish */
 .blog-post .letter::after {
   content: "~ ~ ~";
   position: absolute;
@@ -402,41 +400,6 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.5em;
   color: rgba(139, 90, 43, 0.2);
   font-family: var(--font-handwritten);
-}
-
-/* Wax seal - positioned inside the letter at bottom right */
-.blog-post .letter > *:last-child {
-  position: relative;
-}
-
-.blog-post .letter > *:last-child::after {
-  content: "";
-  position: absolute;
-  bottom: -2rem;
-  right: 0;
-  width: 3rem;
-  height: 3rem;
-  background:
-    radial-gradient(circle at 30% 30%, #e55 0%, #c33 25%, #a22 50%, #811 75%, #611 100%);
-  border-radius: 50%;
-  box-shadow:
-    inset -3px -3px 8px rgba(0, 0, 0, 0.35),
-    inset 2px 2px 4px rgba(255, 180, 180, 0.25),
-    0 2px 6px rgba(0, 0, 0, 0.2);
-  transform: rotate(8deg);
-}
-
-/* Seal emblem - centered envelope icon */
-.blog-post .letter > *:last-child::before {
-  content: "✉";
-  position: absolute;
-  bottom: -1.4rem;
-  right: 0.7rem;
-  font-size: 1rem;
-  color: rgba(255, 230, 230, 0.7);
-  z-index: 11;
-  transform: rotate(8deg);
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 .blog-post .letter > * {
@@ -488,22 +451,9 @@ h1, h2, h3, h4, h5, h6 {
 /* Responsive adjustments */
 @media (min-width: 768px) {
   .blog-post .letter {
-    padding: 3rem 2.5rem 5rem 3rem;
+    padding: 3rem 2.5rem 3rem 3rem;
     margin-left: 1rem;
     margin-right: 1rem;
-  }
-
-  .blog-post .letter > *:last-child::after {
-    width: 3.5rem;
-    height: 3.5rem;
-    bottom: -2.5rem;
-    right: 0.5rem;
-  }
-
-  .blog-post .letter > *:last-child::before {
-    font-size: 1.2rem;
-    bottom: -1.7rem;
-    right: 1rem;
   }
 }
 
@@ -547,20 +497,6 @@ h1, h2, h3, h4, h5, h6 {
   .blog-post .letter h6 {
     color: #c4d4e8;
   }
-
-  /* Dark mode wax seal - deep burgundy */
-  .blog-post .letter > *:last-child::after {
-    background:
-      radial-gradient(circle at 30% 30%, #7a4040 0%, #5a2828 25%, #401818 50%, #301010 75%, #200808 100%);
-    box-shadow:
-      inset -3px -3px 8px rgba(0, 0, 0, 0.5),
-      inset 2px 2px 4px rgba(180, 120, 120, 0.15),
-      0 2px 6px rgba(0, 0, 0, 0.3);
-  }
-
-  .blog-post .letter > *:last-child::before {
-    color: rgba(200, 160, 160, 0.5);
-  }
 }
 
 /* Dark mode - manual class toggle */
@@ -601,19 +537,6 @@ h1, h2, h3, h4, h5, h6 {
 .dark .blog-post .letter h5,
 .dark .blog-post .letter h6 {
   color: #c4d4e8;
-}
-
-.dark .blog-post .letter > *:last-child::after {
-  background:
-    radial-gradient(circle at 30% 30%, #7a4040 0%, #5a2828 25%, #401818 50%, #301010 75%, #200808 100%);
-  box-shadow:
-    inset -3px -3px 8px rgba(0, 0, 0, 0.5),
-    inset 2px 2px 4px rgba(180, 120, 120, 0.15),
-    0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-.dark .blog-post .letter > *:last-child::before {
-  color: rgba(200, 160, 160, 0.5);
 }
 
 /* Light mode - manual class toggle */
