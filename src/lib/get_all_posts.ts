@@ -8,9 +8,12 @@ export function getAllPosts(fields: string[] = [], type: Types = "post") {
     .map((slug) => getPostBySlug(slug, fields, type))
     // sort posts by date in descending order
     .sort((post1, post2) => {
-      const date1 = typeof post1.date === "string" ? post1.date : "";
-      const date2 = typeof post2.date === "string" ? post2.date : "";
-      return date1 > date2 ? -1 : 1;
+      const getTime = (date: unknown): number => {
+        if (date instanceof Date) return date.getTime();
+        if (typeof date === "string") return new Date(date).getTime();
+        return 0;
+      };
+      return getTime(post2.date) - getTime(post1.date);
     });
 
   return posts;
